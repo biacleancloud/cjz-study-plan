@@ -1,0 +1,21 @@
+# Windows & Desktop
+desktop.ini
+Thumbs.db
+
+# Office / Word Lock Files
+~$*.doc
+~$*.docx
+~$*.ppt
+~$*.pptx
+~$*.xls
+~$*.xlsx
+
+# Temp & Cache Files
+*.tmp
+temp_*
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
