@@ -945,7 +945,7 @@
       transform: scale(1.03);
     }
 
-    /* 蔡佳宸作戰心法卡片群 */
+    /* 蔡佳蓁作戰心法卡片群 */
     .quotes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -1915,15 +1915,15 @@
           </div>
 
           <div class="units-accordion-list">
-            <!-- 數學 考點一 -->
+            <!-- 考點卡片 -->
             <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 1</span>
-                  <h4 class="unit-card-title">二次方根化簡與分母有理化</h4>
+                  <span class="unit-num-badge" style="background:#2563eb;">考點 1</span>
+                  <h4 class="unit-card-title">考點 1：二次方根化簡與分母有理化</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">精選衝刺題</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -1931,14 +1931,10 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    <strong>① 一句話重點</strong>：根號乘除可直接合拆，加減必須同類方根合併；分母有根號必用平方差 (a+b)(a-b)=a²-b² 有理化！<br><br>
-                    <strong>② 必須記住什麼</strong>：<br>
-                    • 乘除法則：√(a × b) = √a × √b，√(a / b) = √a / √b (a ≥ 0, b &gt; 0)。<br>
-                    • 分母有理化：c / (√a + √b) = c(√a - √b) / (a - b)。<br>
-                    • 化簡要徹底：根號內不可含有分母，亦不可含有能開出根號的平方因數（如 √20 必化為 2√5）。<br><br>
-                    <strong>③ 最容易錯在哪</strong>：<br>
-                    • √(a²) = |a|！當 a 為負數時，√(a²) = -a，不可直接寫 a！（例：√((-5)²) = 5）。<br>
-                    • 誤以為 √(a + b) = √a + √b（大錯！√(9 + 16) = √25 = 5，不是 3 + 4 = 7）。
+                    <strong>① 一句話重點</strong>：根號內部的完全平方數全部提至根號外，分母絕對不能留根號！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 最簡根式三條件：根號內無分數小數、無完全平方因數、分母不含根號。<br>2. 分母有理化：單項同乘根號（2/√3=2√3/3）；雙項用平方差 (√a-√b)。<br>3. 平方根開出必定非負：√(a²) = |a|。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>把 √(2) + √(3) 算成 √(5)（同類方根才能加減，不同類方根就像 x 與 y 不能合併）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：化簡 √72 為最簡根式；計算 (6/√3) + √12。<br>【根據題型推測】：若 a=3-√10，求 √(a²) 的值（結合絕對值正負判斷）。
                   </div>
                 </div>
 
@@ -1946,26 +1942,33 @@
                   <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
                   <div class="unit-questions-list">
                     <div class="q-practice-card">
-                      <div class="q-title-row">
-                        <span class="q-num-badge">第 1 題</span>
-                        <span class="q-source-tag">【基礎題】二次方根分母有理化與運算</span>
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
                       </div>
-                      <div class="q-question-text">
-                        計算 4 / (√5 + 1) - √20 之值為何？<br>
-                        (A) -1 - √5<br>(B) 1 - √5<br>(C) -1 + √5<br>(D) 1 + √5
+                      <div class="q-prompt-text">計算下列各式並化為最簡根式：(1) √(72) - √(18) + √(50)   (2) (6 / √3) + √(12)</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：完全平方數提出來（72=36×2, 18=9×2, 50=25×2）再合併；6/√3 分子分母同乘 √3 有理化。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>(1) 原式 = 6√2 - 3√2 + 5√2 = (6 - 3 + 5)√2 = 8√2。<br>(2) 6/√3 = 6√3/3 = 2√3；√12 = 2√3 ➔ 原式 = 2√3 + 2√3 = 4√3。</div>
                       </div>
-                      <div class="q-toggle-row">
-                        <button type="button" class="q-toggle-btn" onclick="toggleQAns(this)">查看完整解析與步驟 ▼</button>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
                       </div>
-                      <div class="q-analysis-box" style="display:none;">
-                        <div class="q-ans-badge">正確答案：(A)</div>
-                        <div class="q-ans-step">
-                          <strong>【破題關鍵】</strong>：分母有理化乘以 (√5 - 1)，利用平方差公式消去根號；再將 √20 化為 2√5 合併！<br>
-                          <strong>【解題步驟】</strong>：<br>
-                          1. 分母有理化：4(√5 - 1) / [(√5 + 1)(√5 - 1)] = 4(√5 - 1) / (5 - 1) = 4(√5 - 1) / 4 = √5 - 1。<br>
-                          2. 化簡根式：√20 = √(4 × 5) = 2√5。<br>
-                          3. 相減合併：(√5 - 1) - 2√5 = -1 - √5。
-                        </div>
+                      <div class="q-prompt-text">若 a = 3 - √10，則 √(a²) 之值為何？ (A) 3 - √10   (B) √10 - 3   (C) -3 - √10   (D) 3 + √10</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：√(x²) 開出來等於 |x|（絕對值）！3 = √9 &lt; √10，所以 a 是負數，開出來要變號！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>a = 3 - √10 &lt; 0 ➔ √(a²) = |a| = -(3 - √10) = √10 - 3。故選 (B)。（填 3-√10 全錯）</div>
                       </div>
                     </div>
                   </div>
@@ -1973,15 +1976,15 @@
               </div>
             </div>
 
-            <!-- 數學 考點二 -->
-            <div class="unit-card">
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 2</span>
-                  <h4 class="unit-card-title">因式分解四大武器（提公因式、分組分解、十字交乘）</h4>
+                  <span class="unit-num-badge" style="background:#2563eb;">考點 2</span>
+                  <h4 class="unit-card-title">考點 2：畢氏定理應用與勾股數計算</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">必考 30 分</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -1989,14 +1992,10 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    <strong>① 一句話重點</strong>：看到多項式先提公因式；三項首選十字交乘；四項分組二二拆或三一拆！<br><br>
-                    <strong>② 必須記住什麼</strong>：<br>
-                    • 乘法公式逆用：a² - b² = (a+b)(a-b)；a² ± 2ab + b² = (a ± b)²。<br>
-                    • 十字交乘口訣：拆兩頭、乘中間、湊係數、定符號！常數項為正，兩數同號；常數項為負，兩數異號。<br>
-                    • 分組提公因式：看到四項式，若有三項能配成完全平方，則用「三一分組」後利用平方差分解。<br><br>
-                    <strong>③ 最容易錯在哪</strong>：<br>
-                    • 分解不徹底：寫出 2(x² - 4) 以為完成，忘記繼續分解為 2(x+2)(x-2)！<br>
-                    • 提負號漏變號：例如提 -3 時括號內所有項符號必須顛倒。
+                    <strong>① 一句話重點</strong>：直角三角形兩股平方和等於斜邊平方；求斜邊高用『兩股乘積除以斜邊』！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 公式：a² + b² = c²（c 必定為最長斜邊）。<br>2. 四大必背勾股數：(3, 4, 5)及其倍數、(5, 12, 13)、(7, 24, 25)、(8, 15, 17)。<br>3. 斜邊上的高：h = (a × b) / c（面積法：兩股相乘等於斜邊乘高）。<br>4. 兩點距離：AB = √[(x₁ - x₂)² + (y₁ - y₂)²]。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>題目說「兩邊長為 3 與 4」，誤以為另一邊必定是 5（若 4 是斜邊，另一股為 √(4²-3²)=√7）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：已知兩股求斜邊及斜邊上的高；求坐標平面兩點距離。<br>【根據題型推測】：梯子靠牆下滑題（梯長斜邊不變）；摺疊求重疊線段長。
                   </div>
                 </div>
 
@@ -2004,25 +2003,155 @@
                   <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
                   <div class="unit-questions-list">
                     <div class="q-practice-card">
-                      <div class="q-title-row">
-                        <span class="q-num-badge">第 2 題</span>
-                        <span class="q-source-tag">【高頻題】十字交乘與提公因式</span>
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
                       </div>
-                      <div class="q-question-text">
-                        因式分解 2x² - 5x - 3，其結果為何？<br>
-                        (A) (2x + 1)(x - 3)<br>(B) (2x - 1)(x + 3)<br>(C) (2x + 3)(x - 1)<br>(D) (2x - 3)(x + 1)
+                      <div class="q-prompt-text">直角三角形兩股長為 5、12，若斜邊上的高為 h，則斜邊長與 h 之值分別為何？</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：由勾股數 (5, 12, 13) 斜邊秒殺 13；求高用面積法：底×高÷2 = 兩股乘積÷2。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>(1) 斜邊 = √(5² + 12²) = √169 = 13。<br>(2) 5 × 12 = 13 × h ➔ 60 = 13h ➔ h = 60 / 13。</div>
                       </div>
-                      <div class="q-toggle-row">
-                        <button type="button" class="q-toggle-btn" onclick="toggleQAns(this)">查看完整解析與步驟 ▼</button>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【應用題】
+題目內容</span>
                       </div>
-                      <div class="q-analysis-box" style="display:none;">
-                        <div class="q-ans-badge">正確答案：(A)</div>
-                        <div class="q-ans-step">
-                          <strong>【破題關鍵】</strong>：二次項 2x² 拆成 2x 與 x；常數項 -3 拆成 +1 與 -3，交叉相乘檢驗！<br>
-                          <strong>【解題步驟】</strong>：<br>
-                          2x × (-3) = -6x，x × (+1) = +x，交叉相乘之和 = -6x + x = -5x，剛好等於中間一次項！<br>
-                          故分解式為 (2x + 1)(x - 3)。選 (A)。
-                        </div>
+                      <div class="q-prompt-text">長 25 公尺的梯子靠在垂直牆上，梯腳距牆底 7 公尺。若梯頂下滑 4 公尺，梯腳向外滑動幾公尺？</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：梯長 25 公尺永遠不變（斜邊固定）！前後分別用 (7, 24, 25) 與 (15, 20, 25) 勾股數秒殺。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>(1) 原梯頂高 = √(25² - 7²) = 24 公尺。<br>(2) 下滑後新梯頂高 = 24 - 4 = 20 公尺；新底邊 = √(25² - 20²) = 15 公尺。<br>(3) 梯腳向外滑動距離 = 15 - 7 = 8 公尺。答：8 公尺。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#2563eb;">考點 3</span>
+                  <h4 class="unit-card-title">考點 3：乘法公式與提公因式法因式分解</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：兩項中間減號想『平方差』；三項頭尾皆平方想『完全平方』；第一步永遠先提公因式！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 步驟第一鐵律：永遠『先提公因式』，把每一項都有的因數或文字先提出來！<br>2. 平方差公式：a² - b² = (a + b)(a - b)。<br>3. 完全平方公式：(a + b)² = a² + 2ab + b² ； (a - b)² = a² - 2ab + b²。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>因式分解不徹底！例如把 x⁴ - 16 分解為 (x²+4)(x²-4) 就停止，忘記 (x²-4) 還能分解為 (x+2)(x-2)！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：因式分解 3x(x-2)+5(2-x)；因式分解 2x³ - 18x。<br>【根據題型推測】：利用因式分解求簡捷計算，例如 2025² - 2024² 或 99² + 198 + 1。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">因式分解：3x(x - 2) + 5(2 - x)</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：看到 (x - 2) 與 (2 - x) 互為相反數，把中間 + 號改為 - 號即可提出公因式 (x - 2)！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>原式 = 3x(x - 2) - 5(x - 2) = (x - 2)(3x - 5)。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">因式分解：2x³ - 18x</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：第一步先提公因式 2x，括號內部剩下 (x² - 9)，再利用平方差徹底分解！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>原式 = 2x(x² - 9) = 2x(x + 3)(x - 3)。（⚠️ 未分解徹底者不給分）</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#2563eb;">考點 4</span>
+                  <h4 class="unit-card-title">考點 4：十字交乘法因式分解</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：『拆頭、拆尾、交叉乘相加湊中間』；常數項為正拆同號，常數項為負拆異號！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 十字交乘標準型：ax² + bx + c ➔ (px + q)(rx + s)。<br>2. 符號口訣：<br>   • 常數項 c 為正 ➔ 拆出兩數同號（看 b 的正負決定兩數皆正或皆負）。<br>   • 常數項 c 為負 ➔ 拆出兩數異號（乘積大者之符號與中間項 b 相同）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>二次項前面有負號時（如 -2x² + 5x + 3），直接拆極易算錯！先提負號變成 -(2x²-5x-3) 再分解！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：因式分解 x² - 8x - 20；因式分解 3x² + 7x - 6。<br>【根據題型推測】：若 x² + kx - 12 可被 (x-3) 整除，求整數 k 的值。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">因式分解：x² - 8x - 20</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：常數項 -20 為負，拆出兩數必定一正一負！拆成 -10 與 +2，相加正好湊出中間項 -8！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>拆頭：x × x；拆尾：(-10) × (+2)。<br>交叉核對：(x × 2) + (x × -10) = -8x。<br>原式 = (x - 10)(x + 2)。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【綜合題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">因式分解：3x² + 7x - 6</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：二次項係數為 3，拆成 3x 與 x；尾項 -6 拆為 -2 與 +3，讓 3x × 3 = 9x 湊出正 7x！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>拆頭：3x 與 x；拆尾：-2 與 +3。<br>交叉相乘：(3x × 3) + (x × -2) = 9x - 2x = 7x。<br>原式 = (3x - 2)(x + 3)。</div>
                       </div>
                     </div>
                   </div>
@@ -2038,7 +2167,7 @@
           <div class="unit-sub-hero-card" style="border-left: 5px solid #059669;">
             <div class="unit-sub-hero-left">
               <h3>國二上 理化科 第二次段考 衝刺重點與題型全攻略</h3>
-              <p>範圍：第 3 章 波動與聲音 ＋ 第 4 章 光、面鏡與透鏡（康軒版） ｜ 附即測即評實戰解析</p>
+              <p>範圍：康軒版 第三章 波動與聲音 ＋ 第四章 光與透鏡 ｜ 附即測即評實戰解析</p>
             </div>
             <div class="unit-sub-hero-btns">
               <a href="國二上_第二次段考衝刺_理化科_重點與題型分析_一頁一考點版.docx" target="_blank" class="pdf-link-btn" style="background:#059669;">
@@ -2048,15 +2177,15 @@
           </div>
 
           <div class="units-accordion-list">
-            <!-- 理化 考點一 -->
+            <!-- 考點卡片 -->
             <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 1</span>
-                  <h4 class="unit-card-title">波的傳播、週期頻率與波速公式</h4>
+                  <span class="unit-num-badge" style="background:#059669;">考點 1</span>
+                  <h4 class="unit-card-title">考點 1：波的傳播性質與波速公式運算</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">基本分必拿</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -2064,14 +2193,10 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    <strong>① 一句話重點</strong>：波只傳遞「能量」不傳遞「介質」！波速由介質決定，頻率由波源決定！<br><br>
-                    <strong>② 必須記住什麼</strong>：<br>
-                    • 波速公式：v = f × λ（波速 = 頻率 × 波長）；因 T = 1/f，故 v = λ / T。<br>
-                    • 橫波（高低波）：介質振動方向與波前進方向「垂直」（如繩波、水波、光波）。<br>
-                    • 縱波（疏密波）：介質振動方向與波前進方向「平行」（如聲波、彈簧疏密波）。<br><br>
-                    <strong>③ 最容易錯在哪</strong>：<br>
-                    • 誤以為大聲叫喊波速比較快（錯！同溫同壓同空氣介質中，大聲只是振幅大、能量大，波速完全一樣！）。<br>
-                    • 算波速時忘記 1 個完整波包含 1 個波峰與 1 個波谷。
+                    <strong>① 一句話重點</strong>：波前進只傳播能量，介質留在原地振動；同一介質中波速永遠不變！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 核心公式：v = λ / T = f × λ（v波速、λ波長、T週期、f頻率）。<br>2. 週期與頻率互為倒數：T = 1/f，f = 1/T。<br>3. 橫波（繩波）介質振動垂直前進方向；縱波（聲波）介質振動平行前進方向。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>誤以為「把繩子甩快一點（f增加），波速就變快」❌！繩子沒換，波速固定，變的是波長變短！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：給繩波波形圖，求波長、振幅、頻率及波速。<br>【根據題型推測】：水波傳過浮在水面的樹葉，問樹葉運動路徑（僅在原地上下運動）。
                   </div>
                 </div>
 
@@ -2079,24 +2204,33 @@
                   <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
                   <div class="unit-questions-list">
                     <div class="q-practice-card">
-                      <div class="q-title-row">
-                        <span class="q-num-badge">第 1 題</span>
-                        <span class="q-source-tag">【高頻題】回聲測距與原聲反射</span>
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
                       </div>
-                      <div class="q-question-text">
-                        某船以聲納向海底發射超聲波，經 2 秒後收到由海底反射之回聲。若當時海水中聲速為 1500 m/s，則該處海底深度為多少公尺？<br>
-                        (A) 750 公尺<br>(B) 1500 公尺<br>(C) 3000 公尺<br>(D) 6000 公尺
+                      <div class="q-prompt-text">小明甩動繩子，2 秒內產生 10 次完整繩波，相鄰兩個波峰距離為 20 公分。請問此繩波之頻率與波速為何？</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：頻率 f = 總次數/總秒數；波速 v = f × λ。相鄰波峰間距即為一個波長 λ = 20 cm。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>(1) 頻率 f = 10 次 / 2 秒 = 5 Hz（每秒振動 5 次）。<br>(2) 波長 λ = 20 cm。<br>(3) 波速 v = f × λ = 5 × 20 = 100 cm/s（或 1 m/s）。</div>
                       </div>
-                      <div class="q-toggle-row">
-                        <button type="button" class="q-toggle-btn" onclick="toggleQAns(this)">查看完整解析與步驟 ▼</button>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
                       </div>
-                      <div class="q-analysis-box" style="display:none;">
-                        <div class="q-ans-badge">正確答案：(B)</div>
-                        <div class="q-ans-step">
-                          <strong>【破題關鍵】</strong>：回聲是聲音往返兩趟！求單程距離（深度）必須除以 2！<br>
-                          <strong>【解題步驟】</strong>：<br>
-                          d = (v × t) / 2 = (1500 × 2) / 2 = 1500 公尺。選 (B)。
-                        </div>
+                      <div class="q-prompt-text">湖面上有一隻玩具鴨，向右傳遞的水波經過時，玩具鴨會如何運動？(A)向右漂去 (B)原地上下浮動 (C)向左漂去 (D)沉入水底</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：力學波傳遞的是能量而非介質！水分子與鴨子只在原地附近做上下垂直振動。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。介質只在平衡位置上下振動，絕不會隨波逐流。（選 A 者粗心扣分）</div>
                       </div>
                     </div>
                   </div>
@@ -2104,15 +2238,15 @@
               </div>
             </div>
 
-            <!-- 理化 考點二 -->
-            <div class="unit-card">
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 2</span>
-                  <h4 class="unit-card-title">凸透鏡與凹透鏡成像六大規律</h4>
+                  <span class="unit-num-badge" style="background:#059669;">考點 2</span>
+                  <h4 class="unit-card-title">考點 2：聲音的傳播條件、聲速與回聲測距</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">壓軸大題</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -2120,18 +2254,173 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    <strong>① 一句話重點</strong>：光由快介質射入慢介質偏向法線；凸透鏡 2F 外成縮小實像，F 內成正立放大虛像！<br><br>
-                    <strong>② 必須記住什麼</strong>：<br>
-                    • 物距 p &gt; 2f ➔ 倒立縮小實像（照相機原理）。<br>
-                    • 物距 p = 2f ➔ 倒立等大實像（影印機）。<br>
-                    • 物距 f &lt; p &lt; 2f ➔ 倒立放大實像（投影機）。<br>
-                    • 物距 p = f ➔ 不成像（折射光平行）。<br>
-                    • 物距 p &lt; f ➔ 正立放大虛像（放大鏡）。<br>
-                    • 凹透鏡：無論物體在哪，永遠成「正立縮小虛像」（近視眼鏡）！
+                    <strong>① 一句話重點</strong>：聲速在固體中最快、氣體中最慢；回聲算距離『一定要除以 2』！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 傳播速度：固體 &gt; 液體 &gt; 氣體（真空中不能傳聲）。<br>2. 空氣中聲速公式：v = 331 + 0.6T（T為攝氏溫度；15°C時約 340 m/s）。<br>3. 回聲測距公式：單程距離 d = (v × t) / 2（t為從發聲到收到回聲的總時間）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>算聲納探測海底深度或對山壁大喊聽到回聲，直接用 v × t 忘記除以 2！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：船隻發射聲納，經 4 秒聽到海底回聲，求海底深度。<br>【根據題型推測】：在 25°C 空氣中敲擊鐵管另一端，聽到兩次聲音的時間差計算。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">若氣溫為 15°C（聲速 340 m/s），小華站在兩堵平行垂直山壁間大喊一聲，經 1 秒聽到第一聲回聲，再經 1 秒聽到第二聲回聲。兩山壁相距多少公尺？</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：第一聲是到近山壁來回（t=1s），第二聲是到遠山壁來回（t=2s）。兩山壁距離即為兩次單程距離相加。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>(1) 近壁距離 d₁ = (340 × 1) / 2 = 170 公尺。<br>(2) 遠壁距離 d₂ = (340 × 2) / 2 = 340 公尺。<br>(3) 兩壁距離 = 170 + 340 = 510 公尺。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【應用題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">海洋探測船垂直向海底發射超聲波，經 2 秒後接收到回聲。若海水中聲速為 1500 m/s，此處海底深度為何？</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：聲納聲音走的是來回路徑，深度為單程距離！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>深度 d = (v × t) / 2 = (1500 × 2) / 2 = 1500 公尺。答：1500 公尺。</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#059669;">考點 3</span>
+                  <h4 class="unit-card-title">考點 3：光的反射定律與平面鏡成像規律</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：入射角等於反射角；平面鏡成『正立、相等、虛像，物距等於像距、左右相反』！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 入射角與反射角均指光線與『法線』（垂直鏡面的垂直線）之夾角，不是與鏡面夾角！<br>2. 平面鏡成像特點：像與物大小完全相等、物距 = 像距、左右相反、正立虛像。<br>3. 人遠離鏡子時，視覺上雖然看似變小（因視角縮小），但鏡中的像實際大小始終不變！<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>題目給光線與鏡面夾角 30°，同學誤將入射角當作 30°（正確入射角應為 90°-30°=60°）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：從鏡子看時鐘指針為 3 點 25 分，問實際時間為何？<br>【根據題型推測】：身高 180 公分的人，若要看到全身像，鏡子長度至少需要多少？（答案：90 公分，身高的 1/2）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">一道光線射向平面鏡，若入射光線與鏡面夾角為 40°，則其反射角為多少度？</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：法線垂直於鏡面（90°）。入射角 = 90° - 40° = 50°。反射定律：反射角 = 入射角。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>入射角 = 90° - 40° = 50°。依反射定律，反射角 = 50°。答：50°。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">小明站在平面鏡前 2 公尺處，他在鏡中的像與他相距多少公尺？若他後退 1 公尺，像的大小如何變化？</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：物距 = 2 公尺，像距亦為 2 公尺，人像相距為物距 + 像距 = 4 公尺！後退像大小維持不變！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>(1) 初次人像距離 = 2 + 2 = 4 公尺。<br>(2) 後退 1 公尺後，像的大小始終不變（與真人等大）。答：4 公尺；像大小不變。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#059669;">考點 4</span>
+                  <h4 class="unit-card-title">考點 4：光的折射定律與透鏡成像實驗規律</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：光入慢速介質『偏向法線』；凸透鏡 2F 外成縮小實像，F 內成放大虛像（放大鏡）！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 折射口訣：快入慢，偏向法線（折射角 &lt; 入射角）；慢入快，偏離法線（折射角 &gt; 入射角）。<br>2. 凸透鏡成像規律（必背）：<br>   • 物距 &gt; 2F ➔ 倒立縮小實像（照相機原理）<br>   • 物距 = 2F ➔ 倒立等大實像<br>   • 2F &gt; 物距 &gt; F ➔ 倒立放大實像（投影機原理）<br>   • 物距 &lt; F ➔ 正立放大虛像（放大鏡原理）<br>3. 凹透鏡恆成『正立、縮小、虛像』。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>實像必定倒立、可用紙屏承接；虛像必定正立、不能用紙屏承接！把實像與虛像性質背反！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：筷子斜插水中看起來向上折（折射使視深變淺）。<br>【根據題型推測】：蠟燭置於焦距 10cm 之凸透鏡前 25cm 處，紙屏上呈現什麼性質的像？
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">一凸透鏡焦距為 10 公分。若將蠟燭置於透鏡前方 25 公分處，在另一側紙屏上所成的像性質為何？(A)倒立放大實像 (B)倒立縮小實像 (C)正立放大虛像 (D)不成像</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：焦距 F = 10 cm，兩倍焦距 2F = 20 cm。蠟燭在 25 cm 處（物距 &gt; 2F），依規律成倒立縮小實像！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。物距 p = 25 &gt; 2F(20)，紙屏承接之像為倒立、縮小、實像（照相機原理）。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">清澈池塘水深 2 公尺，從水面上方垂直向下看池底，看起來的深度會：(A)大於2公尺 (B)等於2公尺 (C)小於2公尺 (D)忽深忽淺</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：光由水（慢）射入空氣（快）時折射偏離法線，人眼逆著光線看去，虛像位置比實際位置高！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (C)。由於光的折射現象，池水「看起來比實際淺」，此即視深變淺現象。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -2140,24 +2429,25 @@
           <div class="unit-sub-hero-card" style="border-left: 5px solid #d97706;">
             <div class="unit-sub-hero-left">
               <h3>國二上 英語科 第二次段考 衝刺重點與題型全攻略</h3>
-              <p>範圍：過去進行式 (Past Continuous) ＋ 連綴動詞 ＋ 花費動詞大辨析</p>
+              <p>範圍：康軒/翰林版 過去進行式 ＋ 連綴動詞 ＋ spend/cost/take ｜ 附即測即評實戰解析</p>
             </div>
             <div class="unit-sub-hero-btns">
               <a href="國二上_第二次段考衝刺_英語科_重點與題型分析_一頁一考點版.docx" target="_blank" class="pdf-link-btn" style="background:#d97706;">
-                📥 開啟英語完整 Word 講義 ↗
+                📥 開啟英文完整 Word 講義 ↗
               </a>
             </div>
           </div>
 
           <div class="units-accordion-list">
+            <!-- 考點卡片 -->
             <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 1</span>
-                  <h4 class="unit-card-title">spend / cost / take 花費動詞大對決</h4>
+                  <span class="unit-num-badge" style="background:#d97706;">考點 1</span>
+                  <h4 class="unit-card-title">考點 1：過去進行式結構與 when / while 連接詞句型</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">必考 3~5 題</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -2165,11 +2455,10 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    <strong>① 一句話重點</strong>：人花時間金錢用 spend；物花金錢用 cost；It 花時間用 It takes to V！<br><br>
-                    <strong>② 句型公式</strong>：<br>
-                    • 人 + spend + 時間/金錢 + on N / (in) V-ing。<br>
-                    • 物 + cost + (人) + 金錢。<br>
-                    • It + takes + (人) + 時間 + to V。
+                    <strong>① 一句話重點</strong>：過去進行式 was/were + V-ing 表示過去某時刻正在進行；when 接瞬間動作，while 接持續動作！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 過去進行式結構：S + was/were + V-ing。<br>2. when 與 while 搭配：when + 過去簡單式（瞬間打斷），主句用過去進行式；while + 過去進行式（長時間持續），兩動作可同時進行。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>看到 yesterday 就衝動選過去簡單式，忘記如果有「at eight o'clock yesterday evening」明確特定時刻必須用過去進行式！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【段考必考題】：What were you doing at that time? 或 When mom came home, I was reading.
                   </div>
                 </div>
 
@@ -2177,28 +2466,156 @@
                   <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
                   <div class="unit-questions-list">
                     <div class="q-practice-card">
-                      <div class="q-title-row">
-                        <span class="q-num-badge">第 1 題</span>
-                        <span class="q-source-tag">【高頻題】花費動詞主詞辨別</span>
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【時態題】過去特定時間點正在進行</span>
                       </div>
-                      <div class="q-question-text">
-                        It ______ Linda two weeks to prepare for the English speech contest.<br>
-                        (A) spent   (B) cost   (C) took   (D) paid
+                      <div class="q-prompt-text">What ______ you ______ at eight o'clock yesterday evening?<br>(A) did; do   (B) were; doing   (C) are; doing   (D) was; doing</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：yesterday evening 若加上明確時間點 at eight o'clock，表示過去特定時刻正在進行，主詞為 you，使用 were + V-ing！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。問句結構為 Were you doing...？</div>
                       </div>
-                      <div class="q-toggle-row">
-                        <button type="button" class="q-toggle-btn" onclick="toggleQAns(this)">查看完整解析與步驟 ▼</button>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【連接詞題】when 與 while 子句判讀</span>
                       </div>
-                      <div class="q-analysis-box" style="display:none;">
-                        <div class="q-ans-badge">正確答案：(C)</div>
-                        <div class="q-ans-step">
-                          <strong>【破題關鍵】</strong>：主詞為虛主詞 It，受詞為時間 two weeks，後面接不定詞 to prepare，故動詞必用 took！
-                        </div>
+                      <div class="q-prompt-text">Tom was playing computer games ______ his mother came into his bedroom.<br>(A) while   (B) when   (C) after   (D) because</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：came 為過去簡單式瞬間動作，打斷正在打電動的持續狀態，前面接 when！while 後面必須接進行式持續動詞。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。when his mother came into his bedroom。</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#d97706;">考點 2</span>
+                  <h4 class="unit-card-title">考點 2：連綴動詞 look / smell / taste / feel / sound 之用法辨析</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：五大感官連綴動詞後方直接接形容詞（adj.）；若要接名詞（N.），必須加上介系詞 like！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 句型一：S + look/smell/taste/feel/sound + 形容詞 (adj.)。<br>2. 句型二：S + look/smell/taste/feel/sound + like + 名詞 (N.)。<br>3. 連綴動詞不可用於被動語態，亦不可隨意加副詞 (adv.) 修飾主詞狀態。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>受中文「聽起來很好地」、「嚐起來很棒地」影響而誤選副詞 wonderfully / well！連綴動詞後面必用形容詞 wonderful / good！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【段考必考題】：smells ______ and tastes even ______ 填形容詞比較級。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【形容詞判斷題】連綴動詞修飾語</span>
+                      </div>
+                      <div class="q-prompt-text">The chocolate cake on the table smells ______ and tastes even ______.<br>(A) wonderfully; better   (B) wonderful; well   (C) wonderful; better   (D) wonderfully; good</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：smell 與 taste 為連綴動詞，後方需接形容詞。even 後面接比較級 better（good 的比較級）。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (C)。smells wonderful (adj.) and tastes better (adj. 比較級)。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【介系詞題】名詞搭配 look like</span>
+                      </div>
+                      <div class="q-prompt-text">Your new teacher looks ______ a famous movie star.<br>(A) as   (B) at   (C) like   (D) of</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：a famous movie star 為名詞片語，連綴動詞 look 後接名詞時必須搭配介系詞 like（看起來像）。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (C)。looks like + N.（看起來像某人）。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#d97706;">考點 3</span>
+                  <h4 class="unit-card-title">考點 3：花費動詞 spend / cost / take / pay 句型用法與時態互換</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：人當主詞花錢花時間用 spend（後接 V-ing 或 on N）；物當主詞花錢用 cost；事情花時間用 take（It takes 人 時間 to V）！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 人 + spend + 時間/金錢 + (in) V-ing / on + N。<br>2. 物 + cost + (人) + 金錢。<br>3. It takes + (人) + 時間 + to V。<br>4. 人 + pay + 金錢 + for + 物品。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>看到錢就隨便選 cost，忘記主詞是「人」時絕不能用 cost，主詞是「人」必須用 spend 或 pay！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【段考必考題】：It takes 人 時間 to V 與 人 spend 時間 V-ing 句型互換。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【句型題】虛主詞 It 表花費時間</span>
+                      </div>
+                      <div class="q-prompt-text">It ______ Linda two weeks to prepare for the English speech contest.<br>(A) spent   (B) cost   (C) took   (D) paid</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：虛主詞 It 代替後面真正的主詞 to prepare...，花費時間 two weeks，符合「It takes 人 時間 to V」句型，過去式用 took！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (C)。It took Linda two weeks to prepare...</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】人當主詞之金錢與動詞搭配</span>
+                      </div>
+                      <div class="q-prompt-text">Sam spent two thousand dollars ______ the new bicycle yesterday.<br>(A) buying   (B) to buy   (C) bought   (D) on buy</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：spend + 金錢後接動詞時，必須用 V-ing（或介系詞 on + N）。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (A)。spend money (in) buying sth，省略 in 後接 V-ing。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -2207,7 +2624,7 @@
           <div class="unit-sub-hero-card" style="border-left: 5px solid #dc2626;">
             <div class="unit-sub-hero-left">
               <h3>國二上 國文科 第二次段考 衝刺重點與題型全攻略</h3>
-              <p>範圍：第 4 課至第 6 課 ＋ 語文常識（對聯平仄、題辭、修辭）（康軒版）</p>
+              <p>範圍：康軒版 古典詩文 (黃鶴樓/孟浩然/絕句/律詩) ＋ 修辭語法 ｜ 附即測即評實戰解析</p>
             </div>
             <div class="unit-sub-hero-btns">
               <a href="國二上_第二次段考衝刺_國文科_重點與題型分析_一頁一考點版.docx" target="_blank" class="pdf-link-btn" style="background:#dc2626;">
@@ -2217,14 +2634,15 @@
           </div>
 
           <div class="units-accordion-list">
+            <!-- 考點卡片 -->
             <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 1</span>
-                  <h4 class="unit-card-title">對聯仄起平收與平仄上下聯辨識</h4>
+                  <span class="unit-num-badge" style="background:#dc2626;">考點 1</span>
+                  <h4 class="unit-card-title">考點 1：文言文常用虛詞、一字多義與古今詞義演變</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">語文常識</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -2232,12 +2650,234 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    <strong>① 一句話重點</strong>：上聯末字必為仄聲（國語三聲、四聲及入聲）；下聯末字必為平聲（國語一聲、二聲）！<br><br>
-                    <strong>② 張貼位置</strong>：面對大門時，右手邊貼「上聯」，左手邊貼「下聯」。
+                    <strong>① 一句話重點</strong>：不可直接用現代白話文套古文！看清詞性轉變與古今詞義差別！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 古今異義詞必考典型：<br>   • 「走」：古義為『奔跑』，今義為步行。<br>   • 「去」：古義為『離開』，今義為前往。<br>   • 「妻子」：古義為『妻子與兒女』，今義指配偶妻子。<br>2. 虛字『之』的四種用法：代名詞（他/它）、動詞（往/到）、助詞（的）、助詞（無義，賓語提前）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>看到文言句子直接拿現代詞彙硬套，導致整句話主旨理解完全顛倒！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：下列各選項「之」字，何者當動詞使用？<br>【根據題型推測】：比較「相」字在不同詩句中是表示「互相」還是「單向偏指一方」。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">下列各選項「之」字的字義，何者與其他三者『不同』？<br>(A)黃鶴樓送孟浩然「之」廣陵 (B)心「之」所向 (C)物外「之」趣 (D)蓮「之」愛</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：(A)「之」廣陵為「前往」之意（動詞）；其餘 (B)(C)(D) 皆為結構助詞「的」或賓語提前標記。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (A)。(A) 之為動詞，意為「前往」；其餘選項之「之」皆為助詞。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">「率妻子邑人來此絕境」，句中「妻子」的涵義為何？(A)男子的配偶 (B)妻子與兒女 (C)未婚妻 (D)婦女童僕</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：古文中「妻子」為兩個單音節詞：妻（妻子）＋ 子（子女）之合稱！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。此為經典古今異義考題，古義指「妻子和孩子」，不可套用現代單純指配偶之義。</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#dc2626;">考點 2</span>
+                  <h4 class="unit-card-title">考點 2：常用修辭格精準判讀（借代、倒反、映襯、轉化）</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：借代認準『借體代替本體』；倒反重在『言不由衷、明褒實貶』！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 借代經典必背：<br>   • 「白衣天使」➔ 護理師；「祝融」➔ 火災；「巾幗」➔ 女性；「杜康」➔ 酒。<br>   • 「千鈞一髮」➔ 危機；「布衣」➔ 平民；「汗青」➔ 史冊。<br>2. 倒反修辭：用與本意相反的詞語表達真意（如：你考試考零分，真是太「聰明」了！）。<br>3. 轉化修辭：將物當作人來描寫（人性化）或將抽象情緒具體化物體化。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>把「倒反」當成讚美，沒有讀出句子中的諷刺或無奈語氣！把「借代」誤判為譬喻！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：朱自清《背影》中「我那時真是聰明過分」所使用的修辭法（倒反法）。<br>【根據題型推測】：題目給一組詩句，詢問何者修辭法與「烽火連三月，家書抵萬金」相同（借代／對偶）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">下列文句何者使用了「倒反」修辭？<br>(A)他的心腸軟得像棉花糖<br>(B)你可真有本事，把整碗熱湯全打翻在老師桌上<br>(C)太陽害羞地躲進了雲層裡<br>(D)朱門酒肉臭，路有凍死骨</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：(A)譬喻；(B)「真有本事」實指闖大禍，言不由衷為倒反；(C)轉化擬人；(D)映襯對比。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。表面誇獎「有本事」，實則責備斥責打翻熱湯，屬於標準倒反修辭。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">「何以解憂？唯有杜康。」句中「杜康」是運用借代修辭代稱「酒」。下列何者『借代配對錯誤』？<br>(A)白衣天使——護理師<br>(B)巾幗不讓鬚眉——女子<br>(C)化干戈為玉帛——戰爭<br>(D)留取丹心照汗青——史冊</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：「干戈」借代戰爭，「玉帛」借代和平！「化干戈為玉帛」是指化戰爭為「和平」！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (C)。玉帛借代為「和平、友好」，而非戰爭。（干戈才代指兵器與戰爭）</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#dc2626;">考點 3</span>
+                  <h4 class="unit-card-title">考點 3：韻文常識與體裁判斷（近體詩、古體詩、詞曲格律比較）</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：紅白事絕不能送錯！題辭看清賀對象：婚嫁、生子、醫界、教育！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 婚嫁喜慶：宜室宜家、之子于歸、琴瑟和鳴、百年好合。<br>2. 生育祝賀：弄璋之喜（生男）、弄瓦之喜（生女）。<br>3. 醫界專用：杏林春滿、懸壺濟世、妙手回春（不可送給教師！）。<br>4. 教育界專用：時雨春風、桃李滿門、化雨春風、教澤廣被。<br>5. 哀輓悼詞：福壽全歸（高壽男喪）、德業長昭、彤管流芳（女喪）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>把「懸壺濟世/杏林之光」送給學校老師（大錯！醫界專用；教育界是「杏壇」！）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：張醫生新開診所，王校長退休，分別應贈送何種題辭？<br>【根據題型推測】：題目列出四位朋友的不同喜事，詢問哪一張祝賀卡片用語得體。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">李叔叔新開了一家眼科診所，小明前往祝賀，下列哪一個題辭『最恰當』？<br>(A)桃李滿門 (B)妙手回春 (C)近悅遠來 (D)鐵畫銀鉤</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：(A)教育界；(B)醫界診所；(C)旅館飯店商業；(D)書法展覽。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。妙手回春、懸壺濟世為醫界專用祝賀題辭。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">下列祝賀題辭與適用對象的配對，何者『完全正確』？<br>(A)賀生女——弄璋之喜<br>(B)賀新婚——之子于歸<br>(C)賀教師榮退——術精岐黃<br>(D)賀新居落成——富貴壽考</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：(A)生男弄璋，生女弄瓦；(B)之子于歸出自《詩經》，專賀女子出嫁新婚；(C)術精岐黃賀醫界；(D)新居落成為美輪美奐、喬遷之喜。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。之子于歸為祝賀女子出嫁（新婚）之專用古典名辭。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#dc2626;">考點 4</span>
+                  <h4 class="unit-card-title">考點 4：白話散文閱讀理解、主旨提煉與文意脈絡推論</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：『仄起平收』看最後一字；上聯末字必為三四聲，下聯末字必為一二聲！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 平仄口訣：<br>   • 平聲：國語第一聲（陰平）、第二聲（陽平）。<br>   • 仄聲：國語第三聲（上聲）、第四聲（去聲）及入聲字。<br>2. 對聯張貼與結尾規則：<br>   • 上聯（貼右手邊）：最後一字必定是『仄聲』（三四聲）。<br>   • 下聯（貼左手邊）：最後一字必定是『平聲』（一二聲）。<br>3. 行業對聯特徵：理髮（毫末頂上）、書局（翰墨萬卷）、眼鏡（明察秋毫）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>上下聯左右位置搞反！誤把平聲當上聯結尾，或行業關鍵字沒抓到！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：給四句散亂對聯，要求組合成一幅合格春聯並判斷上下聯。<br>【根據題型推測】：「到來盡是彈冠客，此去應無搔首人」是指哪種行業？（理髮店）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">「一門天賜平安福，四海人同富貴□」，依對聯「仄起平收」格律，空格處最適合填入哪一個字？<br>(A)慶 (B)貴 (C)春 (D)壽</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：上聯末字「福」為仄聲（入聲字/四聲）；下聯末字必須填入「平聲字」（國語第一或第二聲）。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>(A)慶（去聲/仄）；(B)貴（去聲/仄）；(C)春（陰平/平聲）；(D)壽（去聲/仄）。故選 (C)。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">「胸中存古漢，眼底發奇光」，這幅對聯最適合懸掛在下列哪一家店鋪？<br>(A)鐘錶店 (B)眼鏡行 (C)古董店 (D)照明燈飾店</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：「眼底」、「發奇光」、「明察」為眼鏡店之經典特色對聯！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。此聯運用雙關，借「眼底發奇光」生動切中「眼鏡行」配鏡助人重見光明之特性。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -2246,7 +2886,7 @@
           <div class="unit-sub-hero-card" style="border-left: 5px solid #7c3aed;">
             <div class="unit-sub-hero-left">
               <h3>國二上 歷史科 第二次段考 衝刺重點與題型全攻略</h3>
-              <p>範圍：第 3 課 秦漢帝國與文化 ＋ 第 4 課 魏晉南北朝的分裂與交融（翰林版）</p>
+              <p>範圍：翰林版 秦漢大一統帝國 ＋ 魏晉南北朝政局與文化 ｜ 附即測即評實戰解析</p>
             </div>
             <div class="unit-sub-hero-btns">
               <a href="國二上_第二次段考衝刺_歷史科_重點與題型分析_一頁一考點版.docx" target="_blank" class="pdf-link-btn" style="background:#7c3aed;">
@@ -2256,14 +2896,15 @@
           </div>
 
           <div class="units-accordion-list">
+            <!-- 考點卡片 -->
             <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 1</span>
-                  <h4 class="unit-card-title">秦漢大一統政治與魏晉九品官人法</h4>
+                  <span class="unit-num-badge" style="background:#7c3aed;">考點 1</span>
+                  <h4 class="unit-card-title">考點 1：秦漢大一統帝國建立與制度變革</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">歷史核心</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -2271,13 +2912,234 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    • 秦始皇：廢封建行郡縣、統一文字度量衡、修築長城。<br>
-                    • 漢武帝：罷黜百家獨尊儒術、鹽鐵酒官營專賣、設平準均輸、派張騫通西域（開闢絲路）。<br>
-                    • 曹魏九品官人法：原欲拔擢真才，後被世族壟斷形成「上品無寒門，下品無勢族」。
+                    <strong>① 一句話重點</strong>：秦始皇廢封建行郡縣奠定大一統架構；漢武帝獨尊儒術與經濟專賣強化皇權！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 秦始皇功過：建立皇帝制度、廢封建行郡縣（官員由皇帝任免）、統一度量衡/文字/車軌、築長城、焚書坑儒。<br>2. 漢武帝盛世作為（必考重點）：<br>   • 思想：採董仲舒建議「罷黜百家，獨尊儒術」，儒學成為正統。<br>   • 政治：實施「推恩令」，削弱諸侯王勢力。<br>   • 經濟：實施鹽、鐵、酒專賣，均輸法與平準法，充實國庫財政。<br>   • 外交：派張騫出使西域（開闢絲綢之路）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>搞混商鞅變法（戰國時期）與秦始皇（統一後）；誤以為推恩令是用武力削藩（實用封地分封均分法）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：比較秦始皇「郡縣制」與周朝「封建制」之最大差異何在？<br>【根據題型推測】：史料題：「鹽鐵官營，均輸平準」反映漢代哪位皇帝的財政政策？（漢武帝）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">秦始皇統一天下後，在地方制度上推行「郡縣制」，其與周代「封建制」最根本的差異為何？<br>(A)郡縣長官職位由皇帝任免，不可世襲<br>(B)郡縣長官擁有高度自主兵權<br>(C)以血緣親疏作為分封標準<br>(D)地方稅收完全歸地方首長所有</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：封建制為貴族世襲領地；郡縣制官員由中央皇帝親自派任、領俸祿、不可世襲，徹底強化中央集權。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (A)。郡縣制的精髓在於官員任免權收歸中央皇帝，打破世卿世祿的貴族世襲制度。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">漢武帝為了打擊匈奴導致國庫空虛，因而實施一系列經濟管制政策。下列何者『不屬於』漢武帝的財政作為？<br>(A)鹽、鐵專賣   (B)將酒收歸官營   (C)鑄造五銖錢   (D)廢除度量衡</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：漢武帝實施鹽鐵酒專賣、專鑄五銖錢；統一度量衡為秦始皇功績，且不可能「廢除」度量衡！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (D)。度量衡由秦始皇統一，漢武帝並無廢除度量衡之舉。</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#7c3aed;">考點 2</span>
+                  <h4 class="unit-card-title">考點 2：兩漢統治政策轉變與學術思想獨尊儒術</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：漢代察舉看孝廉德行；魏晉九品看門第家世，導致『上品無寒門，下品無世族』！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 漢代【察舉制】：由地方官員考察人才，向朝廷推薦「孝子、廉吏」（孝廉），為兩漢選官正途。<br>2. 魏晉【九品官人法（九品中正制）】：<br>   • 曹丕採陳群建議設立。<br>   • 原意：由中正官評定人才九個等級（上上至下下），選拔賢能。<br>   • 流弊：中正官多由世家大族擔任，逐漸只看「家世門第」而不論才能，造成世族壟斷政權。<br>3. 經典名言：『上品無寒門，下品無世族』。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>誤以為九品官人法是公平競爭平民翻身的制度（大錯！科舉才是；九品是世族鞏固特權的工具）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：「上品無寒門，下品無世族」是在描述哪一種選才制度的流弊？<br>【根據題型推測】：分析世家大族如何透過婚姻、品評與官位形成門閥政治壟斷社會。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">《晉書》載：「上品無寒門，下品無世族。」這句話深刻揭示了魏晉南北朝哪一項制度所造成的弊端？<br>(A)察舉制度 (B)九品官人法 (C)科舉制度 (D)封建制度</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：九品中正制後期以家世背景為評品標準，高品官職皆被世族壟斷，平民寒門永無出頭之日。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。此句為歷史課本指涉「九品官人法」造成世族壟斷政局之權威名言。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">漢代選拔官員最重要的制度為「察舉制」，其最重視的選拔標準為何？<br>(A)武藝高強 (B)孝順廉潔（孝廉） (C)家產資產多寡 (D)科舉考試成績</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：漢代推行儒學教化，察舉制最著名的科目即為「孝廉」（孝順父母、廉潔正直）。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。漢代以孝治天下，察舉制核心即為推薦「孝廉」入朝為官。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#7c3aed;">考點 3</span>
+                  <h4 class="unit-card-title">考點 3：魏晉南北朝政局演變、民族融合與經濟重心南移</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：八王之亂引發五胡亂華與衣冠南渡；孝文帝遷都洛陽推動全面漢化！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 西晉滅亡：八王之亂（皇室內鬥） ➔ 永嘉之禍（匈奴攻陷洛陽） ➔ 晉室南遷建東晉（衣冠南渡，江南開發）。<br>2. 北魏孝文帝漢化運動（鮮卑拓跋氏）：<br>   • 遷都：由平城（大同）遷都至中原核心【洛陽】。<br>   • 措施：禁胡服穿漢服、禁胡語說漢語、改漢姓（拓跋改姓元）、鼓勵鮮卑與漢人通婚。<br>   • 影響：加速北方胡漢民族融合，奠定日後隋唐統一基礎。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>記錯遷都方向（是從平城遷到洛陽，不是遷往長安）；誤把孝文帝當成漢人皇帝（他是鮮卑族）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：北魏孝文帝將皇室姓氏「拓跋」改為何姓？（元）。<br>【根據題型推測】：分析「衣冠南渡」對中國南方經濟開發造成的關鍵推動作用。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">北魏孝文帝為了推行漢化政策，將都城由北方平城遷往哪裡？<br>(A)長安 (B)洛陽 (C)建康 (D)鄴城</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：洛陽為中原漢族傳統政治與文化核心，孝文帝遷都洛陽以排除鮮卑保守勢力阻撓漢化。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。孝文帝遷都洛陽是推動全面漢化最關鍵的第一步。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">西晉末年爆發「永嘉之禍」，引發北方士族與平民大規模南遷，史稱「衣冠南渡」。此事件對中國歷史發展的最大影響為何？<br>(A)導致佛教徹底消亡<br>(B)加速江南地區的經濟開發與文化傳播<br>(C)使南方漢人完全被胡人同化<br>(D)促成科舉制度的誕生</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：大量北方人口、資金、進步農耕技術南遷，使長江流域江南經濟迅速繁榮，奠定南北經濟平衡基礎。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。北方人口南遷帶入充足勞動力與先進鐵耕技術，大幅加速江南開發。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#7c3aed;">考點 4</span>
+                  <h4 class="unit-card-title">考點 4：魏晉南北朝思想文化與宗教傳播（玄學、佛教與石窟藝術）</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：亂世避禍促成老莊玄學清談；佛教大盛融合石窟藝術！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 玄學與清談：政局動盪殘酷，士人崇尚《老子》、《莊子》、《易經》（三玄），不談實際政治，追求超脫自得，以「竹林七賢」為代表。<br>2. 佛教傳入與盛行：<br>   • 傳入時間：【西漢末年】經絲綢之路傳入中國。<br>   • 盛行時間：魏晉南北朝戰亂頻仍，佛教輪迴因果之說撫慰人心，統治者廣建寺廟（如南朝四百八十寺）。<br>   • 藝術代表：敦煌莫高窟、雲岡石窟、龍門石窟（融合印度、希臘與中國本土風格）。<br>3. 道教創立：東漢末年張陵創五斗米道、張角創太平道（本土宗教誕生）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>誤以為佛教是魏晉才傳入（西漢末即傳入）；搞混道家（老莊哲學）與道教（宗教組織）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：魏晉時期士人清談時常依據哪「三玄」？（老子、莊子、易經）。<br>【根據題型推測】：分析杜牧詩句「南朝四百八十寺，多少樓台煙雨中」所反映的宗教盛況（佛教大盛）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">魏晉時期，社會動盪，許多文人為避政治迫害，轉而寄情山水、崇尚老莊哲學並大興「清談」。這種思想風氣被稱為：<br>(A)理學 (B)玄學 (C)墨學 (D)經學</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：魏晉文人以老莊、易經為根基，探討宇宙本體與超脫人生，稱為「玄學」，以竹林七賢著稱。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。魏晉玄學為應對亂世心靈困境與政治殘酷而興起的哲學思潮。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">關於佛教傳入中國的歷史事實，下列敘述何者『完全正確』？<br>(A)由達摩祖師於唐朝初年首次傳入<br>(B)於西漢末年經由絲綢之路傳入中國<br>(C)在秦始皇時期已被立為國教<br>(D)傳入後立即取代儒家成為正統思想</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：佛教於西漢末經西域傳入；至魏晉南北朝盛行，但從未完全取代儒家之政治正統地位。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。西漢哀帝時期佛教開始傳入中國，魏晉南北朝因亂世而迅速普及民間與宮廷。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -2286,7 +3148,7 @@
           <div class="unit-sub-hero-card" style="border-left: 5px solid #0891b2;">
             <div class="unit-sub-hero-left">
               <h3>國二上 地理科 第二次段考 衝刺重點與題型全攻略</h3>
-              <p>範圍：第 3 課 中國氣候與生活 ＋ 第 4 課 中國水文與環境治理（翰林版）</p>
+              <p>範圍：翰林版 中國地形三級階梯 ＋ 氣候水文 ＋ 三大地理分區 ｜ 附即測即評實戰解析</p>
             </div>
             <div class="unit-sub-hero-btns">
               <a href="國二上_第二次段考衝刺_地理科_重點與題型分析_一頁一考點版.docx" target="_blank" class="pdf-link-btn" style="background:#0891b2;">
@@ -2296,14 +3158,15 @@
           </div>
 
           <div class="units-accordion-list">
+            <!-- 考點卡片 -->
             <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 1</span>
-                  <h4 class="unit-card-title">秦嶺—淮河地理分界線與氣候特徵</h4>
+                  <span class="unit-num-badge" style="background:#0891b2;">考點 1</span>
+                  <h4 class="unit-card-title">考點 1：中國地形三級階梯特徵與地勢對氣候水文之影響</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">萬年必考</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -2311,40 +3174,261 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    • 年等雨量線：750 mm (800 mm)。<br>
-                    • 1 月等溫線：0 ℃ 等溫線。<br>
-                    • 氣候分界：北方溫帶季風氣候 ｜ 南方副熱帶季風氣候。<br>
-                    • 水文分界：北方結冰含沙量大 ｜ 南方不結冰航運發達。
+                    <strong>① 一句話重點</strong>：夏季風暖濕由東南向西北減，冬季風冷乾由北方吹來；降水集中在夏秋！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 季風風向與性質：<br>   • 夏季季風：源自海洋（太平洋東南季風、印度洋西南季風），性質【溫暖潮濕】，為主要降水來源。<br>   • 冬季季風：源自西伯利亞蒙古高壓（西北季風、東北季風），性質【寒冷乾燥】，常帶來寒流降溫。<br>2. 降水量空間分布規律：由【東南沿海向西北內陸遞減】（受海陸位置與地勢阻擋）。<br>3. 氣溫特徵：夏季全境普遍高溫（除青藏高原外）；冬季南北溫差極大（緯度效應＋冬季風）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>誤以為冬季季風帶來很多雨水！中國絕大部分地區冬季降水量僅佔全年 10% 以下！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：判讀氣候圖：七月均溫大於20°C，一月低於0°C，年雨量集中夏季（溫帶季風氣候）。<br>【根據題型推測】：分析造成「早穿皮襖午穿紗，圍著火爐吃西瓜」之氣候類型（溫帶大陸性氣候，日溫差極大）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">中國年降水量的空間分布趨勢為何？<br>(A)由西北向東南遞減<br>(B)由東南沿海向西北內陸遞減<br>(C)由北向南遞減<br>(D)由內陸向沿海遞減</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：夏季暖濕水氣由東南海洋吹向陸地，受地形阻隔與距離遠近影響，愈深入內陸水氣愈少。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。東南沿海首當其衝降水最豐沛，西北內陸遠離海洋降水量最少。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">冬天時，哈爾濱是一片冰雪世界，而廣州卻依舊溫暖如春。造成中國冬季南北氣溫差異如此巨大的主要原因為何？<br>(A)緯度高低差異與冬季季風加乘<br>(B)地勢東西階梯落差<br>(C)洋流性質不同<br>(D)夏季季風強弱不同</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：冬季北方緯度高日照少，且首當其衝受到蒙古西伯利亞強烈冬季風吹襲，南北溫差可達30°C以上！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (A)。緯度跨度大加上北方近冬季季風發源地，為冬季南北溫差巨大之核心主因。</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#0891b2;">考點 2</span>
+                  <h4 class="unit-card-title">考點 2：中國氣候類型分布特徵、季風氣候成因與降水空間遞變</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：秦嶺淮河一條線：750mm 雨量、1月 0°C 等溫線、南水田北旱作、南船北馬！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>秦嶺—淮河分界線全方位對比（必考秒殺表）：<br>1. 氣候分界：一月 0°C 等溫線；年降水量 750mm 等雨量線。<br>2. 氣候類型：南方為【亞熱帶季風氣候】；北方為【溫帶季風氣候】。<br>3. 農業生產：南方為【水田、種水稻、一年二至三熟】；北方為【旱作、種小麥、二年三熟或一年一熟】。<br>4. 河川水文：南方河川【不結冰、水量大】；北方河川【冬季結冰、水位變化大】。<br>5. 傳統生活：南稻北麥、南船北馬、南甜北鹹。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>把年雨量數字記成 500mm（500mm 是農牧分界線；秦嶺淮河水旱田分界是 750mm）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：下列何者「不是」秦嶺—淮河線所代表的地理意義？<br>【根據題型推測】：題目給予一戶農家的生活剪影（種小麥、冬天河面結冰滑冰），問該地位於哪一地理分區？（北方地區）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">「秦嶺—淮河」是中國最重要的地理分界線之一。下列各項指標中，何者與此線『不相符』？<br>(A)年降水量 750 毫米等雨量線<br>(B)一月 0°C 等溫線<br>(C)水田與旱作分界線<br>(D)牧區與農耕區分界線</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：牧區與農耕區分界線為「500 毫米等雨量線」；秦嶺—淮河（750mm）為水田與旱作、南與北之分界！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (D)。(D) 牧耕分界為 500mm 等雨量線，非秦嶺淮河線。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">小強在地理筆記本上寫下秦嶺淮河以南的特色，下列哪一項敘述『出現錯誤』？<br>(A)一月均溫在 0°C 以上<br>(B)主要糧食作物為小麥<br>(C)河川冬季不結冰<br>(D)主要耕地型態為水田</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：秦嶺淮河以南氣候溫暖濕潤，主要糧食作物為「水稻」；以北才是小麥！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。南方主要糧食作物為水稻，北方主要作物方為小麥。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#0891b2;">考點 3</span>
+                  <h4 class="unit-card-title">考點 3：中國水文水資源時空分布與長江、黃河水患整治</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：外流河注入海洋水量豐；長江為黃金水道，黃河泥沙淤積成地上懸河！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 水文分區：<br>   • 外流區：河川最終流入海洋（太平洋、印度洋），受季風影響夏汛冬枯，佔中國大部分水量。<br>   • 內流區：河水注入內陸湖泊或消失於沙漠（如塔里木河），主要靠高山冰雪融水補給，夏季氣溫高融水多為汛期。<br>2. 兩大名河特性對比：<br>   • 【長江】：長度第一、水量最大。下游水深江闊號稱「黃金水道」，荊江段蜿蜒號稱「九曲迴腸」易氾濫。<br>   • 【黃河】：泥沙含量世界第一。泥沙源自【中游黃土高原】，至【下游華北平原】泥沙沉積形成「地上懸河」。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>誤以為黃河泥沙是在下游產生的（錯！泥沙來自中游水土流失，沉積在下游形成地上懸河）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：黃河「地上懸河」最主要分布在哪一河段？（下游）。<br>【根據題型推測】：分析塔里木河（內流河）為何在夏季氣溫最高時水位反而達到最高峰？（高山冰雪融水多）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">黃河下游河床高出兩岸地面數公尺，形成著名的「地上懸河」。造成此奇特景觀的根本原因為何？<br>(A)上游源頭水量過於充沛<br>(B)中游流經黃土高原攜帶大量泥沙，至下游地勢平緩沉積河床<br>(C)下游降水量過少導致河床乾涸<br>(D)人為在兩岸過度開採砂石</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：黃河中游流經土質疏鬆的黃土高原，暴雨沖刷帶走大量泥沙；下游進入華北平原流速減緩，泥沙淤積抬高河床。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。中游水土流失提供泥沙，下游平原流速驟減引發劇烈淤積，築堤防洪越築越高形成懸河。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">新疆塔里木河為中國最長內流河，當地農民引水灌溉最主要的豐水期出現在哪一季節？<br>(A)春季 (B)夏季 (C)秋季 (D)冬季</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：內流河水源非降雨，而是天山、崑崙山之「高山冰雪融水」，夏季氣溫最高融水最豐沛！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。夏季高溫促使高山冰雪融化，形成內流河川的夏汛特徵。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#0891b2;">考點 4</span>
+                  <h4 class="unit-card-title">考點 4：中國三大地理分區自然環境差異與農業生產特色</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：水資源『南豐北缺、夏多冬少』；南水北調分東、中、西三線解華北之渴！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 水資源問題：<br>   • 空間分布不均：南多北少、東多西少（華北平原人口耕地多，水資源最為吃緊）。<br>   • 時間分布不均：夏秋多、冬春少（降水集中夏季），易引發旱澇交替。<br>2. 解決方案：<br>   • 跨流域調水：【南水北調工程】將長江水系之水調往缺水的華北與西北。<br>   • 興建水庫：調節時間不均（如三峽大壩防洪發電蓄水）。<br>3. 南水北調三線架構：<br>   • 東線：沿京杭大運河調水至天津山東。<br>   • 中線：由長江支流漢江丹江口水庫自流引水至北京。<br>   • 西線：通天河雅礱江引水至黃河上游（計劃中）。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>誤以為南水北調是把黃河的水調給長江（大錯！是長江水調往華北黃河流域）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：中國目前主要透過哪一項重大工程解決華北平原水資源匱乏？（南水北調）。<br>【根據題型推測】：分析興建三峽大壩對長江中下游防洪與生態造成的雙重影響。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">中國水資源在時間與空間上的主要分布特徵為何？<br>(A)南多北少，夏秋多冬春少<br>(B)北多南少，冬春多夏秋少<br>(C)西多東少，全年均勻<br>(D)南多北少，全年降水均勻</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：受夏季季風影響，南方雨期長降水豐（南多），降水高度集中於夏秋季（夏秋多）。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (A)。「南多北少、東多西少」為空間特徵；「夏秋多、冬春少」為時間特徵。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">華北平原耕地廣大、人口稠密，是中國缺水最嚴重的地區。下列哪一項工程是為了解決該區「空間分布不均」而建設的？<br>(A)三峽大壩 (B)南水北調工程 (C)西電東送 (D)青藏鐵路</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：水庫（三峽）解決「時間不均」；跨流域調水（南水北調）解決「空間不均」！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。南水北調工程將長江豐沛水資源北送，專門解決水資源空間分布不均問題。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         <!-- 公民 PANE -->
         <div class="unit-subject-pane" id="upane-civ" style="display:none;">
-          <div class="unit-sub-hero-card" style="border-left: 5px solid #4338ca;">
+          <div class="unit-sub-hero-card" style="border-left: 5px solid #4f46e5;">
             <div class="unit-sub-hero-left">
               <h3>國二上 公民科 第二次段考 衝刺重點與題型全攻略</h3>
-              <p>範圍：第 3 課 法律的位階與制定 ＋ 第 4 課 憲法與權利保障、民刑責任（翰林版）</p>
+              <p>範圍：翰林版 法律位階與法治國原則 ＋ 民刑法年齡責任 ｜ 附即測即評實戰解析</p>
             </div>
             <div class="unit-sub-hero-btns">
-              <a href="國二上_第二次段考衝刺_公民科_重點與題型分析_一頁一考點版.docx" target="_blank" class="pdf-link-btn" style="background:#4338ca;">
+              <a href="國二上_第二次段考衝刺_公民科_重點與題型分析_一頁一考點版.docx" target="_blank" class="pdf-link-btn" style="background:#4f46e5;">
                 📥 開啟公民完整 Word 講義 ↗
               </a>
             </div>
           </div>
 
           <div class="units-accordion-list">
+            <!-- 考點卡片 -->
             <div class="unit-card expanded">
               <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
                 <div class="unit-card-header-left">
-                  <span class="unit-num-badge">考點 1</span>
-                  <h4 class="unit-card-title">法律位階體系與法規名稱判斷</h4>
+                  <span class="unit-num-badge" style="background:#4f46e5;">考點 1</span>
+                  <h4 class="unit-card-title">考點 1：法律位階與法規體系（憲法 > 法律 > 命令）</h4>
                 </div>
                 <div class="unit-card-header-right">
-                  <span class="unit-q-badge">公民首要</span>
+                  <span class="unit-q-badge">2 道衝刺題</span>
                   <span class="unit-chevron">▼</span>
                 </div>
               </div>
@@ -2352,13 +3436,234 @@
                 <div class="unit-core-box">
                   <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
                   <div class="unit-core-text">
-                    • 憲法：最高位階。<br>
-                    • 法律：立法院通過、總統公布。名稱限定：法、律、條例、通則。<br>
-                    • 命令：行政機關訂定。名稱常見：規程、規則、細則、辦法、綱要、標準、準則。
+                    <strong>① 一句話重點</strong>：憲法 &gt; 法律 &gt; 命令；下位法規牴觸上位法規者無效！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 法律位階金字塔：<br>   • 第一級【憲法】：根本大法，具最高效力，修改門檻最高。<br>   • 第二級【法律】：由【立法院】通過、總統公布。名稱限用：法、律、條例、通則（如民法、刑法、道路交通管理處罰條例）。<br>   • 第三級【命令】：由【行政機關】訂定。名稱包含：規程、規則、細則、辦法、綱要、標準、準則。<br>2. 牴觸效力：法律牴觸憲法者無效；命令牴觸憲法或法律者無效；地方自治條例牴觸中央法規者無效。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>看到「道路交通管理處罰條例」以為有條例二字是命令（大錯！條例是立法院通過的正式「法律」）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：下列哪一項法規位階最高？(A)全民健康保險法 (B)民法 (C)中華民國憲法 (D)勞動基準法施行細則。<br>【根據題型推測】：某市政府訂定自治法規限制人民居住遷徙自由，問該法規之效力為何？（牴觸憲法法律者無效）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">依據《中央法規標準法》，下列哪一項法規的位階屬於「法律」層級？<br>(A)毒品危害防制條例<br>(B)學校餐廳廚房衛生管理規則<br>(C)全民健康保險法施行細則<br>(D)學生輔導辦法</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：法律名稱限定四種：法、律、條例、通則。「條例」由立法院通過、總統公布，屬於法律位階！規則、細則、辦法皆為命令。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (A)。(A)「條例」為立法院制定的法律；(B)(C)(D)均為行政命令。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">某縣政府為了防疫，自行公告限制特定居民夜間不得外出，違者重罰。該公告可能違反下列何種法律原則？<br>(A)法律優位原則與法律保留原則<br>(B)契約自由原則<br>(C)罪刑法定原則<br>(D)過失責任原則</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：限制人民受憲法保障之行動自由，必須有立法院法律明文授權（法律保留原則），地方命令不得牴觸上位法（法律優位原則）。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (A)。限制人民基本自由權益必須有法律授權，且行政法規不得牴觸上位法。</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#4f46e5;">考點 2</span>
+                  <h4 class="unit-card-title">考點 2：現代法治國原則（法律優位原則 vs 法律保留原則）</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：法律優位是『下位不得牴觸上位』；法律保留是『限制人民權利必須有法律授權』！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 【法律優位原則（消極防衛）】：<br>   • 意義：任何行政行為與行政命令，絕對不得違反或牴觸憲法與法律。<br>   • 白話：老二（命令）不能違抗老大（法律）。<br>2. 【法律保留原則（積極授權）】：<br>   • 意義：涉及限制人民基本權利（生命、身體、自由、財產）或重大公益事項，必須由立法院制定「法律」，或有法律明確授權，行政機關不能自己用行政命令胡亂限制！<br>   • 憲法依據：憲法第 23 條規範。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>搞混兩者名詞！把「行政機關不能發布違法命令」選成法律保留（那是法律優位）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：教育部未經立法院修法，自行發函規定高中生一律剃平頭，違反何種原則？（法律保留原則）。<br>【根據題型推測】：分析憲法第 23 條比例原則之目的（防止妨礙他人自由、避免緊急危難等）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">交通部未獲立法院法律授權，擅自以內部行政函令規定「所有行駛國道機車一律沒收銷毀」。此行政函令主要違反了下列哪一項原則？<br>(A)誠實信用原則 (B)法律保留原則 (C)無罪推定原則 (D)平等原則</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：沒收人民財產屬於重大權利侵害，必須有正式法律授權，行政機關不得擅自主張，此即「法律保留原則」。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。涉及剝奪人民財產等重大基本權，必須由法律保留給立法機關制定規範。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">當行政命令的內容與立法院制定的法律條文發生直接衝突與牴觸時，該行政命令無效。這是體現了哪一項法治原則？<br>(A)法律保留原則 (B)法律優位原則 (C)比例原則 (D)罪刑法定原則</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：下位階法規不得牴觸上位階法規，命令牴觸法律者無效，屬於「法律優位原則」。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。法律優位原則要求行政權之行使不得牴觸既有之法律規範。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#4f46e5;">考點 3</span>
+                  <h4 class="unit-card-title">考點 3：民法行為能力年齡劃分與法律效力（完全、限制、無行為能力）</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：民法滿 18 歲成年；7～18 歲為限制行為能力，簽大額買賣契約需父母同意！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>民法行為能力三大級距（注意：18歲已成年！）：<br>1. 【無行為能力人】（未滿 7 歲或受監護宣告者）：<br>   • 其所為意思表示無效，一切法律行為由法定代理人代為或代受。<br>2. 【限制行為能力人】（滿 7 歲以上，未滿 18 歲之國高中生）：<br>   • 原則：做法律行為（買賣、簽約）需得【法定代理人（父母）事前允許或事後承認】。<br>   • 例外獨立有效：純獲法律利益（如長輩無條件送紅包）或日常生活必需（如買便當、搭公車、買文具）。<br>3. 【完全行為能力人】（滿 18 歲成年者）：能獨立負擔完整法律責任。<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>記成舊法的 20 歲成年（民法已正式修訂為滿 18 歲成年！）；誤以為國中生買最新 iPhone 手機是日常生活必需！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：14 歲國二生小華背著父母花三萬元買最新款電競筆電，該買賣契約效力為何？（效力未定）。<br>【根據題型推測】：阿公送給 10 歲孫子一萬元生日壓歲錢，該贈與行為效力為何？（純獲法律利益，獨立有效）。
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【基礎題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">現年 14 歲的國中二年級學生小明，在民法上的法律地位屬於下列何者？<br>(A)完全行為能力人<br>(B)限制行為能力人<br>(C)無行為能力人<br>(D)無責任能力人</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：民法規定：滿 7 歲以上未滿 18 歲者為「限制行為能力人」。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。14 歲在民法上屬於限制行為能力人階段。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">15 歲的國二學生阿德未經父母同意，擅自拿著壓歲錢去通訊行簽約購買價值三萬五千元的高級旗艦手機。請問該買賣契約的法律效力為何？<br>(A)自始無效<br>(B)完全有效<br>(C)效力未定，經父母承認後始生效力<br>(D)由法院裁定</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：高額旗艦手機非日常生活必需品，未經父母事前允許，契約處於「效力未定」狀態，父母同意則有效，拒絕則無效！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (C)。限制行為能力人從事超出日常生活必需之重大契約，需法定代理人追認，處於「效力未定」狀態。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 考點卡片 -->
+            <div class="unit-card expanded">
+              <div class="unit-card-header" onclick="this.parentElement.classList.toggle('expanded')">
+                <div class="unit-card-header-left">
+                  <span class="unit-num-badge" style="background:#4f46e5;">考點 4</span>
+                  <h4 class="unit-card-title">考點 4：刑法責任能力劃分與民刑法律責任比較（罰金 vs 賠償）</h4>
+                </div>
+                <div class="unit-card-header-right">
+                  <span class="unit-q-badge">2 道衝刺題</span>
+                  <span class="unit-chevron">▼</span>
+                </div>
+              </div>
+              <div class="unit-card-body">
+                <div class="unit-core-box">
+                  <div class="unit-section-title">📌 一、本考點必讀核心重點</div>
+                  <div class="unit-core-text">
+                    <strong>① 一句話重點</strong>：刑法未滿 14 歲不罰，14～18 歲得減輕；民事是賠償被害人，刑事是處罰入國庫！<br><br>
+                    <strong>② 必須記住什麼</strong>：<br>1. 刑法責任能力三大級距：<br>   • 【無責任能力人】（未滿 14 歲或重度心智障礙）：犯罪【不罰】（交由少年事件處理法保護處分或家長管教）。<br>   • 【限制責任能力人】（滿 14 歲未滿 18 歲，或滿 80 歲以上）：犯罪【得減輕其刑】。<br>   • 【完全責任能力人】（滿 18 歲以上未滿 80 歲）：負擔完全刑事責任。<br>2. 民事責任 vs 刑事責任核心區分：<br>   • 民事責任：目的在【填補損害、回復原狀、損害賠償】，錢是賠給【被害人】！<br>   • 刑事責任：目的在【懲罰犯罪、維護社會秩序】（死刑、徒刑、罰金），【罰金】是繳交給【國庫】！<br><br>
+                    <strong>③ 最容易錯在哪</strong>：<br>誤以為「罰金」是賠償給被害人的醫藥費（大錯！賠給被害人叫「民事損害賠償」；罰金是刑法主刑繳給國家）！<br><br>
+                    <strong>④ 考試可能怎麼問</strong>：<br>【教材明確出現】：15 歲少年竊盜被抓，其刑法責任能力屬於何種程度？（限制責任能力，得減輕其刑）。<br>【根據題型推測】：分析車禍肇事者被法官判處「有期徒刑 6 個月，得易科罰金，並應賠償被害人 50 萬元」，分別屬於何種責任？
+                  </div>
+                </div>
+
+                <div class="unit-questions-box">
+                  <div class="unit-section-title" style="margin-top:20px;">📝 二、段考精準衝刺題庫與即看即懂解析</div>
+                  <div class="unit-questions-list">
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 1 題</span>
+                        <span class="q-title-text">【理解題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">現年 15 歲的國中生在校園內故意毆打同學成傷，關於其應負擔的法律責任，下列敘述何者『完全正確』？<br>(A)刑事上為完全責任能力人<br>(B)刑事上為限制責任能力人，得減輕其刑<br>(C)民事損害賠償由其自行負擔，父母完全無責<br>(D)刑事上未滿18歲一律不罰</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：15 歲為滿 14 歲未滿 18 歲之「限制責任能力人」，得減輕其刑；民事侵權行為則由法定代理人連帶賠償。</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (B)。滿 14 未滿 18 歲之少年犯刑法屬限制責任能力人，得減輕其刑。</div>
+                      </div>
+                    </div>
+                    <div class="q-practice-card">
+                      <div class="q-practice-header">
+                        <span class="q-badge">第 2 題</span>
+                        <span class="q-title-text">【易錯題】
+題目內容</span>
+                      </div>
+                      <div class="q-prompt-text">小王開車不慎撞傷路人，經法院判決定讞。判決書記載：「處有期徒刑三個月，併科罰金五萬元；應賠償被害人醫療費用二十萬元」。下列說明何者正確？<br>(A)罰金五萬元應直接匯入被害人帳戶<br>(B)賠償二十萬元屬於刑事責任的一種<br>(C)罰金五萬元屬於刑事處罰繳入國庫，醫療費用二十萬元屬於民事賠償給被害人<br>(D)有期徒刑由被害人家屬執行</div>
+                      <button type="button" class="btn-toggle-ans" onclick="toggleQAns(this)">
+                        👁️ 點擊查看【標準答案與白話解析】
+                      </button>
+                      <div class="q-answer-box">
+                        <div class="q-ans-badge">【標準答案與核心關鍵】：刑法上的「罰金」為刑事財產刑，繳納給國家國庫；民事損害賠償二十萬元才是賠償給被害人填補損失！</div>
+                        <div class="q-expl-text"><strong>【白話解題關鍵與步驟解析】：</strong><br>答案選 (C)。罰金屬刑罰繳交國庫，賠償屬民事侵權責任給付被害人，兩者不可混淆。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
