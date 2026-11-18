@@ -4262,15 +4262,18 @@
   </div>
 
   <script>
-    /* ================= STORAGE KEYS ================= */
+    /* ==========================================================================
+       蔡佳蓁國二學習進度管理網站 - 核心 JavaScript
+       含 LocalStorage 記憶、即時打卡進度、專注星星存摺、段考倒數、番茄鐘、雲端雙向同步
+       ========================================================================== */
+
     const STORAGE_KEY_CHECKS = 'cjz_study_checks_v1';
     const STORAGE_KEY_EXAM = 'cjz_study_exam_v1';
-    const STORAGE_KEY_STREAK = 'cjz_study_streak_v1';
     const STORAGE_KEY_REWARD = 'cjz_study_reward_v1';
-    const STORAGE_KEY_SPRINT = 'cjz_sprint_checks_v1';
     const STORAGE_KEY_STAR_CUSTOM = 'cjz_star_custom_v1';
     const STORAGE_KEY_STAR_REDEEMED = 'cjz_star_redeemed_v1';
     const STORAGE_KEY_GAS_URL = 'cjz_gas_sync_url_v1';
+    const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycby2_Y8a4f5Wjjn4K-svJTBwxq4xAt_dx_qtQVJthAg3jYk-TvtSNDZVKY5X1LSULUS6/exec';
 
     /* ================= TAB NAVIGATION ================= */
     const tabButtons = document.querySelectorAll('.tab-btn');
@@ -4278,52 +4281,40 @@
 
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-tab');
         tabButtons.forEach(b => b.classList.remove('active'));
         tabPanes.forEach(p => p.classList.remove('active'));
         btn.classList.add('active');
-        const targetId = btn.getAttribute('data-tab');
         const targetPane = document.getElementById(targetId);
         if (targetPane) targetPane.classList.add('active');
       });
     });
 
-    /* ================= TAB 2: UNIT SUB-FILTER ================= */
+    /* ================= TAB 2: UNIT SUB PILLS ================= */
     const unitPills = document.querySelectorAll('.unit-sub-pill');
-    const unitPanes = document.querySelectorAll('.unit-subject-pane');
-
     unitPills.forEach(pill => {
       pill.addEventListener('click', () => {
-        unitPills.forEach(p => p.classList.remove('active'));
-        unitPanes.forEach(pane => pane.style.display = 'none');
-        pill.classList.add('active');
         const usub = pill.getAttribute('data-usub');
+        unitPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        document.querySelectorAll('.unit-subject-pane').forEach(pane => {
+          pane.style.display = 'none';
+        });
         const targetPane = document.getElementById('upane-' + usub);
         if (targetPane) targetPane.style.display = 'block';
       });
     });
 
-    function toggleQAns(btn) {
-      const box = btn.parentElement.nextElementSibling;
-      if (box.style.display === 'none' || !box.style.display) {
-        box.style.display = 'block';
-        btn.textContent = '收合完整解析與步驟 ▲';
-      } else {
-        box.style.display = 'none';
-        btn.textContent = '查看完整解析與步驟 ▼';
-      }
-    }
-
-    /* ================= TAB 3: STRATEGY FILTER & ACCORDIONS ================= */
-    const subjectPills = document.querySelectorAll('.subject-pill');
-    const subjectCards = document.querySelectorAll('.subject-card');
-
-    subjectPills.forEach(pill => {
+    /* ================= TAB 3: STRATEGY PILLS ================= */
+    const stratPills = document.querySelectorAll('.subject-pill');
+    stratPills.forEach(pill => {
       pill.addEventListener('click', () => {
-        subjectPills.forEach(p => p.classList.remove('active'));
+        const sub = pill.getAttribute('data-subject');
+        stratPills.forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
-        const cat = pill.getAttribute('data-subject');
-        subjectCards.forEach(card => {
-          if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+        const cards = document.querySelectorAll('#tab-strategy .subject-card');
+        cards.forEach(card => {
+          if (sub === 'all' || card.getAttribute('data-cat') === sub) {
             card.style.display = 'block';
           } else {
             card.style.display = 'none';
@@ -4332,102 +4323,204 @@
       });
     });
 
-    document.querySelectorAll('.subject-card-header').forEach(header => {
-      header.addEventListener('click', () => {
-        header.parentElement.classList.toggle('expanded');
-      });
-    });
-
-    /* ================= 14 DAYS SPRINT GENERATOR ================= */
-    const sprintData = [
-      { d: 14, title: 'D-14 數學 根式運算與分母有理化', sub: '數學', tasks: ['二次方根同類方根加減與化簡', '乘法公式應用於分母有理化', '精選題庫 3 題親手計算'] },
-      { d: 13, title: 'D-13 理化 波動傳播與週期頻率公式', sub: '理化', tasks: ['波速公式 v = fλ 熟練推導', '橫波與縱波介質振動方向確認', '波形前進 1/4 週期畫圖題型'] },
-      { d: 12, title: 'D-12 英語 過去進行式與 when/while 句型', sub: '英語', tasks: ['過去進行式 was/were + V-ing', 'when 接瞬間動作、while 接持續動作', '課文重點對話朗讀兩遍'] },
-      { d: 11, title: 'D-11 國文 文言課文義理與古今異義詞', sub: '國文', tasks: ['段考範圍文言名篇注釋全背', '古今詞義差別（妻子、去、交通）', '作者背景與生平典故理解'] },
-      { d: 10, title: 'D-10 歷史 秦漢帝國建立與體制演進', sub: '歷史', tasks: ['秦始皇郡縣制與統一政策', '漢武帝尊儒、鹽鐵專賣與推恩令', '張騫通西域與絲路文化交流'] },
-      { d: 9,  title: 'D-09 地理 中國季風氣候與等雨量線', sub: '地理', tasks: ['三大氣候區與冬夏季風特徵', '秦嶺淮河 750mm 年雨量分界線', '東南向西北降水遞減成因'] },
-      { d: 8,  title: 'D-08 公民 法律位階與法律命令判別', sub: '公民', tasks: ['憲法/法律/命令位階關係', '法律名稱（法、律、條例、通則）', '命令名稱（規程、規則、細則等）'] },
-      { d: 7,  title: 'D-07 數學 因式分解四大手法精熟', sub: '數學', tasks: ['提公因式與分組提公因式', '乘法公式平方差與和差平方', '十字交乘法拆中間項常數項'] },
-      { d: 6,  title: 'D-06 理化 聲音三要素與回聲反射測距', sub: '理化', tasks: ['響度(振幅)、音調(頻率)、音色(波形)', '回聲測距公式 d = vt / 2', '聲速與溫度關係 v = 331 + 0.6T'] },
-      { d: 5,  title: 'D-05 英語 spend / cost / take 花費動詞', sub: '英語', tasks: ['人 spend 時間金錢 on N / V-ing', '事物 cost 人 金錢', 'It takes 人 時間 to V 不定詞'] },
-      { d: 4,  title: 'D-04 理化 光學面鏡反射與凸透鏡成像', sub: '理化', tasks: ['光的反射定律與平面鏡成虛像', '凸透鏡成像六大規律光路圖', '凹透鏡永遠成正立縮小虛像'] },
-      { d: 3,  title: 'D-03 國文 修辭常識與對聯題辭速解', sub: '國文', tasks: ['對聯仄起平收判斷規則', '題辭行業與婚喪喜慶關鍵字', '倒反、映襯、借代修辭快篩'] },
-      { d: 2,  title: 'D-02 社會 史地公三合一圖表地毯式複習', sub: '社會', tasks: ['九品官人法與魏晉孝文帝漢化', '黃河地上河與長江水土治理', '民事刑事責任能力與比例原則'] },
-      { d: 1,  title: 'D-01 考前 24h 全科錯題本清倉大總結', sub: '全科', tasks: ['重算所有數學理化紅字計算題', '快速瀏覽七大科一頁一考點講義', '晚上 10:30 前準時就寢維持好精神'] },
-    ];
-
-    function renderSprintCards() {
-      const grid = document.getElementById('sprintGrid');
-      grid.innerHTML = '';
-      const savedSprint = JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}');
-      let completedDays = 0;
-
-      sprintData.forEach(item => {
-        const isChecked = !!savedSprint['sprint_' + item.d];
-        if (isChecked) completedDays++;
-
-        const card = document.createElement('div');
-        card.className = 'day-card';
-        card.innerHTML = `
-          <div class="day-card-header">
-            <span style="font-weight:800; font-size:0.95rem; color:var(--navy);">${item.title}</span>
-            <span class="day-time-tag" style="background:#fee2e2; color:#dc2626;">倒數 ${item.d} 天</span>
-          </div>
-          <div style="font-size:0.78rem; color:var(--slate-600); margin:8px 0;">
-            ${item.tasks.map(t => '• ' + t).join('<br>')}
-          </div>
-          <label class="check-item ${isChecked ? 'checked' : ''}" for="chk_sprint_${item.d}">
-            <input type="checkbox" id="chk_sprint_${item.d}" ${isChecked ? 'checked' : ''} onchange="toggleSprintDay(${item.d}, this)">
-            <span class="check-label">已完成今日 D-${item.d} 衝刺重點打卡</span>
-          </label>
-        `;
-        grid.appendChild(card);
-      });
-
-      document.getElementById('sprintCountDisplay').textContent = completedDays;
-    }
-
-    function toggleSprintDay(day, input) {
-      const savedSprint = JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}');
-      savedSprint['sprint_' + day] = input.checked;
-      localStorage.setItem(STORAGE_KEY_SPRINT, JSON.stringify(savedSprint));
-      if (input.checked) {
-        input.parentElement.classList.add('checked');
-        triggerConfetti();
+    /* ================= ACCORDION & TOGGLE ANSWERS ================= */
+    function toggleQAns(btn) {
+      const box = btn.nextElementSibling;
+      if (!box) return;
+      box.classList.toggle('open');
+      if (box.classList.contains('open')) {
+        btn.innerText = '🙈 隱藏標準答案與解析';
+        btn.style.background = '#e2e8f0';
+        btn.style.color = '#475569';
       } else {
-        input.parentElement.classList.remove('checked');
+        btn.innerText = '👁️ 點擊查看【標準答案與白話解析】';
+        btn.style.background = 'linear-gradient(135deg, #0284c7 0%, #2563eb 100%)';
+        btn.style.color = '#fff';
       }
-      renderSprintCards();
-      updateProgressStats();
-      debouncedSyncToCloud();
     }
 
-    /* ================= CHECKLIST & STREAK & STATS ================= */
+    /* ================= EXAM COUNTDOWN & TIMER ================= */
+    function loadExamData() {
+      let examData = { title: '國二上第二次段考', date: '2026-11-27', target: 85 };
+      const saved = localStorage.getItem(STORAGE_KEY_EXAM);
+      if (saved) {
+        try { examData = Object.assign(examData, JSON.parse(saved)); } catch(e) {}
+      }
+
+      const inputTitle = document.getElementById('inputExamTitle');
+      const inputDate = document.getElementById('inputExamDate');
+      const inputScore = document.getElementById('inputTargetScore');
+      if (inputTitle) inputTitle.value = examData.title;
+      if (inputDate) inputDate.value = examData.date;
+      if (inputScore) inputScore.value = examData.target || 85;
+
+      const targetText = document.getElementById('examTargetText');
+      if (targetText) targetText.textContent = `目標：${examData.title} (${examData.date})`;
+
+      const daysEl = document.getElementById('examCountdownDisplay') || document.getElementById('examDaysRemaining');
+      const fillEl = document.getElementById('examProgressFill');
+      if (daysEl) {
+        const today = new Date();
+        const examDate = new Date(examData.date + 'T00:00:00');
+        const diffTime = examDate - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        if (diffDays <= 0) {
+          daysEl.textContent = '0 天';
+          if (fillEl) fillEl.style.width = '100%';
+        } else {
+          daysEl.textContent = `${diffDays} 天`;
+          if (fillEl) {
+            const prog = Math.min(100, Math.max(10, Math.round(((30 - diffDays) / 30) * 100)));
+            fillEl.style.width = prog + '%';
+          }
+        }
+      }
+    }
+
+    const examModal = document.getElementById('examModal');
+    const btnEditExam = document.getElementById('btnEditExam');
+    const btnCancelModal = document.getElementById('btnCancelModal');
+    const btnSaveModal = document.getElementById('btnSaveModal');
+    const btnQuickExam2 = document.getElementById('btnQuickExam2');
+    const btnQuickExam3 = document.getElementById('btnQuickExam3');
+
+    if (btnEditExam) {
+      btnEditExam.addEventListener('click', () => {
+        loadExamData();
+        if (examModal) examModal.classList.add('open');
+      });
+    }
+    if (btnCancelModal) {
+      btnCancelModal.addEventListener('click', () => {
+        if (examModal) examModal.classList.remove('open');
+      });
+    }
+    if (btnQuickExam2) {
+      btnQuickExam2.addEventListener('click', () => {
+        const t = document.getElementById('inputExamTitle');
+        const d = document.getElementById('inputExamDate');
+        if (t) t.value = '國二上第二次段考';
+        if (d) d.value = '2026-11-27';
+      });
+    }
+    if (btnQuickExam3) {
+      btnQuickExam3.addEventListener('click', () => {
+        const t = document.getElementById('inputExamTitle');
+        const d = document.getElementById('inputExamDate');
+        if (t) t.value = '國二上第三次期末考';
+        if (d) d.value = '2027-01-15';
+      });
+    }
+    if (btnSaveModal) {
+      btnSaveModal.addEventListener('click', () => {
+        const inputTitle = document.getElementById('inputExamTitle');
+        const inputDate = document.getElementById('inputExamDate');
+        const title = inputTitle ? inputTitle.value.trim() : '國二上第二次段考';
+        const date = inputDate ? inputDate.value : '2026-11-27';
+        const data = { title, date, target: 85 };
+        localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(data));
+        loadExamData();
+        if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
+        if (examModal) examModal.classList.remove('open');
+      });
+    }
+
+    /* ================= POMODORO TIMER ================= */
+    let timerTotal = 25 * 60;
+    let timerRemaining = timerTotal;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    function renderTimer() {
+      const m = Math.floor(timerRemaining / 60).toString().padStart(2, '0');
+      const s = (timerRemaining % 60).toString().padStart(2, '0');
+      const el = document.getElementById('timerDisplay');
+      if (el) el.textContent = `${m}:${s}`;
+    }
+
+    function setTimerMinutes(mins) {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerTotal = mins * 60;
+      timerRemaining = timerTotal;
+      const btnToggle = document.getElementById('btnTimerToggle');
+      if (btnToggle) {
+        btnToggle.textContent = '開始專注';
+        btnToggle.style.background = 'var(--primary)';
+      }
+      renderTimer();
+    }
+
+    const btnTimerToggle = document.getElementById('btnTimerToggle');
+    if (btnTimerToggle) {
+      btnTimerToggle.addEventListener('click', () => {
+        if (!isTimerRunning) {
+          isTimerRunning = true;
+          btnTimerToggle.textContent = '暫停';
+          btnTimerToggle.style.background = '#d97706';
+          timerInterval = setInterval(() => {
+            if (timerRemaining > 0) {
+              timerRemaining--;
+              renderTimer();
+            } else {
+              clearInterval(timerInterval);
+              isTimerRunning = false;
+              btnTimerToggle.textContent = '開始專注';
+              btnTimerToggle.style.background = 'var(--primary)';
+              triggerConfetti();
+              alert('🎉 太棒了佳蓁！完成一輪專注學習，喝口水休息一下吧！');
+            }
+          }, 1000);
+        } else {
+          clearInterval(timerInterval);
+          isTimerRunning = false;
+          btnTimerToggle.textContent = '繼續專注';
+          btnTimerToggle.style.background = 'var(--primary)';
+        }
+      });
+    }
+
+    const btnTimerReset = document.getElementById('btnTimerReset');
+    if (btnTimerReset) btnTimerReset.addEventListener('click', () => setTimerMinutes(25));
+    const btnTimer10 = document.getElementById('btnTimer10');
+    if (btnTimer10) btnTimer10.addEventListener('click', () => setTimerMinutes(10));
+    const btnTimer20 = document.getElementById('btnTimer20') || document.getElementById('btnTimer25');
+    if (btnTimer20) btnTimer20.addEventListener('click', () => setTimerMinutes(25));
+    const btnTimer30 = document.getElementById('btnTimer30') || document.getElementById('btnTimer50');
+    if (btnTimer30) btnTimer30.addEventListener('click', () => setTimerMinutes(50));
+
+    /* ================= CHECKLIST & REAL-TIME STATS ================= */
     function loadChecklistState() {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}');
-      document.querySelectorAll('#dayCardsGrid input[type="checkbox"]').forEach(chk => {
+      const allChks = document.querySelectorAll('#dayCardsGrid input[type="checkbox"]');
+      allChks.forEach(chk => {
         chk.checked = !!saved[chk.id];
-        if (chk.checked) chk.closest('.check-item').classList.add('checked');
-        else chk.closest('.check-item').classList.remove('checked');
+        const item = chk.closest('.check-item');
+        if (item) {
+          if (chk.checked) item.classList.add('checked');
+          else item.classList.remove('checked');
+        }
 
-        chk.addEventListener('change', () => {
-          saveChecklistState();
-          if (chk.checked) triggerConfetti();
-        });
+        // 綁定打勾事件（即時存檔並更新進度與集點）
+        chk.onchange = () => {
+          const state = JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}');
+          state[chk.id] = chk.checked;
+          const parentItem = chk.closest('.check-item');
+          if (parentItem) {
+            if (chk.checked) {
+              parentItem.classList.add('checked');
+              triggerConfetti();
+            } else {
+              parentItem.classList.remove('checked');
+            }
+          }
+          localStorage.setItem(STORAGE_KEY_CHECKS, JSON.stringify(state));
+          updateProgressStats();
+          if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
+        };
       });
-      updateProgressStats();
-    }
 
-    function saveChecklistState() {
-      const state = {};
-      document.querySelectorAll('#dayCardsGrid input[type="checkbox"]').forEach(chk => {
-        state[chk.id] = chk.checked;
-        if (chk.checked) chk.closest('.check-item').classList.add('checked');
-        else chk.closest('.check-item').classList.remove('checked');
-      });
-      localStorage.setItem(STORAGE_KEY_CHECKS, JSON.stringify(state));
       updateProgressStats();
-      debouncedSyncToCloud();
     }
 
     function updateProgressStats() {
@@ -4437,32 +4530,47 @@
       allChecks.forEach(chk => { if (chk.checked) checked++; });
 
       const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
-      document.getElementById('checkedPercentDisplay').textContent = pct + '%';
-      document.getElementById('checkedRatioText').textContent = `${checked} / ${total} 項目`;
-      document.getElementById('weeklyProgressFill').style.width = pct + '%';
 
-      // 週末獎勵解鎖判定 (80%)
-      const rewardStatus = document.getElementById('rewardLockStatus');
+      // 1. 更新本週打卡進度百分比與項目數
+      const pctEl = document.getElementById('checkedPercentDisplay') || document.getElementById('completionPercent');
+      if (pctEl) pctEl.textContent = pct + '%';
+      const ratioEl = document.getElementById('checkedRatioText') || document.getElementById('completionRatio');
+      if (ratioEl) ratioEl.textContent = `${checked} / ${total} 項目`;
+      const fillEl = document.getElementById('weeklyProgressFill') || document.getElementById('weekProgressFill');
+      if (fillEl) fillEl.style.width = pct + '%';
+
+      // 2. 週末獎勵解鎖判定 (80% 門檻)
+      const rewardStatus = document.getElementById('rewardLockStatus') || document.getElementById('rewardIconDisplay');
       const rewardProgress = document.getElementById('rewardProgressFill');
-      rewardProgress.style.width = Math.min(100, Math.round((pct / 80) * 100)) + '%';
-
-      if (pct >= 80) {
-        rewardStatus.textContent = '🎉 已解鎖！';
-        rewardStatus.style.color = '#059669';
-      } else {
-        rewardStatus.textContent = '🔒 鎖定中 (' + pct + '%/80%)';
-        rewardStatus.style.color = '#d97706';
+      const rewardBadge = document.getElementById('rewardBadgeText');
+      if (rewardProgress) {
+        rewardProgress.style.width = Math.min(100, Math.round((pct / 80) * 100)) + '%';
       }
 
-      // 七科考點掌握度更新
-      const savedSprint = JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}');
-      const sprintCount = Object.values(savedSprint).filter(Boolean).length;
-      const masteryPct = Math.min(100, Math.round(((checked + sprintCount * 2) / 49) * 100));
-      document.getElementById('unitMasteryPercent').textContent = masteryPct + '%';
-      document.getElementById('unitMasteryText').textContent = `${Math.min(28, checked + sprintCount)} / 28 考點`;
-      document.getElementById('unitMasteryFill').style.width = masteryPct + '%';
+      if (pct >= 80) {
+        if (rewardStatus) {
+          rewardStatus.textContent = '🎉 已解鎖！';
+          rewardStatus.style.color = '#059669';
+        }
+        if (rewardBadge) rewardBadge.textContent = '✅ 已達成 80%';
+      } else {
+        if (rewardStatus) {
+          rewardStatus.textContent = '🔒 鎖定中 (' + pct + '%/80%)';
+          rewardStatus.style.color = '#d97706';
+        }
+        if (rewardBadge) rewardBadge.textContent = '需達成 80%';
+      }
 
-      // 更新星星存摺與天數
+      // 3. 七科考點掌握度更新
+      const masteryPct = Math.min(100, Math.round((checked / 21) * 100));
+      const mPctEl = document.getElementById('unitMasteryPercent');
+      if (mPctEl) mPctEl.textContent = masteryPct + '%';
+      const mTxtEl = document.getElementById('unitMasteryText');
+      if (mTxtEl) mTxtEl.textContent = `${checked} / 21 項目`;
+      const mFillEl = document.getElementById('unitMasteryFill');
+      if (mFillEl) mFillEl.style.width = masteryPct + '%';
+
+      // 4. 即時計算並更新星星存摺與天數
       calculateTotalStars();
       updateStreak();
     }
@@ -4470,7 +4578,6 @@
     /* ================= STAR BANK & REWARDS ================= */
     function calculateTotalStars() {
       const savedChecks = JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}');
-      const savedSprint = JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}');
       const redeemed = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]');
 
       let earnedStars = 0;
@@ -4483,481 +4590,460 @@
         if (dayCount === 3) {
           earnedStars += (d === 'sat' || d === 'sun') ? 20 : 10;
         } else if (dayCount > 0) {
-          earnedStars += dayCount * 3;
+          earnedStars += (d === 'sat' || d === 'sun') ? (dayCount * 6.5) : (dayCount * 3.3);
         }
       });
 
+      // 衝刺檢核表星星
+      const savedSprint = JSON.parse(localStorage.getItem('cjz_study_sprint_v1') || '{}');
       Object.keys(savedSprint).forEach(k => {
         if (savedSprint[k]) earnedStars += 5;
       });
 
       let spentStars = 0;
-      redeemed.forEach(r => spentStars += (r.cost || 0));
+      redeemed.forEach(r => { spentStars += (r.cost || 0); });
 
-      const balance = Math.max(0, earnedStars - spentStars);
-      document.getElementById('starBankDisplay').textContent = balance + ' 顆星';
-      document.getElementById('starBadge').textContent = '⭐ ' + balance + ' 顆星';
+      const balance = Math.max(0, Math.round(earnedStars - spentStars));
+
+      // 即時同步顯示於頂部 Header 與獎勵存摺
+      const bankDisplay = document.getElementById('starBankDisplay');
+      if (bankDisplay) bankDisplay.textContent = `${balance} 顆星`;
+      const badgeDisplay = document.getElementById('starBadge');
+      if (badgeDisplay) badgeDisplay.textContent = `⭐ ${balance} 顆星`;
+
       return balance;
     }
 
     function redeemStarReward(name, cost) {
-      const balance = calculateTotalStars();
-      if (balance < cost) {
-        alert(`星星餘額不足唷！目前餘額：${balance} 顆星，需要：${cost} 顆星。
-再多打卡幾天就能換到囉，加油！✨`);
-        return;
-      }
+      const current = calculateTotalStars();
+      if (current < cost) {
+        alert(`🌟 目前星星為 ${current} 顆，兌換【${name}】需要 ${cost} 顆星星！
 
-      if (confirm(`確定要兌換「${name}」嗎？（將扣除 ${cost} 顆專注星星）`)) {
+只要多自習打卡幾天就能解鎖囉，佳蓁加油！`);
+      } else {
         const redeemed = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]');
-        redeemed.unshift({
-          name: name,
-          cost: cost,
-          time: new Date().toLocaleString('zh-TW', { month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit' })
-        });
+        redeemed.unshift({ name, cost, time: new Date().toLocaleDateString() });
         localStorage.setItem(STORAGE_KEY_STAR_REDEEMED, JSON.stringify(redeemed));
         triggerConfetti();
         calculateTotalStars();
-        renderRedeemHistory();
-        debouncedSyncToCloud();
-        alert(`🎉 兌換成功！「${name}」已存入存根聯。
-快拿給老爸老媽看兌換獎品吧！🥳`);
+        if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
+        alert(`🎉 恭喜佳蓁成功兌換【${name}】！
+
+快拿這個畫面給老爸老媽核准兌換囉！`);
       }
     }
 
-    function renderRedeemHistory() {
-      const redeemed = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]');
-      const container = document.getElementById('redeemHistoryList');
-      if (redeemed.length === 0) {
-        container.textContent = '尚未兌換任何獎勵，持續打卡累積星星吧！';
-        return;
-      }
-      container.innerHTML = redeemed.slice(0, 5).map(r => `
-        <div style="display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dashed var(--slate-200);">
-          <span>🎁 <strong>${r.name}</strong></span>
-          <span style="color:#d97706; font-weight:700;">-${r.cost} ⭐ (${r.time})</span>
-        </div>
-      `).join('');
-    }
-
-    /* ================= STREAK ================= */
-    function updateStreak() {
-      const allChecks = document.querySelectorAll('#dayCardsGrid input[type="checkbox"]:checked');
-      const badge = document.getElementById('streakBadge');
-      let streak = parseInt(localStorage.getItem(STORAGE_KEY_STREAK) || '0', 10);
-      if (allChecks.length > 0 && streak === 0) streak = 1;
-      badge.textContent = `🔥 連續打卡 ${streak} 天`;
-    }
-
-    /* ================= POMODORO TIMER ================= */
-    let timerDuration = 25 * 60;
-    let timerRemaining = timerDuration;
-    let timerInterval = null;
-    let isTimerRunning = false;
-
-    function renderTimer() {
-      const m = Math.floor(timerRemaining / 60).toString().padStart(2, '0');
-      const s = (timerRemaining % 60).toString().padStart(2, '0');
-      document.getElementById('timerDisplay').textContent = `${m}:${s}`;
-    }
-
-    function setTimerMinutes(mins) {
-      clearInterval(timerInterval);
-      isTimerRunning = false;
-      timerDuration = mins * 60;
-      timerRemaining = timerDuration;
-      document.getElementById('btnTimerToggle').textContent = '開始專注';
-      renderTimer();
-    }
-
-    document.getElementById('btnTimerToggle').addEventListener('click', () => {
-      const btn = document.getElementById('btnTimerToggle');
-      if (isTimerRunning) {
-        clearInterval(timerInterval);
-        isTimerRunning = false;
-        btn.textContent = '繼續專注';
-      } else {
-        isTimerRunning = true;
-        btn.textContent = '暫停';
-        timerInterval = setInterval(() => {
-          if (timerRemaining > 0) {
-            timerRemaining--;
-            renderTimer();
-          } else {
-            clearInterval(timerInterval);
-            isTimerRunning = false;
-            btn.textContent = '開始專注';
-            triggerConfetti();
-            alert('🎉 恭喜佳蓁！一段專注時間完成囉！起來喝口水、動一動吧！');
-          }
-        }, 1000);
-      }
-    });
-
-    document.getElementById('btnTimerReset').addEventListener('click', () => {
-      clearInterval(timerInterval);
-      isTimerRunning = false;
-      timerRemaining = timerDuration;
-      document.getElementById('btnTimerToggle').textContent = '開始專注';
-      renderTimer();
-    });
-
-    document.getElementById('btnTimer10').addEventListener('click', () => setTimerMinutes(10));
-    document.getElementById('btnTimer25').addEventListener('click', () => setTimerMinutes(25));
-    document.getElementById('btnTimer50').addEventListener('click', () => setTimerMinutes(50));
-
-    /* ================= EXAM COUNTDOWN ================= */
-    function loadExamData() {
-      const examData = JSON.parse(localStorage.getItem(STORAGE_KEY_EXAM) || '{"date":"2026-11-27","target":85}');
-      document.getElementById('inputExamDate').value = examData.date;
-      document.getElementById('inputTargetScore').value = examData.target;
-      document.getElementById('examTargetText').textContent = '目標：平均 ' + examData.target + ' 分';
-
-      const today = new Date();
-      const examDate = new Date(examData.date);
-      const diffTime = examDate - today;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      document.getElementById('examCountdownDisplay').textContent = (diffDays > 0 ? diffDays : 0) + ' 天';
-    }
-
-    document.getElementById('btnEditExam').addEventListener('click', () => {
-      document.getElementById('examModal').classList.add('open');
-    });
-    document.getElementById('btnCancelModal').addEventListener('click', () => {
-      document.getElementById('examModal').classList.remove('open');
-    });
-    document.getElementById('btnQuickExam2').addEventListener('click', () => {
-      document.getElementById('inputExamDate').value = '2026-11-27';
-    });
-    document.getElementById('btnSaveModal').addEventListener('click', () => {
-      const examData = {
-        date: document.getElementById('inputExamDate').value,
-        target: parseInt(document.getElementById('inputTargetScore').value, 10) || 85
-      };
-      localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(examData));
-      loadExamData();
-      document.getElementById('examModal').classList.remove('open');
-      debouncedSyncToCloud();
-    });
-
-    /* ================= REWARD & STAR CUSTOM ================= */
-    function loadRewardData() {
-      const rewardText = localStorage.getItem(STORAGE_KEY_REWARD) || '自選火鍋或宵夜 ＋ 追劇放鬆 2 小時';
-      document.getElementById('inputRewardText').value = rewardText;
-      document.getElementById('rewardItemDisplay').textContent = rewardText;
-    }
-
-    document.getElementById('btnEditReward').addEventListener('click', () => {
-      document.getElementById('rewardModal').classList.add('open');
-    });
-    document.getElementById('btnCancelRewardModal').addEventListener('click', () => {
-      document.getElementById('rewardModal').classList.remove('open');
-    });
-    document.getElementById('btnSaveRewardModal').addEventListener('click', () => {
-      const val = document.getElementById('inputRewardText').value;
-      localStorage.setItem(STORAGE_KEY_REWARD, val);
-      loadRewardData();
-      document.getElementById('rewardModal').classList.remove('open');
-      debouncedSyncToCloud();
-    });
-
-    function loadBigPrizeText() {
-      const custom = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_CUSTOM) || '{}');
-      if (custom.bigPrize) {
-        document.getElementById('customBigPrizeText').textContent = '獎勵：' + custom.bigPrize;
-        document.getElementById('inputBigPrizeText').value = custom.bigPrize;
-      }
-    }
-
-    document.getElementById('btnEditStarRewards').addEventListener('click', () => {
-      document.getElementById('starRewardModal').classList.add('open');
-    });
-    document.getElementById('btnCancelStarModal').addEventListener('click', () => {
-      document.getElementById('starRewardModal').classList.remove('open');
-    });
-    document.getElementById('btnSaveStarModal').addEventListener('click', () => {
-      const val = document.getElementById('inputBigPrizeText').value;
-      localStorage.setItem(STORAGE_KEY_STAR_CUSTOM, JSON.stringify({ bigPrize: val }));
-      loadBigPrizeText();
-      document.getElementById('starRewardModal').classList.remove('open');
-      debouncedSyncToCloud();
-    });
-
-    /* ================= SUBJECT SWAP FOR DAY CARDS ================= */
-    const subjectTemplates = {
-      math: {
-        task1: ['📐 項目一：乘法公式與二次方根公式速記（10 分鐘）', '每日固定第 1 步！默寫平方差 (a+b)(a-b)=a²-b² 與和平方差平方公式。', '【10 分鐘】乘法公式與平方根基本運算完全熟練'],
-        task2: ['📖 項目二：因式分解四大手法精讀（25 分鐘）', '精讀提公因式、分組分解與十字交乘常數項拆解技巧。', '【25 分鐘】十字交乘拆中間項係數法看懂並親自推導'],
-        task3: ['📝 項目三：衝刺講義精選題演練（25 分鐘）', '親手算出數學衝刺講義 3 題實戰題，確實核對解析！', '【25 分鐘】完成 3 題綜合因式分解計算並檢討錯題']
-      },
-      sci: {
-        task1: ['🔬 項目一：波形圖與公式速查（10 分鐘）', '牢記波速公式 v = f × λ，辨別橫波（高低波）與縱波（疏密波）。', '【10 分鐘】波速公式與週期頻率倒數關係能默背寫出'],
-        task2: ['🔊 項目二：聲音三要素與回聲應用（25 分鐘）', '搞懂響度(振幅)、音調(頻率)、音色(波形)，聲納與回聲測距 d = vt/2。', '【25 分鐘】聲音三要素對應物理量與波形變化完全搞懂'],
-        task3: ['📝 項目三：理化段考精華例題 3 題（25 分鐘）', '計算回聲測距與凸透鏡成像題型，穩穩掌握基本分！', '【25 分鐘】完成回聲測距與成像考題實戰演練']
-      },
-      eng: {
-        task1: ['🔤 項目一：段考必考核心單字 15 個（10 分鐘）', '背誦康軒/翰林段考範圍 15 個高頻單字與不規則動詞過去式。', '【10 分鐘】段考範圍核心單字認讀與過去式三態熟背'],
-        task2: ['✍️ 項目二：when/while 句型與 spend/cost/take 辨析（25 分鐘）', '釐清持續動作用 while、瞬間動作用 when；人 spend/物 cost/It takes。', '【25 分鐘】spend, cost, take 三大花費動詞主詞與介系詞不搞混'],
-        task3: ['📝 項目三：文法選擇與閱讀克漏字 3 題（25 分鐘）', '演練連綴動詞 look/smell/taste 與花費動詞填空題。', '【25 分鐘】完成 3 篇文法題與 1 篇閱讀測驗實戰練習']
-      },
-      chi: {
-        task1: ['📜 項目一：注釋與古今異義字詞速記（10 分鐘）', '複習課文核心注釋，特別留意古今詞義差別（妻子、去、交通）。', '【10 分鐘】段考範圍課文重點字音字形與古今異義默記'],
-        task2: ['🎭 項目二：對聯判斷與修辭格精研（25 分鐘）', '掌握對聯「仄起平收」、四季節慶與行業題辭特徵關鍵字。', '【25 分鐘】對聯平仄上下聯與婚喪喜慶題辭快速判讀'],
-        task3: ['📝 項目三：國文閱讀測驗與題型精解（25 分鐘）', '演練課外文言短文與題辭實戰題，提升語感。', '【25 分鐘】完成國文衝刺題庫 3 題並確認破題點']
-      },
-      his: {
-        task1: ['🏛️ 項目一：秦漢大一統帝國建制（10 分鐘）', '秦始皇郡縣制與度量衡統一，漢初與漢武帝新政。', '【10 分鐘】秦漢制度沿革與重要改革人物牢記'],
-        task2: ['📜 項目二：魏晉南北朝世族與民族融合（25 分鐘）', '九品官人法成因與北魏孝文帝漢化政策措施。', '【25 分鐘】胡漢融合與江南經濟開發脈絡理解'],
-        task3: ['📝 項目三：歷史題型演練 3 題（25 分鐘）', '實測歷史時序與文獻閱讀理解題。', '【25 分鐘】完成歷史段考精選題並檢討觀念']
-      },
-      geo: {
-        task1: ['🗺️ 項目一：中國氣候三大區域速覽（10 分鐘）', '季風區、溫帶大陸區與高地氣候分布地圖。', '【10 分鐘】三大氣候區界線與特徵標記熟練'],
-        task2: ['🌧️ 項目二：秦嶺淮河分界與等雨量線（25 分鐘）', '秦嶺淮河年雨量 750mm 與 1 月 0 度等溫線重要分界。', '【25 分鐘】南北方地理氣候生活差異完全理解'],
-        task3: ['📝 項目三：水文環境治理題庫演練（25 分鐘）', '黃河地上河成因與長江水土治理實戰考題。', '【25 分鐘】完成水文與氣候題庫演練並訂正']
-      },
-      civ: {
-        task1: ['⚖️ 項目一：法律位階三角形判讀（10 分鐘）', '憲法、法律、命令之位階與名稱嚴格判別。', '【10 分鐘】法律四名稱與行政命令名稱不混淆'],
-        task2: ['🛡️ 項目二：憲法權利保障與比例原則（25 分鐘）', '平等權、自由權、受益權、參政權與比例原則。', '【25 分鐘】憲法第 23 條比例原則三要素判別'],
-        task3: ['📝 項目三：民事與刑事責任判讀演練（25 分鐘）', '年齡責任能力與告訴乃論/非告訴乃論題型。', '【25 分鐘】完成公民責任判別題庫演練']
-      },
-      soc: {
-        task1: ['🏛️ 項目一：歷史秦漢制度與魏晉融合（20 分鐘）', '掌握秦始皇郡縣制、漢武帝鹽鐵官營、九品官人法與孝文帝漢化。', '【20 分鐘】歷史朝代更迭、制度關鍵人物與絲路重點通讀'],
-        task2: ['🗺️ 項目二：地理季風氣候與水文治理（20 分鐘）', '熟記秦嶺淮河年雨量 750mm 分界線、黃河地上河、南水北調。', '【20 分鐘】中國三大氣候區、等雨量線與河川治理核心圖表牢記'],
-        task3: ['⚖️ 項目三：公民法律位階與責任辨析（20 分鐘）', '憲法/法律/命令層級、比例原則、民法侵權賠償與刑法年齡能力。', '【20 分鐘】法律名稱判別與民事/刑事責任分界題目演練']
-      }
+    // 家長自訂星星獎勵彈窗
+    const DEFAULT_STAR_REWARDS = {
+      r30: '換 200 元零用錢',
+      r50: '換 500 元零用錢',
+      r100: '換豪華自助大餐',
+      r150: '換喜歡的衣服/球鞋'
     };
 
-    function swapDaySubject(selectElem, day) {
-      const subKey = selectElem.value;
-      const t = subjectTemplates[subKey];
-      if (!t) return;
+    function loadCustomStarRewards() {
+      let data = Object.assign({}, DEFAULT_STAR_REWARDS);
+      const saved = localStorage.getItem(STORAGE_KEY_STAR_CUSTOM);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed) data = Object.assign(data, parsed);
+        } catch(e) {}
+      }
 
-      document.getElementById(`${day}-task1-title`).textContent = t.task1[0];
-      document.getElementById(`${day}-task1-desc`).textContent = t.task1[1];
-      document.getElementById(`${day}-chk1-lbl`).textContent = t.task1[2];
+      const inp30 = document.getElementById('inputReward30');
+      const inp50 = document.getElementById('inputReward50');
+      const inp100 = document.getElementById('inputReward100');
+      const inp150 = document.getElementById('inputReward150');
+      if (inp30) inp30.value = data.r30;
+      if (inp50) inp50.value = data.r50;
+      if (inp100) inp100.value = data.r100;
+      if (inp150) inp150.value = data.r150;
 
-      document.getElementById(`${day}-task2-title`).textContent = t.task2[0];
-      document.getElementById(`${day}-task2-desc`).textContent = t.task2[1];
-      document.getElementById(`${day}-chk2-lbl`).textContent = t.task2[2];
+      const t30 = document.getElementById('starRewardTitle30');
+      const t50 = document.getElementById('starRewardTitle50');
+      const t100 = document.getElementById('starRewardTitle100');
+      const t150 = document.getElementById('starRewardTitle150');
+      if (t30) t30.innerHTML = `💵 換 <strong>${data.r30.replace(/[^0-9]/g, '') || '200'}</strong> 元零用錢`;
+      if (t50) t50.innerHTML = `💰 換 <strong>${data.r50.replace(/[^0-9]/g, '') || '500'}</strong> 元零用錢`;
+      if (t100) t100.innerText = `🍱 ${data.r100}`;
+      if (t150) t150.innerText = `👟 ${data.r150}`;
+    }
 
-      document.getElementById(`${day}-task3-title`).textContent = t.task3[0];
-      document.getElementById(`${day}-task3-desc`).textContent = t.task3[1];
-      document.getElementById(`${day}-chk3-lbl`).textContent = t.task3[2];
+    const starRewardModal = document.getElementById('starRewardModal');
+    const btnEditStarRewards = document.getElementById('btnEditStarRewards');
+    const btnCancelStarModal = document.getElementById('btnCancelStarModal');
+    const btnSaveStarModal = document.getElementById('btnSaveStarModal');
 
+    if (btnEditStarRewards) {
+      btnEditStarRewards.addEventListener('click', () => {
+        loadCustomStarRewards();
+        if (starRewardModal) starRewardModal.classList.add('open');
+      });
+    }
+    if (btnCancelStarModal) {
+      btnCancelStarModal.addEventListener('click', () => {
+        if (starRewardModal) starRewardModal.classList.remove('open');
+      });
+    }
+    if (btnSaveStarModal) {
+      btnSaveStarModal.addEventListener('click', () => {
+        const inp30 = document.getElementById('inputReward30');
+        const inp50 = document.getElementById('inputReward50');
+        const inp100 = document.getElementById('inputReward100');
+        const inp150 = document.getElementById('inputReward150');
+
+        const payload = {
+          r30: inp30 ? inp30.value.trim() : DEFAULT_STAR_REWARDS.r30,
+          r50: inp50 ? inp50.value.trim() : DEFAULT_STAR_REWARDS.r50,
+          r100: inp100 ? inp100.value.trim() : DEFAULT_STAR_REWARDS.r100,
+          r150: inp150 ? inp150.value.trim() : DEFAULT_STAR_REWARDS.r150
+        };
+
+        localStorage.setItem(STORAGE_KEY_STAR_CUSTOM, JSON.stringify(payload));
+        loadCustomStarRewards();
+        if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
+        if (starRewardModal) starRewardModal.classList.remove('open');
+        alert('✅ 家長自訂獎勵已成功儲存！');
+      });
+    }
+
+    /* ================= WEEKEND REWARD MODAL ================= */
+    function loadRewardData() {
+      let reward = { title: '🎮 週末放鬆大解放兌換券', desc: '自選火鍋或宵夜 ＋ 追劇放鬆 2 小時' };
+      const saved = localStorage.getItem(STORAGE_KEY_REWARD);
+      if (saved) {
+        try { reward = Object.assign(reward, JSON.parse(saved)); } catch(e) {}
+      }
+
+      const inputTitle = document.getElementById('inputRewardTitle');
+      const inputDesc = document.getElementById('inputRewardDesc');
+      if (inputTitle) inputTitle.value = reward.title;
+      if (inputDesc) inputDesc.value = reward.desc;
+
+      const display = document.getElementById('rewardItemDisplay') || document.getElementById('rewardTitleDisplay');
+      if (display) display.textContent = reward.desc || reward.title;
+    }
+
+    const rewardModal = document.getElementById('rewardModal');
+    const btnEditReward = document.getElementById('btnEditReward');
+    const btnCancelRewardModal = document.getElementById('btnCancelRewardModal');
+    const btnSaveRewardModal = document.getElementById('btnSaveRewardModal');
+
+    if (btnEditReward) {
+      btnEditReward.addEventListener('click', () => {
+        loadRewardData();
+        if (rewardModal) rewardModal.classList.add('open');
+      });
+    }
+    if (btnCancelRewardModal) {
+      btnCancelRewardModal.addEventListener('click', () => {
+        if (rewardModal) rewardModal.classList.remove('open');
+      });
+    }
+    if (btnSaveRewardModal) {
+      btnSaveRewardModal.addEventListener('click', () => {
+        const inputTitle = document.getElementById('inputRewardTitle');
+        const inputDesc = document.getElementById('inputRewardDesc');
+        const title = inputTitle ? inputTitle.value.trim() : '🎮 週末放鬆大解放兌換券';
+        const desc = inputDesc ? inputDesc.value.trim() : '自選火鍋或宵夜 ＋ 追劇放鬆 2 小時';
+        localStorage.setItem(STORAGE_KEY_REWARD, JSON.stringify({ title, desc }));
+        loadRewardData();
+        if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
+        if (rewardModal) rewardModal.classList.remove('open');
+        alert('✅ 週末獎勵已成功更新！');
+      });
+    }
+
+    /* ================= STREAK CALCULATION ================= */
+    function updateStreak() {
+      const savedChecks = JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}');
+      const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+      let streak = 0;
+      days.forEach(d => {
+        const hasCheck = [1, 2, 3].some(i => !!savedChecks[`chk-${d}-${i}`]);
+        if (hasCheck) streak++;
+      });
+      const el = document.getElementById('streakBadge');
+      if (el) el.textContent = `🔥 連續打卡 ${streak} 天`;
+    }
+
+    /* ================= RESET WEEK BUTTON ================= */
+    const btnReset = document.getElementById('btnResetWeekChecks');
+    if (btnReset) {
+      btnReset.addEventListener('click', () => {
+        if (confirm('確定要清空本週所有自習打勾嗎？（這將開啟全新的一週）')) {
+          localStorage.removeItem(STORAGE_KEY_CHECKS);
+          document.querySelectorAll('#dayCardsGrid input[type="checkbox"]').forEach(c => {
+            c.checked = false;
+            const parentItem = c.closest('.check-item');
+            if (parentItem) parentItem.classList.remove('checked');
+          });
+          updateProgressStats();
+          if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
+        }
+      });
+    }
+
+    /* ================= SUBJECT SWAPPING ================= */
+    const SUBJECT_NAMES = {
+      math: '數學', sci: '理化', eng: '英文', chi: '國文', his: '歷史', geo: '地理', civ: '公民'
+    };
+    function swapDaySubject(selectEl, day) {
+      const subKey = selectEl.value;
+      const subName = SUBJECT_NAMES[subKey] || '該科目';
+      const t1Title = document.getElementById(`${day}-task1-title`);
+      const t2Title = document.getElementById(`${day}-task2-title`);
+      const t3Title = document.getElementById(`${day}-task3-title`);
+      if (t2Title) t2Title.textContent = `📖 項目二：【${subName}】核心重點與易錯觀念（25 分鐘）`;
+      if (t3Title) t3Title.textContent = `📝 項目三：【${subName}】衝刺題庫演練（25 分鐘）`;
       localStorage.setItem(`cjz_swap_${day}`, subKey);
-      debouncedSyncToCloud();
+      if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
     }
 
     function loadSavedDaySwaps() {
-      const days = ['mon', 'tue', 'wed', 'thu', 'fri'];
-      days.forEach(d => {
-        const savedSub = localStorage.getItem(`cjz_swap_${d}`);
-        if (savedSub) {
+      ['mon', 'tue', 'wed', 'thu', 'fri'].forEach(d => {
+        const saved = localStorage.getItem(`cjz_swap_${d}`);
+        if (saved) {
           const select = document.querySelector(`.day-card[data-day] select[onchange*="${d}"]`);
           if (select) {
-            select.value = savedSub;
+            select.value = saved;
             swapDaySubject(select, d);
           }
         }
       });
     }
 
-    /* ================= RESET WEEK BUTTON ================= */
-    document.getElementById('btnResetWeekChecks').addEventListener('click', () => {
-      if (confirm('確定要清空本週所有打勾嗎？（這將開啟新的一週複習紀錄）')) {
-        localStorage.removeItem(STORAGE_KEY_CHECKS);
-        document.querySelectorAll('#dayCardsGrid input[type="checkbox"]').forEach(c => {
-          c.checked = false;
-          c.closest('.check-item').classList.remove('checked');
-        });
-        updateProgressStats();
-        debouncedSyncToCloud();
-      }
-    });
+    /* ================= 14 DAYS SPRINT CHECKLIST ================= */
+    const sprintData = [
+      { d: 14, text: '數學：二次方根乘除化簡例題 10 題熟練' },
+      { d: 13, text: '理化：波速公式 v = f × λ 熟練計算 5 題' },
+      { d: 12, text: '英語：過去進行式 was/were + V-ing 句型 10 題' },
+      { d: 11, text: '國文：黃鶴樓與古典詩文一字多義詞性辨析' },
+      { d: 10, text: '歷史：秦漢郡縣制與中央集權特色比較' },
+      { d: 9,  text: '地理：中國三級階梯地勢與氣候水文關聯' },
+      { d: 8,  text: '公民：憲法、法律、命令三級法規位階分類' },
+      { d: 7,  text: '數學：十字交乘法常數項拆解練習 10 題' },
+      { d: 6,  text: '理化：凸透鏡成像規律（2F 外與 F 內）默寫' },
+      { d: 5,  text: '英語：spend/cost/take/pay 四大花費動詞互換' },
+      { d: 4,  text: '社會：歷史孝文帝漢化 ＋ 地理長江黃河水患整治' },
+      { d: 3,  text: '全科：全真段考模擬卷一回限時 40 分鐘' },
+      { d: 2,  text: '錯題：重算各科衝刺講義中做錯的題目' },
+      { d: 1,  text: '定心：早點休息，檢查文具，信心赴考！' }
+    ];
 
-    /* ================= CLOUD SYNC (LEVEL 2 GAS) ================= */
-    const cloudSyncBadge = document.getElementById('cloudSyncBadge');
-    const btnConfigSync = document.getElementById('btnConfigSync');
-    const syncModal = document.getElementById('syncModal');
-    const btnCancelSyncModal = document.getElementById('btnCancelSyncModal');
-    const btnSaveSyncModal = document.getElementById('btnSaveSyncModal');
-    const btnClearSyncUrl = document.getElementById('btnClearSyncUrl');
-    const btnManualSync = document.getElementById('btnManualSync');
-    const inputGasUrl = document.getElementById('inputGasUrl');
+    function renderSprintCards() {
+      const grid = document.getElementById('sprintGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      const savedSprint = JSON.parse(localStorage.getItem('cjz_study_sprint_v1') || '{}');
+      let completedDays = 0;
 
-    let syncTimeout = null;
+      sprintData.forEach(item => {
+        const isChecked = !!savedSprint['sprint_' + item.d];
+        if (isChecked) completedDays++;
 
-    function openSyncModal() {
-      inputGasUrl.value = localStorage.getItem(STORAGE_KEY_GAS_URL) || '';
-      syncModal.classList.add('open');
+        const card = document.createElement('div');
+        card.className = 'day-card';
+        card.innerHTML = `
+          <div class="day-card-header">
+            <span style="font-weight:800; font-size:0.95rem; color:var(--navy);">⚡ 倒數 D-${item.d}</span>
+            <span class="day-time-tag">+5 星</span>
+          </div>
+          <div class="checklist-group" style="margin-top:10px;">
+            <label class="check-item ${isChecked ? 'checked' : ''}" style="margin-bottom:0;">
+              <input type="checkbox" class="sprint-chk" id="chk_sprint_${item.d}" ${isChecked ? 'checked' : ''}>
+              <span class="check-item-text">【D-${item.d}】${item.text}</span>
+            </label>
+          </div>
+        `;
+
+        const chk = card.querySelector('.sprint-chk');
+        chk.onchange = () => {
+          const s = JSON.parse(localStorage.getItem('cjz_study_sprint_v1') || '{}');
+          s['sprint_' + item.d] = chk.checked;
+          const parentItem = chk.closest('.check-item');
+          if (parentItem) {
+            if (chk.checked) {
+              parentItem.classList.add('checked');
+              triggerConfetti();
+            } else {
+              parentItem.classList.remove('checked');
+            }
+          }
+          localStorage.setItem('cjz_study_sprint_v1', JSON.stringify(s));
+          updateSprintHeader();
+          calculateTotalStars();
+          if (typeof debouncedSyncToCloud === 'function') debouncedSyncToCloud();
+        };
+
+        grid.appendChild(card);
+      });
+
+      updateSprintHeader();
     }
 
-    if (cloudSyncBadge) cloudSyncBadge.addEventListener('click', openSyncModal);
-    if (btnConfigSync) btnConfigSync.addEventListener('click', openSyncModal);
-    if (btnCancelSyncModal) btnCancelSyncModal.addEventListener('click', () => syncModal.classList.remove('open'));
+    function updateSprintHeader() {
+      const savedSprint = JSON.parse(localStorage.getItem('cjz_study_sprint_v1') || '{}');
+      const completed = Object.values(savedSprint).filter(Boolean).length;
+      const pct = Math.round((completed / sprintData.length) * 100);
+      const txt = document.getElementById('sprintPercentText') || document.getElementById('sprintCountDisplay');
+      if (txt) txt.textContent = pct + '%';
+      const bar = document.getElementById('sprintProgressBar');
+      if (bar) bar.style.width = pct + '%';
+    }
 
-    function updateSyncUIStatus(status, text) {
-      if (status === 'synced') {
-        cloudSyncBadge.style.background = '#ecfdf5';
-        cloudSyncBadge.style.color = '#059669';
-        cloudSyncBadge.style.borderColor = '#a7f3d0';
-        cloudSyncBadge.textContent = '🟢 雲端已同步';
-      } else if (status === 'syncing') {
-        cloudSyncBadge.style.background = '#fffbeb';
-        cloudSyncBadge.style.color = '#d97706';
-        cloudSyncBadge.style.borderColor = '#fde68a';
-        cloudSyncBadge.textContent = '🟡 同步中...';
-      } else if (status === 'offline') {
-        cloudSyncBadge.style.background = '#f1f5f9';
-        cloudSyncBadge.style.color = '#475569';
-        cloudSyncBadge.style.borderColor = '#cbd5e1';
-        cloudSyncBadge.textContent = '⚪ 離線模式';
+    /* ================= CLOUD SYNC (LEVEL 2 GAS) ================= */
+    let gasSyncUrl = localStorage.getItem(STORAGE_KEY_GAS_URL) || DEFAULT_GAS_URL;
+    let isCloudSyncing = false;
+    let cloudSyncDebounceTimer = null;
+
+    function openSyncModal() {
+      const inp = document.getElementById('inputGasUrl');
+      if (inp) inp.value = gasSyncUrl;
+      const modal = document.getElementById('syncModal');
+      if (modal) modal.classList.add('open');
+    }
+
+    const btnConfigSync = document.getElementById('btnConfigSync');
+    if (btnConfigSync) btnConfigSync.addEventListener('click', openSyncModal);
+
+    const btnCancelSyncModal = document.getElementById('btnCancelSyncModal');
+    if (btnCancelSyncModal) {
+      btnCancelSyncModal.addEventListener('click', () => {
+        const modal = document.getElementById('syncModal');
+        if (modal) modal.classList.remove('open');
+      });
+    }
+
+    const btnClearSyncUrl = document.getElementById('btnClearSyncUrl');
+    if (btnClearSyncUrl) {
+      btnClearSyncUrl.addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY_GAS_URL);
+        gasSyncUrl = '';
+        const inp = document.getElementById('inputGasUrl');
+        if (inp) inp.value = '';
+        updateSyncUIStatus('offline');
+        alert('已清除雲端同步網址！');
+      });
+    }
+
+    const btnSaveSyncModal = document.getElementById('btnSaveSyncModal');
+    if (btnSaveSyncModal) {
+      btnSaveSyncModal.addEventListener('click', async () => {
+        const inp = document.getElementById('inputGasUrl');
+        const url = inp ? inp.value.trim() : '';
+        if (url) {
+          localStorage.setItem(STORAGE_KEY_GAS_URL, url);
+          gasSyncUrl = url;
+          await fetchFromCloud(true);
+          const modal = document.getElementById('syncModal');
+          if (modal) modal.classList.remove('open');
+        } else {
+          alert('請輸入有效的 Google Apps Script 網址！');
+        }
+      });
+    }
+
+    function updateSyncUIStatus(status, msg) {
+      const badge = document.getElementById('cloudSyncBadge');
+      if (!badge) return;
+      if (status === 'syncing') {
+        badge.textContent = '☁️ 同步中...';
+        badge.style.background = '#fef3c7';
+        badge.style.color = '#b45309';
+      } else if (status === 'synced') {
+        badge.textContent = '☁️ 雲端同步完成';
+        badge.style.background = '#dcfce7';
+        badge.style.color = '#15803d';
       } else if (status === 'error') {
-        cloudSyncBadge.style.background = '#fef2f2';
-        cloudSyncBadge.style.color = '#dc2626';
-        cloudSyncBadge.style.borderColor = '#fecaca';
-        cloudSyncBadge.textContent = '🔴 同步失敗';
+        badge.textContent = '☁️ 同步失敗';
+        badge.style.background = '#fee2e2';
+        badge.style.color = '#b91c1c';
+      } else {
+        badge.textContent = '☁️ 雲端狀態：離線模式';
+        badge.style.background = '#f1f5f9';
+        badge.style.color = '#475569';
       }
     }
 
     function getFullAppState() {
       return {
         checks: JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}'),
-        sprint: JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}'),
+        sprint: JSON.parse(localStorage.getItem('cjz_study_sprint_v1') || '{}'),
         exam: JSON.parse(localStorage.getItem(STORAGE_KEY_EXAM) || '{}'),
-        reward: localStorage.getItem(STORAGE_KEY_REWARD) || '',
-        streak: localStorage.getItem(STORAGE_KEY_STREAK) || '0',
-        customStar: JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_CUSTOM) || '{}'),
+        reward: JSON.parse(localStorage.getItem(STORAGE_KEY_REWARD) || '{}'),
+        starCustom: JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_CUSTOM) || '{}'),
         redeemed: JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]'),
-        swaps: {
-          mon: localStorage.getItem('cjz_swap_mon'),
-          tue: localStorage.getItem('cjz_swap_tue'),
-          wed: localStorage.getItem('cjz_swap_wed'),
-          thu: localStorage.getItem('cjz_swap_thu'),
-          fri: localStorage.getItem('cjz_swap_fri')
-        },
-        stars: calculateTotalStars(),
-        device: navigator.userAgent.includes('Mobile') ? 'Mobile' : 'Desktop'
+        timestamp: Date.now()
       };
     }
 
     function applyCloudAppState(data) {
       if (!data) return;
       if (data.checks) localStorage.setItem(STORAGE_KEY_CHECKS, JSON.stringify(data.checks));
-      if (data.sprint) localStorage.setItem(STORAGE_KEY_SPRINT, JSON.stringify(data.sprint));
+      if (data.sprint) localStorage.setItem('cjz_study_sprint_v1', JSON.stringify(data.sprint));
       if (data.exam) localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(data.exam));
-      if (data.reward) localStorage.setItem(STORAGE_KEY_REWARD, data.reward);
-      if (data.streak) localStorage.setItem(STORAGE_KEY_STREAK, data.streak);
-      if (data.customStar) localStorage.setItem(STORAGE_KEY_STAR_CUSTOM, JSON.stringify(data.customStar));
+      if (data.reward) localStorage.setItem(STORAGE_KEY_REWARD, JSON.stringify(data.reward));
+      if (data.starCustom) localStorage.setItem(STORAGE_KEY_STAR_CUSTOM, JSON.stringify(data.starCustom));
       if (data.redeemed) localStorage.setItem(STORAGE_KEY_STAR_REDEEMED, JSON.stringify(data.redeemed));
-      if (data.swaps) {
-        Object.keys(data.swaps).forEach(k => {
-          if (data.swaps[k]) localStorage.setItem(`cjz_swap_${k}`, data.swaps[k]);
-        });
-      }
 
       loadChecklistState();
-      renderSprintCards();
       loadExamData();
       loadRewardData();
-      loadBigPrizeText();
-      loadSavedDaySwaps();
-      renderRedeemHistory();
+      loadCustomStarRewards();
+      renderSprintCards();
     }
 
     async function pushToCloud() {
-      const gasUrl = localStorage.getItem(STORAGE_KEY_GAS_URL);
-      if (!gasUrl) {
-        updateSyncUIStatus('offline');
-        return;
-      }
+      if (!gasSyncUrl || isCloudSyncing) return;
+      isCloudSyncing = true;
       updateSyncUIStatus('syncing');
       try {
         const payload = getFullAppState();
-        const res = await fetch(gasUrl, {
+        await fetch(gasSyncUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        const json = await res.json();
-        if (json.status === 'success') {
-          updateSyncUIStatus('synced');
-        } else {
-          updateSyncUIStatus('error');
-        }
+        updateSyncUIStatus('synced');
       } catch (err) {
-        console.warn('Sync error:', err);
         updateSyncUIStatus('error');
+      } finally {
+        isCloudSyncing = false;
       }
     }
 
-    async function fetchFromCloud(silent = true) {
-      const gasUrl = localStorage.getItem(STORAGE_KEY_GAS_URL);
-      if (!gasUrl) {
-        updateSyncUIStatus('offline');
-        return;
-      }
-      updateSyncUIStatus('syncing');
+    async function fetchFromCloud(silent = false) {
+      if (!gasSyncUrl) return;
+      if (!silent) updateSyncUIStatus('syncing');
       try {
-        const res = await fetch(gasUrl);
-        const json = await res.json();
-        if (json.status === 'success' && json.data) {
-          applyCloudAppState(json.data);
+        const res = await fetch(gasSyncUrl + '?action=get&t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          applyCloudAppState(data);
           updateSyncUIStatus('synced');
-          if (!silent) alert('🎉 雲端資料同步完成！');
-        } else {
-          updateSyncUIStatus('error');
         }
-      } catch (err) {
-        console.warn('Fetch error:', err);
-        updateSyncUIStatus('error');
+      } catch(e) {
+        if (!silent) updateSyncUIStatus('error');
       }
     }
 
     function debouncedSyncToCloud() {
-      clearTimeout(syncTimeout);
-      syncTimeout = setTimeout(pushToCloud, 1200);
+      clearTimeout(cloudSyncDebounceTimer);
+      cloudSyncDebounceTimer = setTimeout(() => {
+        pushToCloud();
+      }, 1500);
     }
 
-    if (btnSaveSyncModal) {
-      btnSaveSyncModal.addEventListener('click', async () => {
-        const url = inputGasUrl.value.trim();
-        if (!url) {
-          localStorage.removeItem(STORAGE_KEY_GAS_URL);
-          updateSyncUIStatus('offline');
-        } else {
-          localStorage.setItem(STORAGE_KEY_GAS_URL, url);
-          await pushToCloud();
-        }
-        syncModal.classList.remove('open');
-      });
-    }
-
-    if (btnClearSyncUrl) {
-      btnClearSyncUrl.addEventListener('click', () => {
-        localStorage.removeItem(STORAGE_KEY_GAS_URL);
-        inputGasUrl.value = '';
-        updateSyncUIStatus('offline');
-        syncModal.classList.remove('open');
-      });
-    }
-
-    if (btnManualSync) {
-      btnManualSync.addEventListener('click', () => fetchFromCloud(false));
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const gasParam = urlParams.get('gas');
-    if (gasParam) {
-      localStorage.setItem(STORAGE_KEY_GAS_URL, decodeURIComponent(gasParam));
-    }
-
-    /* ================= CONFETTI CELEBRATION ================= */
+    /* ================= CONFETTI CANVAS ================= */
     const canvas = document.getElementById('confettiCanvas');
-    const ctx = canvas.getContext('2d');
-    let confettiParticles = [];
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    let confettiList = [];
 
     function resizeCanvas() {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
@@ -4965,67 +5051,70 @@
     resizeCanvas();
 
     function triggerConfetti() {
-      const colors = ['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6'];
-      for (let i = 0; i < 60; i++) {
-        confettiParticles.push({
-          x: window.innerWidth / 2,
-          y: window.innerHeight / 2,
-          vx: (Math.random() - 0.5) * 14,
-          vy: (Math.random() - 0.8) * 16,
-          size: Math.random() * 8 + 4,
+      if (!canvas || !ctx) return;
+      const colors = ['#2563eb', '#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'];
+      for (let i = 0; i < 70; i++) {
+        confettiList.push({
+          x: window.innerWidth / 2 + (Math.random() - 0.5) * 200,
+          y: window.innerHeight / 3 + (Math.random() - 0.5) * 100,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 8 + 4,
           color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 10,
+          vy: Math.random() * -8 - 4,
+          gravity: 0.3 + Math.random() * 0.2,
           rotation: Math.random() * 360,
-          vrot: (Math.random() - 0.5) * 10,
+          vRot: (Math.random() - 0.5) * 10,
           opacity: 1
         });
       }
     }
 
     function updateConfetti() {
+      if (!canvas || !ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = confettiParticles.length - 1; i >= 0; i--) {
-        const p = confettiParticles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.35;
-        p.rotation += p.vrot;
-        p.opacity -= 0.015;
-
-        if (p.opacity <= 0) {
-          confettiParticles.splice(i, 1);
-          continue;
-        }
+      confettiList.forEach((c, idx) => {
+        c.x += c.vx;
+        c.y += c.vy;
+        c.vy += c.gravity;
+        c.rotation += c.vRot;
+        c.opacity -= 0.015;
 
         ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate((p.rotation * Math.PI) / 180);
-        ctx.globalAlpha = p.opacity;
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.translate(c.x, c.y);
+        ctx.rotate((c.rotation * Math.PI) / 180);
+        ctx.fillStyle = c.color;
+        ctx.globalAlpha = Math.max(0, c.opacity);
+        ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h);
         ctx.restore();
-      }
+
+        if (c.opacity <= 0 || c.y > canvas.height) {
+          confettiList.splice(idx, 1);
+        }
+      });
       requestAnimationFrame(updateConfetti);
     }
     updateConfetti();
 
-    /* ================= INIT ON LOAD ================= */
+    /* ================= INITIALIZATION ON DOMContentLoaded ================= */
     window.addEventListener('DOMContentLoaded', () => {
       renderTimer();
       loadExamData();
       loadRewardData();
-      loadBigPrizeText();
+      loadCustomStarRewards();
       loadSavedDaySwaps();
       renderSprintCards();
       loadChecklistState();
-      renderRedeemHistory();
 
+      // 當天卡片自動高亮標記
       const todayDay = new Date().getDay();
-      document.querySelectorAll('.day-card').forEach(card => {
+      document.querySelectorAll('.day-card[data-day]').forEach(card => {
         if (parseInt(card.getAttribute('data-day'), 10) === todayDay) {
           card.classList.add('today');
         }
       });
 
+      // 初始化雲端同步狀態
       if (localStorage.getItem(STORAGE_KEY_GAS_URL)) {
         fetchFromCloud(true);
       } else {
