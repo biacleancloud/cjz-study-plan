@@ -53,6 +53,9 @@
     - 包含頂部元氣女國中生頭像、倒數番茄鐘、全科精熟度、連續打卡 Streak、80% 週末獎勵解鎖。
     - 完整收錄 6 大分頁：每日自習打卡專區、七大學科單元考點題庫（54 道衝刺題與即測即評詳解）、80/20 戰略速查卡、考前 14 天衝刺檢核表、線上學習資源區、獎勵兌換處。
   - 🎨 `cjz_avatar.png`：為蔡佳蓁特別繪製之專屬元氣國中女生圓形頭像（已 Base64 內嵌於網頁，零外部相依）。
+  - 🌐 **雲端正式上線發布 (GitHub Pages)**：
+    - 公開學習網網址：`https://biacleancloud.github.io/cjz-study-plan/`
+    - GitHub 專案倉庫：`https://github.com/biacleancloud/cjz-study-plan`
   - ☁️ `GoogleAppsScript_Code.gs`：Level 2 雲端雙向同步後端程式碼（支援手機與電腦打卡無縫雙向連動）。
   - 📖 `Google試算表同步教學_手機電腦雙向同步.md`：1 分鐘極速圖文設定指南。
 
