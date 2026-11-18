@@ -1471,7 +1471,8 @@
           <span class="badge" id="streakBadge">🔥 連續打卡 0 天</span>
           <span class="badge" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd;" id="starBadge">⭐ 0 顆星</span>
           <span class="badge" id="cloudSyncBadge" style="background:#f1f5f9; color:#475569; border-color:#cbd5e1; cursor:pointer;" title="點擊設定 Google 試算表雲端同步">☁️ 雲端狀態：離線模式</span>
-          <button type="button" class="btn-cloud-config" id="btnConfigSync" style="background:#2563eb; color:#fff; border:none; padding:3px 10px; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">⚙️ 雲端同步設定</button>
+          <button type="button" class="btn-cloud-sync" id="btnManualSync" style="display:none; background:#10b981; color:#fff; border:none; padding:3px 10px; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;" title="立即從雲端同步最新打卡進度">🔄 立即同步</button>
+          <button type="button" class="btn-cloud-config" id="btnConfigSync" style="background:#2563eb; color:#fff; border:none; padding:3px 10px; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;" title="設定 Google 試算表同步 API">⚙️ 雲端同步設定</button>
         </div>
       </div>
       <div class="header-badges">
@@ -4273,7 +4274,16 @@
     const STORAGE_KEY_STAR_CUSTOM = 'cjz_star_custom_v1';
     const STORAGE_KEY_STAR_REDEEMED = 'cjz_star_redeemed_v1';
     const STORAGE_KEY_GAS_URL = 'cjz_gas_sync_url_v1';
-    const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycby2_Y8a4f5Wjjn4K-svJTBwxq4xAt_dx_qtQVJthAg3jYk-TvtSNDZVKY5X1LSULUS6/exec';
+    const DEFAULT_GAS_URL = '';
+
+    // 自動讀取 URL 參數 ?gas= 進行一鍵免設定綁定
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gasParam = urlParams.get('gas') || urlParams.get('api');
+      if (gasParam && gasParam.startsWith('http')) {
+        localStorage.setItem(STORAGE_KEY_GAS_URL, gasParam.trim());
+      }
+    } catch(e) {}
 
     /* ================= TAB NAVIGATION ================= */
     const tabButtons = document.querySelectorAll('.tab-btn');
@@ -4918,6 +4928,12 @@
     const btnConfigSync = document.getElementById('btnConfigSync');
     if (btnConfigSync) btnConfigSync.addEventListener('click', openSyncModal);
 
+    const btnManualSync = document.getElementById('btnManualSync');
+    if (btnManualSync) btnManualSync.addEventListener('click', () => fetchFromCloud(false));
+
+    const cloudSyncBadge = document.getElementById('cloudSyncBadge');
+    if (cloudSyncBadge) cloudSyncBadge.addEventListener('click', openSyncModal);
+
     const btnCancelSyncModal = document.getElementById('btnCancelSyncModal');
     if (btnCancelSyncModal) {
       btnCancelSyncModal.addEventListener('click', () => {
@@ -4929,12 +4945,14 @@
     const btnClearSyncUrl = document.getElementById('btnClearSyncUrl');
     if (btnClearSyncUrl) {
       btnClearSyncUrl.addEventListener('click', () => {
-        localStorage.removeItem(STORAGE_KEY_GAS_URL);
-        gasSyncUrl = '';
-        const inp = document.getElementById('inputGasUrl');
-        if (inp) inp.value = '';
-        updateSyncUIStatus('offline');
-        alert('已清除雲端同步網址！');
+        if (confirm('確定要清除雲端同步網址嗎？清除後將恢復為僅本機儲存模式。')) {
+          localStorage.removeItem(STORAGE_KEY_GAS_URL);
+          gasSyncUrl = '';
+          const inp = document.getElementById('inputGasUrl');
+          if (inp) inp.value = '';
+          updateSyncUIStatus('offline');
+          alert('已清除雲端同步網址！');
+        }
       });
     }
 
@@ -4946,7 +4964,7 @@
         if (url) {
           localStorage.setItem(STORAGE_KEY_GAS_URL, url);
           gasSyncUrl = url;
-          await fetchFromCloud(true);
+          await fetchFromCloud(false);
           const modal = document.getElementById('syncModal');
           if (modal) modal.classList.remove('open');
         } else {
@@ -4955,25 +4973,33 @@
       });
     }
 
-    function updateSyncUIStatus(status, msg) {
+    function updateSyncUIStatus(status, info) {
       const badge = document.getElementById('cloudSyncBadge');
+      const btnManual = document.getElementById('btnManualSync');
       if (!badge) return;
       if (status === 'syncing') {
-        badge.textContent = '☁️ 同步中...';
+        badge.textContent = '🟡 同步中...';
         badge.style.background = '#fef3c7';
         badge.style.color = '#b45309';
+        badge.style.borderColor = '#f59e0b';
       } else if (status === 'synced') {
-        badge.textContent = '☁️ 雲端同步完成';
+        badge.textContent = `🟢 雲端已同步 (${info || '最新'})`;
         badge.style.background = '#dcfce7';
         badge.style.color = '#15803d';
+        badge.style.borderColor = '#86efac';
+        if (btnManual) btnManual.style.display = 'inline-block';
       } else if (status === 'error') {
-        badge.textContent = '☁️ 同步失敗';
+        badge.textContent = `🔴 同步失敗 (${info || '請檢查連線'})`;
         badge.style.background = '#fee2e2';
         badge.style.color = '#b91c1c';
+        badge.style.borderColor = '#fca5a5';
+        if (btnManual) btnManual.style.display = 'inline-block';
       } else {
-        badge.textContent = '☁️ 雲端狀態：離線模式';
+        badge.textContent = '☁️ 雲端狀態：離線模式 (點此設定)';
         badge.style.background = '#f1f5f9';
         badge.style.color = '#475569';
+        badge.style.borderColor = '#cbd5e1';
+        if (btnManual) btnManual.style.display = 'none';
       }
     }
 
@@ -4985,12 +5011,14 @@
         reward: JSON.parse(localStorage.getItem(STORAGE_KEY_REWARD) || '{}'),
         starCustom: JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_CUSTOM) || '{}'),
         redeemed: JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]'),
+        stars: calculateTotalStars(),
         timestamp: Date.now()
       };
     }
 
-    function applyCloudAppState(data) {
-      if (!data) return;
+    function applyCloudAppState(result) {
+      if (!result) return;
+      const data = (result.data && typeof result.data === 'object') ? result.data : result;
       if (data.checks) localStorage.setItem(STORAGE_KEY_CHECKS, JSON.stringify(data.checks));
       if (data.sprint) localStorage.setItem('cjz_study_sprint_v1', JSON.stringify(data.sprint));
       if (data.exam) localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(data.exam));
@@ -5009,34 +5037,54 @@
       if (!gasSyncUrl || isCloudSyncing) return;
       isCloudSyncing = true;
       updateSyncUIStatus('syncing');
+      const payload = getFullAppState();
       try {
-        const payload = getFullAppState();
         await fetch(gasSyncUrl, {
           method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         });
-        updateSyncUIStatus('synced');
+        const timeStr = new Date().toLocaleTimeString('zh-TW', { hour12: false, hour: '2-digit', minute: '2-digit' });
+        updateSyncUIStatus('synced', timeStr);
       } catch (err) {
-        updateSyncUIStatus('error');
+        console.warn('POST 失敗，嘗試 GET 備用:', err);
+        try {
+          const encoded = encodeURIComponent(JSON.stringify(payload));
+          await fetch(`${gasSyncUrl}?action=save&data=${encoded}`);
+          const timeStr = new Date().toLocaleTimeString('zh-TW', { hour12: false, hour: '2-digit', minute: '2-digit' });
+          updateSyncUIStatus('synced', timeStr);
+        } catch (e2) {
+          updateSyncUIStatus('error', '儲存失敗');
+        }
       } finally {
         isCloudSyncing = false;
       }
     }
 
     async function fetchFromCloud(silent = false) {
-      if (!gasSyncUrl) return;
+      if (!gasSyncUrl) {
+        updateSyncUIStatus('offline');
+        return;
+      }
       if (!silent) updateSyncUIStatus('syncing');
       try {
-        const res = await fetch(gasSyncUrl + '?action=get&t=' + Date.now());
-        if (res.ok) {
-          const data = await res.json();
-          applyCloudAppState(data);
-          updateSyncUIStatus('synced');
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 8000);
+        const urlWithParams = gasSyncUrl + (gasSyncUrl.includes('?') ? '&' : '?') + 'action=get&t=' + Date.now();
+        const res = await fetch(urlWithParams, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const result = await res.json();
+        if (result && (result.status === 'success' || result.data)) {
+          applyCloudAppState(result);
+          const timeStr = new Date().toLocaleTimeString('zh-TW', { hour12: false, hour: '2-digit', minute: '2-digit' });
+          updateSyncUIStatus('synced', timeStr);
+        } else {
+          updateSyncUIStatus('synced', '已連線');
         }
       } catch(e) {
-        if (!silent) updateSyncUIStatus('error');
+        console.warn('雲端讀取失敗或逾時:', e);
+        if (!silent) updateSyncUIStatus('error', '連線逾時');
       }
     }
 
@@ -5046,6 +5094,20 @@
         pushToCloud();
       }, 1500);
     }
+
+    // 當切換回視窗時自動靜默同步最新進度
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && gasSyncUrl) {
+        fetchFromCloud(true);
+      }
+    });
+
+    // 每 60 秒在背景定時靜默同步一次
+    setInterval(() => {
+      if (gasSyncUrl && !isCloudSyncing) {
+        fetchFromCloud(true);
+      }
+    }, 60000);
 
     /* ================= CONFETTI CANVAS ================= */
     const canvas = document.getElementById('confettiCanvas');
