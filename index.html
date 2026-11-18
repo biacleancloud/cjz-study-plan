@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蔡佳蓁(國中)專屬升學計畫學習網</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #eef2ff;
+      --navy: #0f172a;
+      --slate-800: #1e293b;
+      --slate-600: #475569;
+      --slate-400: #94a3b8;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --bg-light: #f8fafc;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ecfdf5;
+      --accent-green-border: #a7f3d0;
+      
+      --accent-amber: #d97706;
+      --accent-amber-bg: #fffbeb;
+      --accent-amber-border: #fde68a;
+      
+      --accent-purple: #7c3aed;
+      --accent-purple-bg: #f5f3ff;
+      --accent-purple-border: #ddd6fe;
+
+      --accent-pink: #db2777;
+      --accent-pink-bg: #fdf2f8;
+      --accent-pink-border: #fbcfe8;
+
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--slate-800);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ================= HEADER & PROFILE ================= */
+    .app-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .header-top {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .profile-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      padding: 2.5px;
+      box-shadow: 0 4px 10px rgba(236, 72, 153, 0.25);
+      flex-shrink: 0;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #fff;
+      display: block;
+    }
+
+    .profile-meta h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .badge-sub {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .profile-meta p {
+      font-size: 0.82rem;
+      color: var(--slate-600);
+      margin-top: 1px;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .streak-capsule {
+      background: #fff7ed;
+      color: #ea580c;
+      border: 1px solid #ffedd5;
+    }
+
+    .stars-capsule {
+      background: #fefce8;
+      color: #ca8a04;
+      border: 1px solid #fef08a;
+    }
+
+    .sync-capsule {
+      background: var(--slate-100);
+      color: var(--slate-600);
+      border: 1px solid var(--slate-200);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .sync-capsule:hover {
+      background: #e2e8f0;
+      color: var(--navy);
+    }
+
+    .sync-btn-setting {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .sync-btn-setting:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    /* ================= KPI SECTION ================= */
+    .kpi-section {
+      max-width: 1240px;
+      margin: 18px auto 0;
+      padding: 0 20px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .kpi-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .kpi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .kpi-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--slate-600);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .kpi-btn-edit {
+      font-size: 0.72rem;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: none;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .kpi-value-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .kpi-value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--navy);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.1;
+    }
+
+    .kpi-unit {
+      font-size: 0.84rem;
+      color: var(--slate-400);
+      font-weight: 600;
+    }
+
+    .kpi-progress-bar {
+      height: 7px;
+      background: var(--slate-100);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .kpi-progress-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #6366f1, #a855f7);
+      transition: width 0.4s ease;
+    }
+
+    /* Pomodoro inline */
+    .timer-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .timer-btn {
+      padding: 4px 10px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-100);
+      color: var(--slate-800);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .timer-btn.active, .timer-btn.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* ================= TABS NAVIGATION ================= */
+    .tab-nav-wrap {
+      max-width: 1240px;
+      margin: 18px auto 0;
+      padding: 0 20px;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--slate-200);
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border: none;
+      background: transparent;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--slate-600);
+      border-radius: 10px 10px 0 0;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .tab-btn:hover {
+      color: var(--navy);
+      background: rgba(79, 70, 229, 0.05);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      background: #fff;
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+    .main-content {
+      max-width: 1240px;
+      margin: 20px auto 40px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================= TAB 1: WEEKLY CHECK-IN ================= */
+    .weekly-actions-bar {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .actions-left h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .actions-left p {
+      font-size: 0.84rem;
+      color: var(--slate-600);
+    }
+
+    .btn-reset-week {
+      padding: 7px 14px;
+      background: #fff;
+      border: 1px solid #fca5a5;
+      color: #dc2626;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-reset-week:hover {
+      background: #fef2f2;
+    }
+
+    .day-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .day-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .day-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .day-card.today {
+      border: 2px solid var(--primary);
+      position: relative;
+    }
+
+    .day-card.today::before {
+      content: '今日任務 🎯';
+      position: absolute;
+      top: -11px;
+      right: 16px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .day-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px solid var(--slate-100);
+      padding-bottom: 10px;
+    }
+
+    .day-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .day-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .day-time-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--slate-100);
+      color: var(--slate-600);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .subject-swap-select {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid #c7d2fe;
+      border-radius: 8px;
+      padding: 4px 8px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .phase-block {
+      background: var(--slate-100);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .phase-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--slate-800);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .phase-desc {
+      font-size: 0.76rem;
+      color: var(--slate-600);
+      margin-top: 3px;
+    }
+
+    .checklist-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .check-item:hover {
+      background: var(--slate-100);
+      border-color: #cbd5e1;
+    }
+
+    .check-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .check-item.checked {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .check-item.checked .check-label {
+      text-decoration: line-through;
+      color: #15803d;
+    }
+
+    .check-label {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--slate-800);
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    /* ================= TAB 2: STRATEGY & CORE POINTS ================= */
+    .strategy-sub-filter {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+    }
+
+    .sub-pill {
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: 1px solid var(--slate-200);
+      background: #fff;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--slate-600);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .sub-pill:hover, .sub-pill.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .subject-pane {
+      display: none;
+    }
+
+    .subject-pane.active {
+      display: block;
+    }
+
+    .sub-hero-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .sub-hero-left h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .sub-hero-left p {
+      font-size: 0.86rem;
+      color: var(--slate-600);
+      margin-top: 2px;
+    }
+
+    .docx-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(37,99,235,0.2);
+      transition: all 0.2s;
+    }
+
+    .docx-open-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .point-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .point-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--slate-100);
+    }
+
+    .point-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .point-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .formula-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+      color: var(--slate-800);
+    }
+
+    .tips-box {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #92400e;
+      margin-bottom: 14px;
+    }
+
+    .quiz-accordion {
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .quiz-header {
+      background: var(--slate-100);
+      padding: 10px 14px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--slate-800);
+    }
+
+    .quiz-body {
+      padding: 14px;
+      background: #fff;
+      display: none;
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    .quiz-body.show {
+      display: block;
+    }
+
+    /* ================= TAB 3: 14 DAYS SPRINT ================= */
+    .sprint-summary-card {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .sprint-summary-left h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .sprint-summary-left p {
+      font-size: 0.86rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .sprint-days-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .sprint-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .sprint-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--slate-100);
+    }
+
+    .sprint-day-badge {
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    /* ================= TAB 4: RESOURCES ================= */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .resource-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .resource-desc {
+      font-size: 0.82rem;
+      color: var(--slate-600);
+      margin: 8px 0 14px;
+      line-height: 1.5;
+    }
+
+    .resource-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--slate-100);
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .resource-link-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* ================= TAB 5: GAMIFY & STAR BANK ================= */
+    .star-bank-card {
+      background: linear-gradient(135deg, #1e3a8a 0%, #4338ca 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .star-bank-left .bank-label {
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+
+    .star-bank-left .star-num {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #fde047;
+      margin: 4px 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .star-bank-left .bank-rule {
+      font-size: 0.84rem;
+      opacity: 0.85;
+    }
+
+    .star-rewards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .reward-item-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+
+    .reward-item-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .reward-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .reward-cost {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #d97706;
+      margin-top: 3px;
+    }
+
+    .btn-redeem {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-redeem:hover {
+      background: var(--primary-dark);
+    }
+
+    .grand-prize-card {
+      background: #fffbeb;
+      border: 2px solid #f59e0b;
+      grid-column: 1 / -1;
+    }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .quote-card {
+      background: #fff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+
+    .quote-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .quote-body {
+      font-size: 0.82rem;
+      color: var(--slate-600);
+      line-height: 1.5;
+    }
+
+    /* ================= MODALS ================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #fff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      animation: modalPop 0.2s ease-out;
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--slate-100);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--slate-400);
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .modal-footer {
+      padding: 14px 20px;
+      background: var(--slate-100);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-top: 6px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+    }
+
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: var(--slate-400);
+      border-top: 1px solid var(--slate-200);
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- ================= APP HEADER ================= -->
+  <header class="app-header">
+    <div class="header-top">
+      <div class="profile-area">
+        <div class="avatar-wrap">
+          <img src="cjz_avatar.png" alt="蔡佳蓁" class="avatar-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23ec4899\'/><text x=\'50\' y=\'62\' font-size=\'40\' fill=\'%23ffffff\' text-anchor=\'middle\' font-weight=\'bold\'>蓁</text></svg>';">
+        </div>
+        <div class="profile-meta">
+          <h1>蔡佳蓁(國中)專屬升學計畫學習網 <span class="badge-sub">國二上衝刺版</span></h1>
+          <p>國二上第二次段考穩健衝刺 80+ 學習網 ｜ 七大考科一頁一考點</p>
+        </div>
+      </div>
+
+      <div class="header-badges">
+        <div class="badge-capsule streak-capsule" id="streakBadge">🔥 連續打卡 0 天</div>
+        <div class="badge-capsule stars-capsule" id="starBadge">⭐ 0 顆星</div>
+        <div class="badge-capsule sync-capsule" id="syncStatusCapsule" onclick="openSyncModal()">⚪ 本機離線模式</div>
+        <button type="button" class="sync-btn-setting" onclick="openSyncModal()">⚙️ 雲端同步設定</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= KPI STATS ================= -->
+  <section class="kpi-section">
+    <div class="kpi-grid">
+      <!-- KPI 1: 段考倒數與番茄鐘 -->
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">📅 第二次段考倒數與番茄鐘</span>
+          <button type="button" class="kpi-btn-edit" onclick="openExamModal()">✏️ 設定目標</button>
+        </div>
+        <div class="kpi-value-wrap">
+          <span class="kpi-value" id="examCountdownDisplay">9</span>
+          <span class="kpi-unit">天後段考（目標 <span id="targetScoreDisplay">85</span> 分）</span>
+        </div>
+        <div style="font-size:0.78rem; color:var(--slate-600); margin-top:2px;">
+          ⏱️ 專注番茄鐘：<strong id="timerDisplay">25:00</strong>
+        </div>
+        <div class="timer-controls">
+          <button type="button" class="timer-btn primary" id="btnTimerToggle" onclick="toggleTimer()">開始專注</button>
+          <button type="button" class="timer-btn" onclick="resetTimer()">重置</button>
+          <button type="button" class="timer-btn" onclick="setTimerMinutes(25)">25m</button>
+          <button type="button" class="timer-btn" onclick="setTimerMinutes(50)">50m</button>
+          <button type="button" class="timer-btn" onclick="setTimerMinutes(5)">5m休息</button>
+        </div>
+      </div>
+
+      <!-- KPI 2: 本週打卡達成率 -->
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">📊 本週自習打卡達成率</span>
+          <span id="checkedRatioText" style="font-size:0.75rem; font-weight:700; color:var(--primary);">0 / 21 項目</span>
+        </div>
+        <div class="kpi-value-wrap">
+          <span class="kpi-value" id="checkedPercentDisplay">0%</span>
+          <span class="kpi-unit">平日 1h ｜ 假日 2.5h</span>
+        </div>
+        <div class="kpi-progress-bar">
+          <div class="kpi-progress-fill" id="weeklyProgressFill" style="width: 0%;"></div>
+        </div>
+        <div style="font-size:0.75rem; color:var(--slate-400); margin-top:6px;">
+          達到 80% 即可解鎖週末放鬆獎勵！
+        </div>
+      </div>
+
+      <!-- KPI 3: 週末獎勵狀態 -->
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">🎁 週末放鬆獎勵</span>
+          <button type="button" class="kpi-btn-edit" onclick="openRewardModal()">✏️ 自訂獎勵</button>
+        </div>
+        <div class="kpi-value-wrap">
+          <span class="kpi-value" id="rewardLockStatus" style="font-size:1.4rem;">🔒 鎖定中</span>
+        </div>
+        <div style="font-size:0.8rem; color:var(--slate-600); font-weight:600;" id="rewardItemDisplay">
+          獎勵內容：自選火鍋或宵夜 ＋ 追劇放鬆 2 小時
+        </div>
+        <div class="kpi-progress-bar">
+          <div class="kpi-progress-fill" id="rewardProgressFill" style="background: linear-gradient(90deg, #f59e0b, #10b981); width: 0%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TABS NAVIGATION ================= -->
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="tab-weekly">📅 每日自習打卡專區</button>
+      <button class="tab-btn" data-tab="tab-strategy">💡 七大學科重點精華</button>
+      <button class="tab-btn" data-tab="tab-14days">⚡ 考前 14 天衝刺檢核表</button>
+      <button class="tab-btn" data-tab="tab-resources">🌐 國中線上學習資源區</button>
+      <button class="tab-btn" data-tab="tab-gamify">🏆 獎勵兌換處 (星星存摺)</button>
+    </nav>
+  </div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-content">
+
+    <!-- ================= TAB 1: WEEKLY CHECK-IN ================= -->
+    <section id="tab-weekly" class="tab-pane active">
+      <div class="weekly-actions-bar">
+        <div class="actions-left">
+          <h3>🎯 國二上第二次段考考前黃金衝刺打卡週 ｜ 平日 60 分鐘精實推進</h3>
+          <p>💡 <strong>每日固定三步驟</strong>：10 分鐘基礎背誦 ➔ 25 分鐘核心觀念微課/講義 ➔ 25 分鐘精選題庫演練（週末全力弱點補強）</p>
+        </div>
+        <button type="button" class="btn-reset-week" id="btnResetWeekChecks">清空本週所有打勾（新週開始）</button>
+      </div>
+
+      <div class="day-cards-grid" id="dayCardsGrid">
+
+        <!-- 週一：數學科 (因式分解十字交乘) -->
+        <div class="day-card" data-day="1">
+          <div class="day-card-header">
+            <div class="day-title-wrap">
+              <span class="day-name">週一</span>
+              <span class="day-time-tag">自習 1 hr</span>
+            </div>
+            <select class="subject-swap-select" onchange="swapDaySubject(this, 'mon')">
+              <option value="math">🔄 今日科目：數學 (因式分解十字交乘)</option>
+              <option value="sci">🔄 今日改讀：理化</option>
+              <option value="eng">🔄 今日改讀：英語</option>
+              <option value="chi">🔄 今日改讀：國文</option>
+              <option value="his">🔄 今日改讀：歷史</option>
+              <option value="geo">🔄 今日改讀：地理</option>
+              <option value="civ">🔄 今日改讀：公民</option>
+            </select>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="mon-task1-title">📐 項目一：乘法公式與二次方根公式速記（10 分鐘）</div>
+            <div class="phase-desc" id="mon-task1-desc">每日第 1 步！默寫平方差 $(a+b)(a-b)=a^2-b^2$ 與和平方差平方公式。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="mon-task2-title">📖 項目二：因式分解四大手法精讀（25 分鐘）</div>
+            <div class="phase-desc" id="mon-task2-desc">精讀提公因式、分組分解與十字交乘常數項拆解技巧。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="mon-task3-title">📝 項目三：衝刺講義精選題演練（25 分鐘）</div>
+            <div class="phase-desc" id="mon-task3-desc">親手算出數學衝刺講義 3 題實戰題，確實核對解析！</div>
+          </div>
+          <div class="checklist-group">
+            <label class="check-item" for="chk-mon-1">
+              <input type="checkbox" id="chk-mon-1" data-day="mon">
+              <span class="check-label" id="mon-chk1-lbl">【10 分鐘】乘法公式與平方根基本運算完全熟練</span>
+            </label>
+            <label class="check-item" for="chk-mon-2">
+              <input type="checkbox" id="chk-mon-2" data-day="mon">
+              <span class="check-label" id="mon-chk2-lbl">【25 分鐘】十字交乘拆中間項係數法看懂並親自推導</span>
+            </label>
+            <label class="check-item" for="chk-mon-3">
+              <input type="checkbox" id="chk-mon-3" data-day="mon">
+              <span class="check-label" id="mon-chk3-lbl">【25 分鐘】完成 3 題綜合因式分解計算並檢討錯題</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 週二：理化科 (聲音與波速) -->
+        <div class="day-card" data-day="2">
+          <div class="day-card-header">
+            <div class="day-title-wrap">
+              <span class="day-name">週二</span>
+              <span class="day-time-tag">自習 1 hr</span>
+            </div>
+            <select class="subject-swap-select" onchange="swapDaySubject(this, 'tue')">
+              <option value="sci">🔄 今日科目：理化 (聲音傳播與波速)</option>
+              <option value="math">🔄 今日改讀：數學</option>
+              <option value="eng">🔄 今日改讀：英語</option>
+              <option value="chi">🔄 今日改讀：國文</option>
+              <option value="his">🔄 今日改讀：歷史</option>
+              <option value="geo">🔄 今日改讀：地理</option>
+              <option value="civ">🔄 今日改讀：公民</option>
+            </select>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="tue-task1-title">🔬 項目一：波形圖與公式速查（10 分鐘）</div>
+            <div class="phase-desc" id="tue-task1-desc">牢記波速公式 $v = f \times \lambda$，辨別橫波（高低波）與縱波（疏密波）。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="tue-task2-title">🔊 項目二：聲音三要素與回聲應用（25 分鐘）</div>
+            <div class="phase-desc" id="tue-task2-desc">搞懂響度(振幅)、音調(頻率)、音色(波形)，聲納與回聲測距 $d=vt/2$。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="tue-task3-title">📝 項目三：理化段考精華例題 3 題（25 分鐘）</div>
+            <div class="phase-desc" id="tue-task3-desc">計算回聲測距與波形移動題型，穩穩掌握基本分！</div>
+          </div>
+          <div class="checklist-group">
+            <label class="check-item" for="chk-tue-1">
+              <input type="checkbox" id="chk-tue-1" data-day="tue">
+              <span class="check-label" id="tue-chk1-lbl">【10 分鐘】波速公式與週期頻率倒數關係能默背寫出</span>
+            </label>
+            <label class="check-item" for="chk-tue-2">
+              <input type="checkbox" id="chk-tue-2" data-day="tue">
+              <span class="check-label" id="tue-chk2-lbl">【25 分鐘】聲音三要素對應物理量與波形變化完全搞懂</span>
+            </label>
+            <label class="check-item" for="chk-tue-3">
+              <input type="checkbox" id="chk-tue-3" data-day="tue">
+              <span class="check-label" id="tue-chk3-lbl">【25 分鐘】完成回聲測距與原聲疊加考題實戰演練</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 週三：英語科 (過去進行式與花費動詞) -->
+        <div class="day-card" data-day="3">
+          <div class="day-card-header">
+            <div class="day-title-wrap">
+              <span class="day-name">週三</span>
+              <span class="day-time-tag">自習 1 hr</span>
+            </div>
+            <select class="subject-swap-select" onchange="swapDaySubject(this, 'wed')">
+              <option value="eng">🔄 今日科目：英語 (過去進行式與花費動詞)</option>
+              <option value="math">🔄 今日改讀：數學</option>
+              <option value="sci">🔄 今日改讀：理化</option>
+              <option value="chi">🔄 今日改讀：國文</option>
+              <option value="his">🔄 今日改讀：歷史</option>
+              <option value="geo">🔄 今日改讀：地理</option>
+              <option value="civ">🔄 今日改讀：公民</option>
+            </select>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="wed-task1-title">🔤 項目一：段考必考核心單字 15 個（10 分鐘）</div>
+            <div class="phase-desc" id="wed-task1-desc">背誦康軒/翰林段考範圍 15 個高頻單字與不規則動詞過去式。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="wed-task2-title">✍️ 項目二：when/while 句型與 spend/cost/take 辨析（25 分鐘）</div>
+            <div class="phase-desc" id="wed-task2-desc">釐清持續動作用 while、瞬間動作用 when；人 spend/物 cost/It takes。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="wed-task3-title">📝 項目三：文法選擇與閱讀克漏字 3 題（25 分鐘）</div>
+            <div class="phase-desc" id="wed-task3-desc">演練連綴動詞 look/smell/taste 與花費動詞填空題。</div>
+          </div>
+          <div class="checklist-group">
+            <label class="check-item" for="chk-wed-1">
+              <input type="checkbox" id="chk-wed-1" data-day="wed">
+              <span class="check-label" id="wed-chk1-lbl">【10 分鐘】段考範圍核心單字認讀與過去式三態熟背</span>
+            </label>
+            <label class="check-item" for="chk-wed-2">
+              <input type="checkbox" id="chk-wed-2" data-day="wed">
+              <span class="check-label" id="wed-chk2-lbl">【25 分鐘】spend, cost, take 三大花費動詞主詞與介系詞不搞混</span>
+            </label>
+            <label class="check-item" for="chk-wed-3">
+              <input type="checkbox" id="chk-wed-3" data-day="wed">
+              <span class="check-label" id="wed-chk3-lbl">【25 分鐘】完成 3 篇文法題與 1 篇閱讀測驗實戰練習</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 週四：國文科 (文言字詞義與修辭對聯) -->
+        <div class="day-card" data-day="4">
+          <div class="day-card-header">
+            <div class="day-title-wrap">
+              <span class="day-name">週四</span>
+              <span class="day-time-tag">自習 1 hr</span>
+            </div>
+            <select class="subject-swap-select" onchange="swapDaySubject(this, 'thu')">
+              <option value="chi">🔄 今日科目：國文 (文言文詞義與修辭常識)</option>
+              <option value="math">🔄 今日改讀：數學</option>
+              <option value="sci">🔄 今日改讀：理化</option>
+              <option value="eng">🔄 今日改讀：英語</option>
+              <option value="his">🔄 今日改讀：歷史</option>
+              <option value="geo">🔄 今日改讀：地理</option>
+              <option value="civ">🔄 今日改讀：公民</option>
+            </select>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="thu-task1-title">📜 項目一：注釋與古今異義字詞速記（10 分鐘）</div>
+            <div class="phase-desc" id="thu-task1-desc">複習課文核心注釋，特別留意古今詞義差別（妻子、去、交通）。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="thu-task2-title">🎭 項目二：對聯判斷與修辭格精研（25 分鐘）</div>
+            <div class="phase-desc" id="thu-task2-desc">掌握對聯「仄起平收」、四季節慶與行業題辭特徵關鍵字。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="thu-task3-title">📝 項目三：國文閱讀測驗與題型精解（25 分鐘）</div>
+            <div class="phase-desc" id="thu-task3-desc">演練 2 篇課外文言短文與題辭實戰題，提升語感。</div>
+          </div>
+          <div class="checklist-group">
+            <label class="check-item" for="chk-thu-1">
+              <input type="checkbox" id="chk-thu-1" data-day="thu">
+              <span class="check-label" id="thu-chk1-lbl">【10 分鐘】段考範圍課文重點字音字形與古今異義默記</span>
+            </label>
+            <label class="check-item" for="chk-thu-2">
+              <input type="checkbox" id="chk-thu-2" data-day="thu">
+              <span class="check-label" id="thu-chk2-lbl">【25 分鐘】對聯平仄上下聯與婚喪喜慶題辭快速判讀</span>
+            </label>
+            <label class="check-item" for="chk-thu-3">
+              <input type="checkbox" id="chk-thu-3" data-day="thu">
+              <span class="check-label" id="thu-chk3-lbl">【25 分鐘】完成國文衝刺題庫 3 題並確認破題點</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 週五：社會科 (歷史秦漢魏晉 + 地理中國氣候 + 公民法律) -->
+        <div class="day-card" data-day="5">
+          <div class="day-card-header">
+            <div class="day-title-wrap">
+              <span class="day-name">週五</span>
+              <span class="day-time-tag">自習 1 hr</span>
+            </div>
+            <select class="subject-swap-select" onchange="swapDaySubject(this, 'fri')">
+              <option value="soc">🔄 今日科目：社會三合一 (秦漢魏晉/中國氣候/法律位階)</option>
+              <option value="math">🔄 今日改讀：數學</option>
+              <option value="sci">🔄 今日改讀：理化</option>
+              <option value="eng">🔄 今日改讀：英語</option>
+              <option value="chi">🔄 今日改讀：國文</option>
+            </select>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="fri-task1-title">🏛️ 項目一：歷史秦漢制度與魏晉融合（20 分鐘）</div>
+            <div class="phase-desc" id="fri-task1-desc">掌握秦始皇郡縣制、漢武帝鹽鐵官營、九品官人法與孝文帝漢化。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="fri-task2-title">🗺️ 項目二：地理季風氣候與水文治理（20 分鐘）</div>
+            <div class="phase-desc" id="fri-task2-desc">熟記秦嶺淮河年雨量 750mm 分界線、黃河地上河、南水北調。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title" id="fri-task3-title">⚖️ 項目三：公民法律位階與責任辨析（20 分鐘）</div>
+            <div class="phase-desc" id="fri-task3-desc">憲法/法律/命令層級、比例原則、民法侵權賠償與刑法年齡能力。</div>
+          </div>
+          <div class="checklist-group">
+            <label class="check-item" for="chk-fri-1">
+              <input type="checkbox" id="chk-fri-1" data-day="fri">
+              <span class="check-label" id="fri-chk1-lbl">【20 分鐘】歷史朝代更迭、制度關鍵人物與絲路重點通讀</span>
+            </label>
+            <label class="check-item" for="chk-fri-2">
+              <input type="checkbox" id="chk-fri-2" data-day="fri">
+              <span class="check-label" id="fri-chk2-lbl">【20 分鐘】中國三大氣候區、等雨量線與河川治理核心圖表牢記</span>
+            </label>
+            <label class="check-item" for="chk-fri-3">
+              <input type="checkbox" id="chk-fri-3" data-day="fri">
+              <span class="check-label" id="fri-chk3-lbl">【20 分鐘】法律名稱判別與民事/刑事責任分界題目演練</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 週六：理化光學 + 數學幾何畢氏定理 (大衝刺) -->
+        <div class="day-card" data-day="6">
+          <div class="day-card-header">
+            <div class="day-title-wrap">
+              <span class="day-name">週六 (黃金大衝刺)</span>
+              <span class="day-time-tag">自習 2.5 hr</span>
+            </div>
+            <span style="font-size:0.78rem; font-weight:700; color:#ea580c;">⭐ 假日完成獲得 20 星！</span>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title">🔍 模塊一：理化光學、面鏡與透鏡成像（50 分鐘）</div>
+            <div class="phase-desc">畫出凸透鏡成像光路圖，熟記 $p>2f$ 倒縮實、$f<p<2f$ 倒放實、$p<f$ 正放虛。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title">📐 模塊二：數學畢氏定理與幾何圖形應用（50 分鐘）</div>
+            <div class="phase-desc">熟練常用直角勾股數 (3,4,5), (5,12,13), (7,24,25)，斜邊高公式 $h=ab/c$。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title">💯 模塊三：數理綜合模擬考題實測（50 分鐘）</div>
+            <div class="phase-desc">限時 40 分鐘演練數學與理化考卷各 10 題，嚴格訂正！</div>
+          </div>
+          <div class="checklist-group">
+            <label class="check-item" for="chk-sat-1">
+              <input type="checkbox" id="chk-sat-1" data-day="sat">
+              <span class="check-label">【50 分鐘】透鏡成像六大規律在筆記紙上親手默畫出光路</span>
+            </label>
+            <label class="check-item" for="chk-sat-2">
+              <input type="checkbox" id="chk-sat-2" data-day="sat">
+              <span class="check-label">【50 分鐘】畢氏定理折疊問題、梯子滑動問題例題計算正確</span>
+            </label>
+            <label class="check-item" for="chk-sat-3">
+              <input type="checkbox" id="chk-sat-3" data-day="sat">
+              <span class="check-label">【50 分鐘】完成數理段考衝刺試題並將錯題整理至錯題本</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 週日：文科統整 + 錯題總清倉 (大衝刺) -->
+        <div class="day-card" data-day="0">
+          <div class="day-card-header">
+            <div class="day-title-wrap">
+              <span class="day-name">週日 (總結與清倉)</span>
+              <span class="day-time-tag">自習 2.5 hr</span>
+            </div>
+            <span style="font-size:0.78rem; font-weight:700; color:#ea580c;">⭐ 假日完成獲得 20 星！</span>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title">📚 模塊一：國文與英文全科語感速刷（50 分鐘）</div>
+            <div class="phase-desc">重讀英文課文兩遍、複習國文文言名篇語譯與題辭速記口訣。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title">🌍 模塊二：史地公社會三科盲點地圖（50 分鐘）</div>
+            <div class="phase-desc">對照一頁一考點講義，地毯式檢驗社會科高頻陷阱。</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-title">🎯 模塊三：本週錯題清倉 ＋ 週末獎勵解鎖！（50 分鐘）</div>
+            <div class="phase-desc">將本週寫錯的數學、理化計算題蓋住答案重算一遍，確認 100% 搞懂。</div>
+          </div>
+          <div class="checklist-group">
+            <label class="check-item" for="chk-sun-1">
+              <input type="checkbox" id="chk-sun-1" data-day="sun">
+              <span class="check-label">【50 分鐘】國英兩科段考範圍重點完全掃描無死角</span>
+            </label>
+            <label class="check-item" for="chk-sun-2">
+              <input type="checkbox" id="chk-sun-2" data-day="sun">
+              <span class="check-label">【50 分鐘】社會科重點圖表與法律條款細目再複習一遍</span>
+            </label>
+            <label class="check-item" for="chk-sun-3">
+              <input type="checkbox" id="chk-sun-3" data-day="sun">
+              <span class="check-label">【50 分鐘】本週所有錯題重算驗收 ＋ 解鎖週末放鬆獎勵 🎉</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: SEVEN SUBJECTS STRATEGY ================= -->
+    <section id="tab-strategy" class="tab-pane">
+      <div class="strategy-sub-filter">
+        <button class="sub-pill active" data-sub="math">📐 數學科</button>
+        <button class="sub-pill" data-sub="sci">🔬 理化科</button>
+        <button class="sub-pill" data-sub="eng">🔤 英語科</button>
+        <button class="sub-pill" data-sub="chi">📜 國文科</button>
+        <button class="sub-pill" data-sub="his">🏛️ 歷史科</button>
+        <button class="sub-pill" data-sub="geo">🗺️ 地理科</button>
+        <button class="sub-pill" data-sub="civ">⚖️ 公民科</button>
+      </div>
+
+      <!-- 數學科 -->
+      <div class="subject-pane active" id="subpane-math">
+        <div class="sub-hero-card" style="border-left: 5px solid #2563eb;">
+          <div class="sub-hero-left">
+            <h3>國二上 數學科 第二次段考 衝刺重點與題型全攻略</h3>
+            <p>範圍：第二章 根式與畢氏定理 ＋ 第三章 因式分解 ｜ 目標穩拿 85 分以上</p>
+          </div>
+          <a href="國二上_第二次段考衝刺_數學科_重點與題型分析_一頁一考點版.docx" class="docx-open-btn">
+            📄 開啟數學衝刺講義 Word 檔 ↗
+          </a>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點一】二次方根化簡與分母有理化</span>
+            <span class="point-badge">必考 15~20 分</span>
+          </div>
+          <div class="formula-box">
+            • 乘除法則：$\sqrt{a} \times \sqrt{b} = \sqrt{ab}$，$\frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}}$ ($a \ge 0, b > 0$)<br>
+            • 分母有理化：$\frac{c}{\sqrt{a}+\sqrt{b}} = \frac{c(\sqrt{a}-\sqrt{b})}{a-b}$（利用平方差公式消除根號）
+          </div>
+          <div class="tips-box">
+            ⚠️ <strong>易錯陷阱</strong>：$\sqrt{a^2} = |a|$！若 $a < 0$，則 $\sqrt{a^2} = -a$。千萬不能直接寫成 $a$！例如 $\sqrt{(-5)^2} = 5$。
+          </div>
+          <div class="quiz-accordion">
+            <div class="quiz-header" onclick="toggleQuiz(this)">
+              <span>即測即評：化簡 $\frac{4}{\sqrt{5}+1} - \sqrt{20}$ 之值為何？</span>
+              <span>點擊看解析 ▼</span>
+            </div>
+            <div class="quiz-body">
+              <strong>【解題步驟】</strong>：<br>
+              1. 分母有理化：$\frac{4(\sqrt{5}-1)}{(\sqrt{5}+1)(\sqrt{5}-1)} = \frac{4(\sqrt{5}-1)}{5-1} = \frac{4(\sqrt{5}-1)}{4} = \sqrt{5}-1$。<br>
+              2. 化簡根式：$\sqrt{20} = \sqrt{4 \times 5} = 2\sqrt{5}$。<br>
+              3. 合併同類項：$(\sqrt{5}-1) - 2\sqrt{5} = -1 - \sqrt{5}$。<br>
+              <strong>答案：$-1-\sqrt{5}$</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點二】因式分解四大武器（提公因式、乘法公式、十字交乘）</span>
+            <span class="point-badge">必考 25~30 分</span>
+          </div>
+          <div class="formula-box">
+            • 武器 1：提公因式 $ma + mb = m(a+b)$（看到負號先提出變號）<br>
+            • 武器 2：平方差 $a^2 - b^2 = (a+b)(a-b)$<br>
+            • 武器 3：和/差平方 $a^2 \pm 2ab + b^2 = (a \pm b)^2$<br>
+            • 武器 4：十字交乘法 $x^2 + (p+q)x + pq = (x+p)(x+q)$
+          </div>
+          <div class="tips-box">
+            💡 <strong>十字交乘口訣</strong>：拆兩頭、乘中間、湊係數、定符號！常數項為正，兩數同號（看一次項正負）；常數項為負，兩數異號。
+          </div>
+        </div>
+      </div>
+
+      <!-- 理化科 -->
+      <div class="subject-pane" id="subpane-sci">
+        <div class="sub-hero-card" style="border-left: 5px solid #059669;">
+          <div class="sub-hero-left">
+            <h3>國二上 理化科 第二次段考 衝刺重點與題型全攻略</h3>
+            <p>範圍：第 3 章 波動與聲音 ＋ 第 4 章 光、面鏡與透鏡（康軒版） ｜ 目標穩拿 85 分</p>
+          </div>
+          <a href="國二上_第二次段考衝刺_理化科_重點與題型分析_一頁一考點版.docx" class="docx-open-btn" style="background:#059669;">
+            📄 開啟理化衝刺講義 Word 檔 ↗
+          </a>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點一】波的傳播、週期頻率與波速公式</span>
+            <span class="point-badge">秒殺基礎分</span>
+          </div>
+          <div class="formula-box">
+            • 波速公式：$v = f \times \lambda$（波速 = 頻率 × 波長）<br>
+            • 週期與頻率互為倒數：$T = \frac{1}{f}$，故 $v = \frac{\lambda}{T}$<br>
+            • 鐵律：<strong>波速由介質決定</strong>（同介質波速必相同）；<strong>頻率由波源決定</strong>（波由空氣傳入水中頻率不變）。
+          </div>
+          <div class="tips-box">
+            ⚠️ <strong>常考陷阱</strong>：大聲喊叫（振幅大）並不會讓聲音傳得比較快！因為空氣介質沒變，聲速一樣！
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點二】凸透鏡成像六大規律（段考決勝題）</span>
+            <span class="point-badge">考卷壓軸大題</span>
+          </div>
+          <div class="formula-box">
+            • 物距 $p > 2f$ ➔ 像在 $f < q < 2f$，成<strong>倒立縮小實像</strong>（照相機原理）<br>
+            • 物距 $p = 2f$ ➔ 像在 $q = 2f$，成<strong>倒立等大實像</strong>（複印機）<br>
+            • 物距 $f < p < 2f$ ➔ 像在 $q > 2f$，成<strong>倒立放大實像</strong>（投影機、顯微鏡物鏡）<br>
+            • 物距 $p = f$ ➔ <strong>不成像</strong>（折射光平行，探照燈）<br>
+            • 物距 $p < f$ ➔ 像在物體同側，成<strong>正立放大虛像</strong>（放大鏡）<br>
+            • 凹透鏡：無論物體在哪，<strong>永遠成正立縮小虛像</strong>（近視眼鏡）！
+          </div>
+        </div>
+      </div>
+
+      <!-- 英語科 -->
+      <div class="subject-pane" id="subpane-eng">
+        <div class="sub-hero-card" style="border-left: 5px solid #d97706;">
+          <div class="sub-hero-left">
+            <h3>國二上 英語科 第二次段考 衝刺重點與題型全攻略</h3>
+            <p>範圍：過去進行式 (Past Continuous) ＋ 連綴動詞 ＋ 花費動詞大辨析</p>
+          </div>
+          <a href="國二上_第二次段考衝刺_英語科_重點與題型分析_一頁一考點版.docx" class="docx-open-btn" style="background:#d97706;">
+            📄 開啟英語衝刺講義 Word 檔 ↗
+          </a>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點一】花費動詞大對決：spend / cost / take</span>
+            <span class="point-badge">段考必考 3~5 題</span>
+          </div>
+          <div class="formula-box">
+            • <strong>人 + spend + 時間/金錢 + on N / (in) V-ing</strong>（主詞必須是人！）<br>
+            • <strong>物 + cost + 人 + 金錢</strong>（主詞必須是事物或花費的代價！）<br>
+            • <strong>It + takes + 人 + 時間 + to V</strong>（虛主詞 It 代替後面的不定詞）
+          </div>
+          <div class="tips-box">
+            💡 <strong>記憶口訣</strong>：人花時間金錢用 spend；買東西花多少錢事物當主詞用 cost；花了多少時間做某事 It takes to V！
+          </div>
+        </div>
+      </div>
+
+      <!-- 國文科 -->
+      <div class="subject-pane" id="subpane-chi">
+        <div class="sub-hero-card" style="border-left: 5px solid #dc2626;">
+          <div class="sub-hero-left">
+            <h3>國二上 國文科 第二次段考 衝刺重點與題型全攻略</h3>
+            <p>範圍：第 4 課至第 6 課 ＋ 語文常識（修辭、詞性、對聯題辭）（康軒版）</p>
+          </div>
+          <a href="國二上_第二次段考衝刺_國文科_重點與題型分析_一頁一考點版.docx" class="docx-open-btn" style="background:#dc2626;">
+            📄 開啟國文衝刺講義 Word 檔 ↗
+          </a>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點一】對聯平仄判斷與上下聯黏貼</span>
+            <span class="point-badge">語文常識送分題</span>
+          </div>
+          <div class="formula-box">
+            • <strong>仄起平收</strong>：上聯末字必為仄聲（國語三聲、四聲及入聲）；下聯末字必為平聲（國語一聲、二聲）<br>
+            • 面向大門：<strong>右為上聯，左為下聯</strong>！
+          </div>
+        </div>
+      </div>
+
+      <!-- 歷史科 -->
+      <div class="subject-pane" id="subpane-his">
+        <div class="sub-hero-card" style="border-left: 5px solid #7c3aed;">
+          <div class="sub-hero-left">
+            <h3>國二上 歷史科 第二次段考 衝刺重點與題型全攻略</h3>
+            <p>範圍：第 3 課 秦漢帝國與文化 ＋ 第 4 課 魏晉南北朝的分裂與交融（翰林版）</p>
+          </div>
+          <a href="國二上_第二次段考衝刺_歷史科_重點與題型分析_一頁一考點版.docx" class="docx-open-btn" style="background:#7c3aed;">
+            📄 開啟歷史衝刺講義 Word 檔 ↗
+          </a>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點一】秦漢制度演進與魏晉九品官人法</span>
+            <span class="point-badge">核心考點</span>
+          </div>
+          <div class="formula-box">
+            • 秦始皇：廢封建、行郡縣，統一文字、貨幣、度量衡，築長城、焚書坑儒。<br>
+            • 漢武帝：罷黜百家獨尊儒術、鹽鐵酒官營專賣、設平準均輸、派張騫通西域（開闢絲路）。<br>
+            • 曹魏九品官人法：原欲拔擢人才，後被世族壟斷形成「上品無寒門，下品無勢族」。
+          </div>
+        </div>
+      </div>
+
+      <!-- 地理科 -->
+      <div class="subject-pane" id="subpane-geo">
+        <div class="sub-hero-card" style="border-left: 5px solid #0891b2;">
+          <div class="sub-hero-left">
+            <h3>國二上 地理科 第二次段考 衝刺重點與題型全攻略</h3>
+            <p>範圍：第 3 課 中國氣候與生活 ＋ 第 4 課 中國水文與環境治理（翰林版）</p>
+          </div>
+          <a href="國二上_第二次段考衝刺_地理科_重點與題型分析_一頁一考點版.docx" class="docx-open-btn" style="background:#0891b2;">
+            📄 開啟地理衝刺講義 Word 檔 ↗
+          </a>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點一】秦嶺—淮河地理分界線（萬年必考）</span>
+            <span class="point-badge">必背指標</span>
+          </div>
+          <div class="formula-box">
+            • 年等雨量線：<strong>750 mm (或 800 mm)</strong><br>
+            • 1 月等溫線：<strong>0 ℃ 等溫線</strong><br>
+            • 氣候區分界：北方溫帶季風氣候 ｜ 南方副熱帶季風氣候<br>
+            • 水文分界：北方河川冬季結冰、流量小含沙量大 ｜ 南方河川冬季不結冰、流量大航運發達
+          </div>
+        </div>
+      </div>
+
+      <!-- 公民科 -->
+      <div class="subject-pane" id="subpane-civ">
+        <div class="sub-hero-card" style="border-left: 5px solid #4338ca;">
+          <div class="sub-hero-left">
+            <h3>國二上 公民科 第二次段考 衝刺重點與題型全攻略</h3>
+            <p>範圍：第 3 課 法律的位階與制定 ＋ 第 4 課 憲法與權利保障、民刑責任（翰林版）</p>
+          </div>
+          <a href="國二上_第二次段考衝刺_公民科_重點與題型分析_一頁一考點版.docx" class="docx-open-btn" style="background:#4338ca;">
+            📄 開啟公民衝刺講義 Word 檔 ↗
+          </a>
+        </div>
+
+        <div class="point-card">
+          <div class="point-card-header">
+            <span class="point-title">【考點一】法律位階體系與名稱判斷</span>
+            <span class="point-badge">概念精確度 100%</span>
+          </div>
+          <div class="formula-box">
+            • <strong>第一級：憲法</strong>（國家根本大法，效力最高，修改程序最嚴格）<br>
+            • <strong>第二級：法律</strong>（立法院三讀通過、總統公布；名稱限：<strong>法、律、條例、通則</strong>）<br>
+            • <strong>第三級：命令</strong>（行政機關訂定；名稱常見：<strong>規程、規則、細則、辦法、綱要、標準、準則</strong>）
+          </div>
+          <div class="tips-box">
+            ⚠️ <strong>口訣秒殺</strong>：「法、律、條例、通則」是立法院過的法律！若看到「辦法、細則、標準」，通通是行政命令！
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 3: 14 DAYS SPRINT ================= -->
+    <section id="tab-14days" class="tab-pane">
+      <div class="sprint-summary-card">
+        <div class="sprint-summary-left">
+          <h3>⚡ 考前 14 天段考地毯式衝刺檢核單</h3>
+          <p>每日針對 2~3 個必拿核心考點精準打卡，只要按部就班勾選，80+ 分穩如磐石！</p>
+        </div>
+        <div style="font-size:1.1rem; font-weight:800; background:rgba(255,255,255,0.2); padding:8px 16px; border-radius:10px;">
+          衝刺進度：<span id="sprintCountDisplay">0</span> / 14 天完成
+        </div>
+      </div>
+
+      <div class="sprint-days-grid" id="sprintGrid">
+        <!-- JS will populate D-14 to D-1 cards -->
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: RESOURCES ================= -->
+    <section id="tab-resources" class="tab-pane">
+      <div style="margin-bottom:16px;">
+        <h3 style="font-size:1.15rem; font-weight:800; color:var(--navy);">🌐 國中優質線上學習平台精選</h3>
+        <p style="font-size:0.84rem; color:var(--slate-600);">免費且權威的線上學習工具，卡關時看 5~10 分鐘微觀念迅速破解！</p>
+      </div>
+
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">🇺🇸 Cool English 英語線上學習</div>
+            <div class="resource-desc">教育部國教署專為中小學建置的英語平台，聽力練習、口說打卡、單字遊戲與段考模擬題一應俱全。</div>
+          </div>
+          <a href="https://www.coolenglish.edu.tw/" target="_blank" class="resource-link-btn">開啟 Cool English ↗</a>
+        </div>
+
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">📐 均一教育平台 (Junyi)</div>
+            <div class="resource-desc">國二數學因式分解、幾何畢氏定理與理化波速光學超詳細微課，附即測即評反饋。</div>
+          </div>
+          <a href="https://www.junyiacademy.org/" target="_blank" class="resource-link-btn">開啟均一教育平台 ↗</a>
+        </div>
+
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">🔬 LIS 情境科學教材</div>
+            <div class="resource-desc">超生動的科學歷史動畫！把波動、聲音與面鏡成像原理以故事方式拆解，秒懂科學家發現歷程。</div>
+          </div>
+          <a href="https://lis.org.tw/" target="_blank" class="resource-link-btn">開啟 LIS 科學教材 ↗</a>
+        </div>
+
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">📺 臺北酷課雲 (CooC)</div>
+            <div class="resource-desc">台北市名師錄製之國中段考重點精華微課，涵蓋國文、英語、數學、理化與社會全科。</div>
+          </div>
+          <a href="https://cooc.tp.edu.tw/" target="_blank" class="resource-link-btn">開啟臺北酷課雲 ↗</a>
+        </div>
+
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">💡 教育部因材網</div>
+            <div class="resource-desc">教育部適性診斷學習網，可針對弱點單元自動推播補救微課與診斷評量題。</div>
+          </div>
+          <a href="https://adl.edu.tw/" target="_blank" class="resource-link-btn">開啟教育部因材網 ↗</a>
+        </div>
+
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">📝 國中會考與歷屆試題庫</div>
+            <div class="resource-desc">心測中心與教育部歷屆國中基測/會考試題與標準答案詳解，段考複習前刷基底好幫手。</div>
+          </div>
+          <a href="https://cap.rcpet.edu.tw/" target="_blank" class="resource-link-btn">開啟會考題庫專區 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: GAMIFY & STAR BANK ================= -->
+    <section id="tab-gamify" class="tab-pane">
+      <!-- 星星存摺卡片 -->
+      <div class="star-bank-card">
+        <div class="star-bank-left">
+          <div class="bank-label">⭐ 佳蓁專屬「專注星星存摺」</div>
+          <div class="star-num" id="starBankDisplay">0 顆星</div>
+          <div class="bank-rule">平日每自習 1 小時獲得 10 顆星 ｜ 假日完成獲得 20 顆星 ｜ 點擊自由兌換！</div>
+        </div>
+        <div>
+          <button type="button" class="kpi-btn-edit" onclick="openStarCustomModal()" style="background:#fff; color:#1e3a8a; padding:10px 18px; border-radius:8px; font-weight:800; font-size:0.9rem;">
+            ✏️ 家長自訂夢想大獎
+          </button>
+        </div>
+      </div>
+
+      <!-- 星星兌換貨架清單 -->
+      <div style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="font-size:1.15rem; color:var(--navy); font-weight:800;">🎁 專注星星自由兌換小舖</h3>
+        <span style="font-size:0.82rem; color:var(--slate-600);">點擊兌換按鈕即可向老爸老媽請款領獎！</span>
+      </div>
+
+      <div class="star-rewards-grid" id="starRewardsList">
+        <!-- 獎勵卡 1 -->
+        <div class="reward-item-card">
+          <div>
+            <div class="reward-name">🍿 自選宵夜點心 / 手搖飲料一杯</div>
+            <div class="reward-cost">所需星星：30 ⭐</div>
+          </div>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward('自選宵夜點心/手搖飲', 30)">兌換 ↗</button>
+        </div>
+
+        <!-- 獎勵卡 2 -->
+        <div class="reward-item-card">
+          <div>
+            <div class="reward-name">🎮 週末 Switch / 手機遊戲 2 小時暢玩</div>
+            <div class="reward-cost">所需星星：50 ⭐</div>
+          </div>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward('週末Switch/手遊2小時暢玩', 50)">兌換 ↗</button>
+        </div>
+
+        <!-- 獎勵卡 3 -->
+        <div class="reward-item-card">
+          <div>
+            <div class="reward-name">🎬 週末家庭電影之夜 / 逛街自由日</div>
+            <div class="reward-cost">所需星星：60 ⭐</div>
+          </div>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward('家庭電影之夜/逛街自由日', 60)">兌換 ↗</button>
+        </div>
+
+        <!-- 獎勵卡 4 -->
+        <div class="reward-item-card">
+          <div>
+            <div class="reward-name">🏖️ 段考後任選一日完全放空無作業日</div>
+            <div class="reward-cost">所需星星：100 ⭐</div>
+          </div>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward('任選一日完全放空無作業日', 100)">兌換 ↗</button>
+        </div>
+
+        <!-- 獎勵卡 5 (終極大獎) -->
+        <div class="reward-item-card grand-prize-card">
+          <div>
+            <div class="reward-name" style="color:#b45309; font-size:1.1rem;">🏆 第二次段考單科突破 85 分 / 總分逆襲大獎！</div>
+            <div class="reward-cost" style="color:#78350f;" id="customBigPrizeText">獎品：自選夢想禮物一份（可點擊上方按鈕自訂！）</div>
+          </div>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward('第二次段考夢想大獎', 150)" style="background:#d97706; font-size:0.9rem; padding:10px 18px;">
+            兌換終極大獎 🎉
+          </button>
+        </div>
+      </div>
+
+      <!-- 兌換紀錄 -->
+      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:var(--radius); padding:16px 20px; margin-bottom:24px;">
+        <h4 style="font-size:0.95rem; font-weight:800; color:var(--navy); margin-bottom:8px;">📜 星星兌換歷史存根</h4>
+        <div id="redeemHistoryList" style="font-size:0.82rem; color:var(--slate-600); line-height:1.6;">
+          尚未兌換任何獎勵，持續打卡累積星星吧！
+        </div>
+      </div>
+
+      <!-- 給佳蓁的暖心激勵金句 -->
+      <div class="quotes-grid">
+        <div class="quote-card">
+          <div class="quote-title">🌟 扎實累積的力量</div>
+          <div class="quote-body">「讀書不是比誰一天熬夜最久，而是比誰能把每天 60 分鐘的基本分穩穩拿牢。把小事做好，大考自然會有奇蹟！」</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-title">🎯 克服錯題的勇氣</div>
+          <div class="quote-body">「考卷上的紅字不是失敗，而是老天給妳提早修正的禮物。段考前弄懂 1 題不會的，考場上就多賺 5 分！」</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-title">💖 相信自己的專注</div>
+          <div class="quote-body">「當妳坐到書桌前打開講義的這一刻，妳就已經超越了昨天的自己。加油佳蓁，老爸老媽永遠全力支持妳！」</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- Modal 1: 雲端同步設定 -->
+  <div class="modal-overlay" id="syncModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>☁️ Google 試算表雲端雙向同步設定</h3>
+        <button class="modal-close" onclick="closeModal('syncModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.84rem; color:var(--slate-600); margin-bottom:12px;">
+          設定 Google Apps Script Web App 網址後，手機與電腦打卡即可雙向即時連動，資料永不遺失！
+        </p>
+        <label style="font-size:0.82rem; font-weight:700; color:var(--slate-800);">GAS Web App URL：</label>
+        <input type="url" class="input-field" id="inputGasUrl" placeholder="https://script.google.com/macros/s/.../exec">
+        <div style="font-size:0.75rem; color:var(--slate-400); margin-top:8px;">
+          💡 設定教學請參閱專案目錄中的 <code>Google試算表同步教學_手機電腦雙向同步.md</code>。
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="timer-btn" onclick="clearGasSyncUrl()">清除綁定</button>
+        <button type="button" class="timer-btn primary" onclick="saveGasSyncUrl()">💾 儲存並立即同步</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: 自訂段考日期與目標分數 -->
+  <div class="modal-overlay" id="examModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>📅 設定第二次段考目標</h3>
+        <button class="modal-close" onclick="closeModal('examModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label style="font-size:0.82rem; font-weight:700; color:var(--slate-800);">段考開始日期：</label>
+        <input type="date" class="input-field" id="inputExamDate" value="2026-11-27">
+        <label style="font-size:0.82rem; font-weight:700; color:var(--slate-800); margin-top:12px; display:block;">目標平均分數：</label>
+        <input type="number" class="input-field" id="inputTargetScore" value="85" min="60" max="100">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="timer-btn" onclick="closeModal('examModal')">取消</button>
+        <button type="button" class="timer-btn primary" onclick="saveExamData()">確認儲存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: 自訂週末放鬆獎勵 -->
+  <div class="modal-overlay" id="rewardModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🎁 自訂週末放鬆獎勵</h3>
+        <button class="modal-close" onclick="closeModal('rewardModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label style="font-size:0.82rem; font-weight:700; color:var(--slate-800);">打卡達 80% 時的週末獎勵：</label>
+        <input type="text" class="input-field" id="inputRewardText" value="自選火鍋或宵夜 ＋ 追劇放鬆 2 小時">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="timer-btn" onclick="closeModal('rewardModal')">取消</button>
+        <button type="button" class="timer-btn primary" onclick="saveRewardData()">確認儲存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: 自訂夢想大獎 -->
+  <div class="modal-overlay" id="starRewardModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🏆 家長自訂第二次段考夢想大獎</h3>
+        <button class="modal-close" onclick="closeModal('starRewardModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label style="font-size:0.82rem; font-weight:700; color:var(--slate-800);">終極大獎內容（150 ⭐ 兌換）：</label>
+        <input type="text" class="input-field" id="inputBigPrizeText" value="自選夢想禮物一份（新球鞋 / 迪士尼一日遊）">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="timer-btn" onclick="closeModal('starRewardModal')">取消</button>
+        <button type="button" class="timer-btn primary" onclick="saveBigPrizeText()">確認儲存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>© 2026 蔡佳蓁(國中)專屬升學計畫學習網 ｜ 依據三師爸 AI 工作流與 Level 2 雲端雙向同步架構打造</p>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    /* ================= STORAGE KEYS ================= */
+    const STORAGE_KEY_CHECKS = 'cjz_study_checks_v1';
+    const STORAGE_KEY_SPRINT = 'cjz_sprint_checks_v1';
+    const STORAGE_KEY_EXAM = 'cjz_study_exam_v1';
+    const STORAGE_KEY_REWARD = 'cjz_study_reward_v1';
+    const STORAGE_KEY_STREAK = 'cjz_study_streak_v1';
+    const STORAGE_KEY_STAR_CUSTOM = 'cjz_star_custom_v1';
+    const STORAGE_KEY_STAR_REDEEMED = 'cjz_star_redeemed_v1';
+    const STORAGE_KEY_GAS_URL = 'cjz_gas_sync_url_v1';
+
+    /* ================= TAB NAVIGATION ================= */
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-tab');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) targetPane.classList.add('active');
+      });
+    });
+
+    /* ================= SUBJECT STRATEGY FILTER ================= */
+    const subPills = document.querySelectorAll('.sub-pill');
+    const subPanes = document.querySelectorAll('.subject-pane');
+
+    subPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        subPills.forEach(p => p.classList.remove('active'));
+        subPanes.forEach(sp => sp.classList.remove('active'));
+        pill.classList.add('active');
+        const subId = pill.getAttribute('data-sub');
+        const targetPane = document.getElementById('subpane-' + subId);
+        if (targetPane) targetPane.classList.add('active');
+      });
+    });
+
+    function toggleQuiz(header) {
+      const body = header.nextElementSibling;
+      if (body) {
+        body.classList.toggle('show');
+        header.querySelector('span:last-child').textContent = body.classList.contains('show') ? '收合解析 ▲' : '點擊看解析 ▼';
+      }
+    }
+
+    /* ================= 14 DAYS SPRINT GENERATOR ================= */
+    const sprintData = [
+      { d: 14, title: 'D-14 數學 根式運算與分母有理化', sub: '數學', tasks: ['二次方根同類方根加減與化簡', '乘法公式應用於分母有理化', '精選題庫 3 題親手計算'] },
+      { d: 13, title: 'D-13 理化 波動傳播與週期頻率公式', sub: '理化', tasks: ['波速公式 v = fλ 熟練推導', '橫波與縱波介質振動方向確認', '波形前進 1/4 週期畫圖題型'] },
+      { d: 12, title: 'D-12 英語 過去進行式與 when/while 句型', sub: '英語', tasks: ['過去進行式 was/were + V-ing', 'when 接瞬間動作、while 接持續動作', '課文重點對話朗讀兩遍'] },
+      { d: 11, title: 'D-11 國文 文言課文義理與古今異義詞', sub: '國文', tasks: ['段考範圍文言名篇注釋全背', '古今詞義差別（妻子、去、交通）', '作者背景與生平典故理解'] },
+      { d: 10, title: 'D-10 歷史 秦漢帝國建立與體制演進', sub: '歷史', tasks: ['秦始皇郡縣制與統一政策', '漢武帝尊儒、鹽鐵專賣與推恩令', '張騫通西域與絲路文化交流'] },
+      { d: 9,  title: 'D-09 地理 中國季風氣候與等雨量線', sub: '地理', tasks: ['三大氣候區與冬夏季風特徵', '秦嶺淮河 750mm 年雨量分界線', '東南向西北降水遞減成因'] },
+      { d: 8,  title: 'D-08 公民 法律位階與法律命令判別', sub: '公民', tasks: ['憲法/法律/命令位階關係', '法律名稱（法、律、條例、通則）', '命令名稱（規程、規則、細則等）'] },
+      { d: 7,  title: 'D-07 數學 因式分解四大手法精熟', sub: '數學', tasks: ['提公因式與分組提公因式', '乘法公式平方差與和差平方', '十字交乘法拆中間項常數項'] },
+      { d: 6,  title: 'D-06 理化 聲音三要素與回聲反射測距', sub: '理化', tasks: ['響度(振幅)、音調(頻率)、音色(波形)', '回聲測距公式 d = vt / 2', '聲速與溫度關係 v = 331 + 0.6T'] },
+      { d: 5,  title: 'D-05 英語 spend / cost / take 花費動詞', sub: '英語', tasks: ['人 spend 時間金錢 on N / V-ing', '事物 cost 人 金錢', 'It takes 人 時間 to V 不定詞'] },
+      { d: 4,  title: 'D-04 理化 光學面鏡反射與凸透鏡成像', sub: '理化', tasks: ['光的反射定律與平面鏡成虛像', '凸透鏡成像六大規律光路圖', '凹透鏡永遠成正立縮小虛像'] },
+      { d: 3,  title: 'D-03 國文 修辭常識與對聯題辭速解', sub: '國文', tasks: ['對聯仄起平收判斷規則', '題辭行業與婚喪喜慶關鍵字', '倒反、映襯、借代修辭快篩'] },
+      { d: 2,  title: 'D-02 社會 史地公三合一圖表地毯式複習', sub: '社會', tasks: ['九品官人法與魏晉孝文帝漢化', '黃河地上河與長江水土治理', '民事刑事責任能力與比例原則'] },
+      { d: 1,  title: 'D-01 考前 24h 全科錯題本清倉大總結', sub: '全科', tasks: ['重算所有數學理化紅字計算題', '快速瀏覽七大科一頁一考點講義', '晚上 10:30 前準時就寢維持好精神'] },
+    ];
+
+    function renderSprintCards() {
+      const grid = document.getElementById('sprintGrid');
+      grid.innerHTML = '';
+      const savedSprint = JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}');
+      let completedDays = 0;
+
+      sprintData.forEach(item => {
+        const isChecked = !!savedSprint['sprint_' + item.d];
+        if (isChecked) completedDays++;
+
+        const card = document.createElement('div');
+        card.className = 'sprint-card';
+        card.innerHTML = `
+          <div class="sprint-card-header">
+            <span style="font-weight:800; font-size:0.95rem; color:var(--navy);">${item.title}</span>
+            <span class="sprint-day-badge">倒數 ${item.d} 天</span>
+          </div>
+          <div style="font-size:0.78rem; color:var(--slate-600); margin-bottom:8px;">
+            ${item.tasks.map(t => '• ' + t).join('<br>')}
+          </div>
+          <label class="check-item ${isChecked ? 'checked' : ''}" for="chk_sprint_${item.d}">
+            <input type="checkbox" id="chk_sprint_${item.d}" ${isChecked ? 'checked' : ''} onchange="toggleSprintDay(${item.d}, this)">
+            <span class="check-label">已完成今日 D-${item.d} 衝刺重點打卡</span>
+          </label>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.getElementById('sprintCountDisplay').textContent = completedDays;
+    }
+
+    function toggleSprintDay(day, input) {
+      const savedSprint = JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}');
+      savedSprint['sprint_' + day] = input.checked;
+      localStorage.setItem(STORAGE_KEY_SPRINT, JSON.stringify(savedSprint));
+      if (input.checked) {
+        input.parentElement.classList.add('checked');
+        triggerConfetti();
+      } else {
+        input.parentElement.classList.remove('checked');
+      }
+      renderSprintCards();
+      updateProgressStats();
+      debouncedSyncToCloud();
+    }
+
+    /* ================= CHECKLIST & STREAK & STATS ================= */
+    function loadChecklistState() {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}');
+      document.querySelectorAll('#dayCardsGrid input[type="checkbox"]').forEach(chk => {
+        chk.checked = !!saved[chk.id];
+        if (chk.checked) chk.closest('.check-item').classList.add('checked');
+        else chk.closest('.check-item').classList.remove('checked');
+
+        chk.addEventListener('change', () => {
+          saveChecklistState();
+          if (chk.checked) triggerConfetti();
+        });
+      });
+      updateProgressStats();
+    }
+
+    function saveChecklistState() {
+      const state = {};
+      document.querySelectorAll('#dayCardsGrid input[type="checkbox"]').forEach(chk => {
+        state[chk.id] = chk.checked;
+        if (chk.checked) chk.closest('.check-item').classList.add('checked');
+        else chk.closest('.check-item').classList.remove('checked');
+      });
+      localStorage.setItem(STORAGE_KEY_CHECKS, JSON.stringify(state));
+      updateProgressStats();
+      debouncedSyncToCloud();
+    }
+
+    function updateProgressStats() {
+      const allChecks = document.querySelectorAll('#dayCardsGrid input[type="checkbox"]');
+      const total = allChecks.length;
+      let checked = 0;
+      allChecks.forEach(chk => { if (chk.checked) checked++; });
+
+      const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+      document.getElementById('checkedPercentDisplay').textContent = pct + '%';
+      document.getElementById('checkedRatioText').textContent = `${checked} / ${total} 項目`;
+      document.getElementById('weeklyProgressFill').style.width = pct + '%';
+
+      // 週末獎勵解鎖判定 (80%)
+      const rewardStatus = document.getElementById('rewardLockStatus');
+      const rewardProgress = document.getElementById('rewardProgressFill');
+      rewardProgress.style.width = Math.min(100, Math.round((pct / 80) * 100)) + '%';
+
+      if (pct >= 80) {
+        rewardStatus.textContent = '🎉 已解鎖！';
+        rewardStatus.style.color = '#059669';
+      } else {
+        rewardStatus.textContent = '🔒 鎖定中 (' + pct + '%/80%)';
+        rewardStatus.style.color = '#d97706';
+      }
+
+      // 更新星星存摺
+      calculateTotalStars();
+      updateStreak();
+    }
+
+    /* ================= STAR BANK & REWARDS ================= */
+    function calculateTotalStars() {
+      const savedChecks = JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}');
+      const savedSprint = JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}');
+      const redeemed = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]');
+
+      let earnedStars = 0;
+      // 週一到週五每天完成 3 項可獲 10 星，週六週日每完成 3 項可獲 20 星
+      const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+      days.forEach(d => {
+        let dayCount = 0;
+        for (let i = 1; i <= 3; i++) {
+          if (savedChecks[`chk-${d}-${i}`]) dayCount++;
+        }
+        if (dayCount === 3) {
+          earnedStars += (d === 'sat' || d === 'sun') ? 20 : 10;
+        } else if (dayCount > 0) {
+          earnedStars += dayCount * 3; // 部分打卡每項 3 星
+        }
+      });
+
+      // 衝刺檢核表每完成一天獲 5 星
+      Object.keys(savedSprint).forEach(k => {
+        if (savedSprint[k]) earnedStars += 5;
+      });
+
+      // 扣除已兌換的星星
+      let spentStars = 0;
+      redeemed.forEach(r => spentStars += (r.cost || 0));
+
+      const balance = Math.max(0, earnedStars - spentStars);
+      document.getElementById('starBankDisplay').textContent = balance + ' 顆星';
+      document.getElementById('starBadge').textContent = '⭐ ' + balance + ' 顆星';
+      return balance;
+    }
+
+    function redeemStarReward(name, cost) {
+      const balance = calculateTotalStars();
+      if (balance < cost) {
+        alert(`星星餘額不足唷！目前餘額：${balance} 顆星，需要：${cost} 顆星。\n再多打卡幾天就能換到囉，加油！✨`);
+        return;
+      }
+
+      if (confirm(`確定要兌換「${name}」嗎？（將扣除 ${cost} 顆專注星星）`)) {
+        const redeemed = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]');
+        redeemed.unshift({
+          name: name,
+          cost: cost,
+          time: new Date().toLocaleString('zh-TW', { month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit' })
+        });
+        localStorage.setItem(STORAGE_KEY_STAR_REDEEMED, JSON.stringify(redeemed));
+        triggerConfetti();
+        calculateTotalStars();
+        renderRedeemHistory();
+        debouncedSyncToCloud();
+        alert(`🎉 兌換成功！「${name}」已存入存根聯。\n快拿給老爸老媽看兌換獎品吧！🥳`);
+      }
+    }
+
+    function renderRedeemHistory() {
+      const redeemed = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]');
+      const container = document.getElementById('redeemHistoryList');
+      if (redeemed.length === 0) {
+        container.textContent = '尚未兌換任何獎勵，持續打卡累積星星吧！';
+        return;
+      }
+      container.innerHTML = redeemed.slice(0, 5).map(r => `
+        <div style="display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dashed var(--slate-200);">
+          <span>🎁 <strong>${r.name}</strong></span>
+          <span style="color:#d97706; font-weight:700;">-${r.cost} ⭐ (${r.time})</span>
+        </div>
+      `).join('');
+    }
+
+    /* ================= STREAK ================= */
+    function updateStreak() {
+      const allChecks = document.querySelectorAll('#dayCardsGrid input[type="checkbox"]:checked');
+      const badge = document.getElementById('streakBadge');
+      let streak = parseInt(localStorage.getItem(STORAGE_KEY_STREAK) || '0', 10);
+      if (allChecks.length > 0 && streak === 0) streak = 1;
+      badge.textContent = `🔥 連續打卡 ${streak} 天`;
+    }
+
+    /* ================= POMODORO TIMER ================= */
+    let timerDuration = 25 * 60;
+    let timerRemaining = timerDuration;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    function renderTimer() {
+      const m = Math.floor(timerRemaining / 60).toString().padStart(2, '0');
+      const s = (timerRemaining % 60).toString().padStart(2, '0');
+      document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('btnTimerToggle');
+      if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        btn.textContent = '繼續專注';
+      } else {
+        isTimerRunning = true;
+        btn.textContent = '暫停';
+        timerInterval = setInterval(() => {
+          if (timerRemaining > 0) {
+            timerRemaining--;
+            renderTimer();
+          } else {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            btn.textContent = '開始專注';
+            triggerConfetti();
+            alert('🎉 恭喜佳蓁！一段專注時間完成囉！起來喝口水、動一動吧！');
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerRemaining = timerDuration;
+      document.getElementById('btnTimerToggle').textContent = '開始專注';
+      renderTimer();
+    }
+
+    function setTimerMinutes(mins) {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerDuration = mins * 60;
+      timerRemaining = timerDuration;
+      document.getElementById('btnTimerToggle').textContent = '開始專注';
+      renderTimer();
+    }
+
+    /* ================= EXAM COUNTDOWN ================= */
+    function loadExamData() {
+      const examData = JSON.parse(localStorage.getItem(STORAGE_KEY_EXAM) || '{"date":"2026-11-27","target":85}');
+      document.getElementById('inputExamDate').value = examData.date;
+      document.getElementById('inputTargetScore').value = examData.target;
+      document.getElementById('targetScoreDisplay').textContent = examData.target;
+
+      const today = new Date();
+      const examDate = new Date(examData.date);
+      const diffTime = examDate - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('examCountdownDisplay').textContent = diffDays > 0 ? diffDays : 0;
+    }
+
+    function saveExamData() {
+      const examData = {
+        date: document.getElementById('inputExamDate').value,
+        target: parseInt(document.getElementById('inputTargetScore').value, 10) || 85
+      };
+      localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(examData));
+      loadExamData();
+      closeModal('examModal');
+      debouncedSyncToCloud();
+    }
+
+    /* ================= REWARD & STAR CUSTOM ================= */
+    function loadRewardData() {
+      const rewardText = localStorage.getItem(STORAGE_KEY_REWARD) || '自選火鍋或宵夜 ＋ 追劇放鬆 2 小時';
+      document.getElementById('inputRewardText').value = rewardText;
+      document.getElementById('rewardItemDisplay').textContent = '獎勵內容：' + rewardText;
+    }
+
+    function saveRewardData() {
+      const val = document.getElementById('inputRewardText').value;
+      localStorage.setItem(STORAGE_KEY_REWARD, val);
+      loadRewardData();
+      closeModal('rewardModal');
+      debouncedSyncToCloud();
+    }
+
+    function loadBigPrizeText() {
+      const custom = JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_CUSTOM) || '{}');
+      if (custom.bigPrize) {
+        document.getElementById('customBigPrizeText').textContent = '獎品：' + custom.bigPrize;
+        document.getElementById('inputBigPrizeText').value = custom.bigPrize;
+      }
+    }
+
+    function saveBigPrizeText() {
+      const val = document.getElementById('inputBigPrizeText').value;
+      localStorage.setItem(STORAGE_KEY_STAR_CUSTOM, JSON.stringify({ bigPrize: val }));
+      loadBigPrizeText();
+      closeModal('starRewardModal');
+      debouncedSyncToCloud();
+    }
+
+    /* ================= SUBJECT SWAP FOR DAY CARDS ================= */
+    const subjectTemplates = {
+      math: {
+        task1: ['📐 項目一：乘法公式與二次方根公式速記（10 分鐘）', '默寫平方差 (a+b)(a-b)=a^2-b^2 與和平方差平方公式。', '【10 分鐘】乘法公式與平方根基本運算完全熟練'],
+        task2: ['📖 項目二：因式分解四大手法精讀（25 分鐘）', '精讀提公因式、分組分解與十字交乘常數項拆解技巧。', '【25 分鐘】十字交乘拆中間項係數法看懂並親自推導'],
+        task3: ['📝 項目三：衝刺講義精選題演練（25 分鐘）', '親手算出數學衝刺講義 3 題實戰題，確實核對解析！', '【25 分鐘】完成 3 題綜合因式分解計算並檢討錯題']
+      },
+      sci: {
+        task1: ['🔬 項目一：波形圖與公式速查（10 分鐘）', '牢記波速公式 v = fλ，辨別橫波（高低波）與縱波（疏密波）。', '【10 分鐘】波速公式與週期頻率倒數關係能默背寫出'],
+        task2: ['🔊 項目二：聲音三要素與回聲應用（25 分鐘）', '搞懂響度(振幅)、音調(頻率)、音色(波形)，聲納與回聲測距。', '【25 分鐘】聲音三要素對應物理量與波形變化完全搞懂'],
+        task3: ['📝 項目三：理化段考精華例題 3 題（25 分鐘）', '計算回聲測距與凸透鏡成像題型，穩穩掌握基本分！', '【25 分鐘】完成回聲測距與成像考題實戰演練']
+      },
+      eng: {
+        task1: ['🔤 項目一：段考必考核心單字 15 個（10 分鐘）', '背誦康軒/翰林段考範圍 15 個高頻單字與不規則動詞過去式。', '【10 分鐘】段考範圍核心單字認讀與過去式三態熟背'],
+        task2: ['✍️ 項目二：when/while 句型與 spend/cost/take 辨析（25 分鐘）', '釐清持續動作用 while、瞬間動作用 when；人 spend/物 cost/It takes。', '【25 分鐘】spend, cost, take 三大花費動詞主詞與介系詞不搞混'],
+        task3: ['📝 項目三：文法選擇與閱讀克漏字 3 題（25 分鐘）', '演練連綴動詞 look/smell/taste 與花費動詞填空題。', '【25 分鐘】完成 3 篇文法題與 1 篇閱讀測驗實戰練習']
+      },
+      chi: {
+        task1: ['📜 項目一：注釋與古今異義字詞速記（10 分鐘）', '複習課文核心注釋，特別留意古今詞義差別（妻子、去、交通）。', '【10 分鐘】段考範圍課文重點字音字形與古今異義默記'],
+        task2: ['🎭 項目二：對聯判斷與修辭格精研（25 分鐘）', '掌握對聯「仄起平收」、四季節慶與行業題辭特徵關鍵字。', '【25 分鐘】對聯平仄上下聯與婚喪喜慶題辭快速判讀'],
+        task3: ['📝 項目三：國文閱讀測驗與題型精解（25 分鐘）', '演練課外文言短文與題辭實戰題，提升語感。', '【25 分鐘】完成國文衝刺題庫 3 題並確認破題點']
+      },
+      his: {
+        task1: ['🏛️ 項目一：秦漢大一統帝國建制（10 分鐘）', '秦始皇郡縣制與度量衡統一，漢初與漢武帝新政。', '【10 分鐘】秦漢制度沿革與重要改革人物牢記'],
+        task2: ['📜 項目二：魏晉南北朝世族與民族融合（25 分鐘）', '九品官人法成因與北魏孝文帝漢化政策措施。', '【25 分鐘】胡漢融合與江南經濟開發脈絡理解'],
+        task3: ['📝 項目三：歷史題型演練 3 題（25 分鐘）', '實測歷史時序與文獻閱讀理解題。', '【25 分鐘】完成歷史段考精選題並檢討觀念']
+      },
+      geo: {
+        task1: ['🗺️ 項目一：中國氣候三大區域速覽（10 分鐘）', '季風區、溫帶大陸區與高地氣候分布地圖。', '【10 分鐘】三大氣候區界線與特徵標記熟練'],
+        task2: ['🌧️ 項目二：秦嶺淮河分界與等雨量線（25 分鐘）', '秦嶺淮河年雨量 750mm 與 1 月 0 度等溫線重要分界。', '【25 分鐘】南北方地理氣候生活差異完全理解'],
+        task3: ['📝 項目三：水文環境治理題庫演練（25 分鐘）', '黃河地上河成因與長江水土治理實戰考題。', '【25 分鐘】完成水文與氣候題庫演練並訂正']
+      },
+      civ: {
+        task1: ['⚖️ 項目一：法律位階三角形判讀（10 分鐘）', '憲法、法律、命令之位階與名稱嚴格判別。', '【10 分鐘】法律四名稱與行政命令名稱不混淆'],
+        task2: ['🛡️ 項目二：憲法權利保障與比例原則（25 分鐘）', '平等權、自由權、受益權、參政權與比例原則。', '【25 分鐘】憲法第 23 條比例原則三要素判別'],
+        task3: ['📝 項目三：民事與刑事責任判讀演練（25 分鐘）', '年齡責任能力與告訴乃論/非告訴乃論題型。', '【25 分鐘】完成公民責任判別題庫演練']
+      },
+      soc: {
+        task1: ['🏛️ 項目一：歷史秦漢制度與魏晉融合（20 分鐘）', '掌握秦始皇郡縣制、漢武帝鹽鐵官營、九品官人法與孝文帝漢化。', '【20 分鐘】歷史朝代更迭、制度關鍵人物與絲路重點通讀'],
+        task2: ['🗺️ 項目二：地理季風氣候與水文治理（20 分鐘）', '熟記秦嶺淮河年雨量 750mm 分界線、黃河地上河、南水北調。', '【20 分鐘】中國三大氣候區、等雨量線與河川治理核心圖表牢記'],
+        task3: ['⚖️ 項目三：公民法律位階與責任辨析（20 分鐘）', '憲法/法律/命令層級、比例原則、民法侵權賠償與刑法年齡能力。', '【20 分鐘】法律名稱判別與民事/刑事責任分界題目演練']
+      }
+    };
+
+    function swapDaySubject(selectElem, day) {
+      const subKey = selectElem.value;
+      const t = subjectTemplates[subKey];
+      if (!t) return;
+
+      document.getElementById(`${day}-task1-title`).textContent = t.task1[0];
+      document.getElementById(`${day}-task1-desc`).textContent = t.task1[1];
+      document.getElementById(`${day}-chk1-lbl`).textContent = t.task1[2];
+
+      document.getElementById(`${day}-task2-title`).textContent = t.task2[0];
+      document.getElementById(`${day}-task2-desc`).textContent = t.task2[1];
+      document.getElementById(`${day}-chk2-lbl`).textContent = t.task2[2];
+
+      document.getElementById(`${day}-task3-title`).textContent = t.task3[0];
+      document.getElementById(`${day}-task3-desc`).textContent = t.task3[1];
+      document.getElementById(`${day}-chk3-lbl`).textContent = t.task3[2];
+
+      localStorage.setItem(`cjz_swap_${day}`, subKey);
+      debouncedSyncToCloud();
+    }
+
+    function loadSavedDaySwaps() {
+      const days = ['mon', 'tue', 'wed', 'thu', 'fri'];
+      days.forEach(d => {
+        const savedSub = localStorage.getItem(`cjz_swap_${d}`);
+        if (savedSub) {
+          const select = document.querySelector(`.day-card[data-day] select[onchange*="${d}"]`);
+          if (select) {
+            select.value = savedSub;
+            swapDaySubject(select, d);
+          }
+        }
+      });
+    }
+
+    /* ================= RESET WEEK BUTTON ================= */
+    document.getElementById('btnResetWeekChecks').addEventListener('click', () => {
+      if (confirm('確定要清空本週所有打勾嗎？（這將開啟新的一週複習紀錄）')) {
+        localStorage.removeItem(STORAGE_KEY_CHECKS);
+        document.querySelectorAll('#dayCardsGrid input[type="checkbox"]').forEach(c => {
+          c.checked = false;
+          c.closest('.check-item').classList.remove('checked');
+        });
+        updateProgressStats();
+        debouncedSyncToCloud();
+      }
+    });
+
+    /* ================= MODAL CONTROLS ================= */
+    function openModal(id) { document.getElementById(id).classList.add('show'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+    function openExamModal() { openModal('examModal'); }
+    function openRewardModal() { openModal('rewardModal'); }
+    function openStarCustomModal() { openModal('starRewardModal'); }
+    function openSyncModal() {
+      document.getElementById('inputGasUrl').value = localStorage.getItem(STORAGE_KEY_GAS_URL) || '';
+      openModal('syncModal');
+    }
+
+    /* ================= CLOUD SYNC (LEVEL 2 GAS) ================= */
+    let syncTimeout = null;
+
+    function getFullAppState() {
+      return {
+        checks: JSON.parse(localStorage.getItem(STORAGE_KEY_CHECKS) || '{}'),
+        sprint: JSON.parse(localStorage.getItem(STORAGE_KEY_SPRINT) || '{}'),
+        exam: JSON.parse(localStorage.getItem(STORAGE_KEY_EXAM) || '{}'),
+        reward: localStorage.getItem(STORAGE_KEY_REWARD) || '',
+        streak: localStorage.getItem(STORAGE_KEY_STREAK) || '0',
+        customStar: JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_CUSTOM) || '{}'),
+        redeemed: JSON.parse(localStorage.getItem(STORAGE_KEY_STAR_REDEEMED) || '[]'),
+        swaps: {
+          mon: localStorage.getItem('cjz_swap_mon'),
+          tue: localStorage.getItem('cjz_swap_tue'),
+          wed: localStorage.getItem('cjz_swap_wed'),
+          thu: localStorage.getItem('cjz_swap_thu'),
+          fri: localStorage.getItem('cjz_swap_fri')
+        },
+        stars: calculateTotalStars(),
+        device: navigator.userAgent.includes('Mobile') ? 'Mobile' : 'Desktop'
+      };
+    }
+
+    function applyCloudAppState(data) {
+      if (!data) return;
+      if (data.checks) localStorage.setItem(STORAGE_KEY_CHECKS, JSON.stringify(data.checks));
+      if (data.sprint) localStorage.setItem(STORAGE_KEY_SPRINT, JSON.stringify(data.sprint));
+      if (data.exam) localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(data.exam));
+      if (data.reward) localStorage.setItem(STORAGE_KEY_REWARD, data.reward);
+      if (data.streak) localStorage.setItem(STORAGE_KEY_STREAK, data.streak);
+      if (data.customStar) localStorage.setItem(STORAGE_KEY_STAR_CUSTOM, JSON.stringify(data.customStar));
+      if (data.redeemed) localStorage.setItem(STORAGE_KEY_STAR_REDEEMED, JSON.stringify(data.redeemed));
+      if (data.swaps) {
+        Object.keys(data.swaps).forEach(k => {
+          if (data.swaps[k]) localStorage.setItem(`cjz_swap_${k}`, data.swaps[k]);
+        });
+      }
+
+      loadChecklistState();
+      renderSprintCards();
+      loadExamData();
+      loadRewardData();
+      loadBigPrizeText();
+      loadSavedDaySwaps();
+      renderRedeemHistory();
+    }
+
+    function updateSyncUIStatus(status, text) {
+      const capsule = document.getElementById('syncStatusCapsule');
+      if (status === 'synced') {
+        capsule.style.background = '#ecfdf5';
+        capsule.style.color = '#059669';
+        capsule.style.borderColor = '#a7f3d0';
+        capsule.textContent = '🟢 雲端已同步';
+      } else if (status === 'syncing') {
+        capsule.style.background = '#fffbeb';
+        capsule.style.color = '#d97706';
+        capsule.style.borderColor = '#fde68a';
+        capsule.textContent = '🟡 同步中...';
+      } else if (status === 'offline') {
+        capsule.style.background = 'var(--slate-100)';
+        capsule.style.color = 'var(--slate-600)';
+        capsule.style.borderColor = 'var(--slate-200)';
+        capsule.textContent = '⚪ 本機離線模式';
+      } else if (status === 'error') {
+        capsule.style.background = '#fef2f2';
+        capsule.style.color = '#dc2626';
+        capsule.style.borderColor = '#fecaca';
+        capsule.textContent = '🔴 同步失敗';
+      }
+    }
+
+    async function pushToCloud() {
+      const gasUrl = localStorage.getItem(STORAGE_KEY_GAS_URL);
+      if (!gasUrl) {
+        updateSyncUIStatus('offline');
+        return;
+      }
+      updateSyncUIStatus('syncing');
+      try {
+        const payload = getFullAppState();
+        const res = await fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+        const json = await res.json();
+        if (json.status === 'success') {
+          updateSyncUIStatus('synced');
+        } else {
+          updateSyncUIStatus('error');
+        }
+      } catch (err) {
+        console.warn('Sync error:', err);
+        updateSyncUIStatus('error');
+      }
+    }
+
+    async function fetchFromCloud() {
+      const gasUrl = localStorage.getItem(STORAGE_KEY_GAS_URL);
+      if (!gasUrl) {
+        updateSyncUIStatus('offline');
+        return;
+      }
+      updateSyncUIStatus('syncing');
+      try {
+        const res = await fetch(gasUrl);
+        const json = await res.json();
+        if (json.status === 'success' && json.data) {
+          applyCloudAppState(json.data);
+          updateSyncUIStatus('synced');
+        } else {
+          updateSyncUIStatus('error');
+        }
+      } catch (err) {
+        console.warn('Fetch error:', err);
+        updateSyncUIStatus('error');
+      }
+    }
+
+    function debouncedSyncToCloud() {
+      clearTimeout(syncTimeout);
+      syncTimeout = setTimeout(pushToCloud, 1200);
+    }
+
+    function saveGasSyncUrl() {
+      const url = document.getElementById('inputGasUrl').value.trim();
+      if (!url) {
+        localStorage.removeItem(STORAGE_KEY_GAS_URL);
+        updateSyncUIStatus('offline');
+      } else {
+        localStorage.setItem(STORAGE_KEY_GAS_URL, url);
+        pushToCloud();
+      }
+      closeModal('syncModal');
+    }
+
+    function clearGasSyncUrl() {
+      localStorage.removeItem(STORAGE_KEY_GAS_URL);
+      document.getElementById('inputGasUrl').value = '';
+      updateSyncUIStatus('offline');
+      closeModal('syncModal');
+    }
+
+    /* URL ?gas= parameter auto-bind */
+    const urlParams = new URLSearchParams(window.location.search);
+    const gasParam = urlParams.get('gas');
+    if (gasParam) {
+      localStorage.setItem(STORAGE_KEY_GAS_URL, decodeURIComponent(gasParam));
+    }
+
+    /* ================= CONFETTI CELEBRATION ================= */
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let confettiParticles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function triggerConfetti() {
+      const colors = ['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6'];
+      for (let i = 0; i < 60; i++) {
+        confettiParticles.push({
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2,
+          vx: (Math.random() - 0.5) * 14,
+          vy: (Math.random() - 0.8) * 16,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 10,
+          opacity: 1
+        });
+      }
+    }
+
+    function updateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35; // gravity
+        p.rotation += p.vrot;
+        p.opacity -= 0.015;
+
+        if (p.opacity <= 0) {
+          confettiParticles.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      }
+      requestAnimationFrame(updateConfetti);
+    }
+    updateConfetti();
+
+    /* ================= INIT ON LOAD ================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTimer();
+      loadExamData();
+      loadRewardData();
+      loadBigPrizeText();
+      loadSavedDaySwaps();
+      renderSprintCards();
+      loadChecklistState();
+      renderRedeemHistory();
+
+      // Check today card highlight
+      const todayDay = new Date().getDay(); // 0 is Sun, 1 is Mon...
+      document.querySelectorAll('.day-card').forEach(card => {
+        if (parseInt(card.getAttribute('data-day'), 10) === todayDay) {
+          card.classList.add('today');
+        }
+      });
+
+      // Try fetching cloud state if GAS url exists
+      if (localStorage.getItem(STORAGE_KEY_GAS_URL)) {
+        fetchFromCloud();
+      } else {
+        updateSyncUIStatus('offline');
+      }
+    });
+  </script>
+</body>
+</html>
