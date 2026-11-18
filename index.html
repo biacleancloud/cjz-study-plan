@@ -65,7 +65,7 @@
     }
 
     .header-container {
-      max-width: 1200px;
+      max-width: 1380px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
@@ -114,7 +114,7 @@
 
     /* 主要容器 */
     .container {
-      max-width: 1200px;
+      max-width: 1380px;
       margin: 24px auto 0;
       padding: 0 16px;
     }
@@ -992,7 +992,8 @@
       transition: opacity 0.2s ease;
     }
 
-    .modal-backdrop.open {
+    .modal-backdrop.open,
+    .modal-backdrop.show {
       opacity: 1;
       pointer-events: auto;
     }
@@ -1008,7 +1009,8 @@
       transition: transform 0.2s ease;
     }
 
-    .modal-backdrop.open .modal-dialog {
+    .modal-backdrop.open .modal-dialog,
+    .modal-backdrop.show .modal-dialog {
       transform: translateY(0);
     }
 
@@ -4072,6 +4074,7 @@
     </section>
 
     <!-- ================= TAB 6: 遊戲化獎勵兌換處 ================= -->
+        <!-- ================= TAB 6: 獎勵兌換處 ================= -->
     <section id="tab-gamify" class="tab-pane">
       <!-- 星星存摺卡片 -->
       <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color:#fff; border-radius:14px; padding:22px; margin-bottom:20px; box-shadow:var(--card-shadow); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
@@ -4091,165 +4094,173 @@
         <span style="font-size:0.82rem; color:var(--slate-600);">點擊即可向老爸老媽申請兌換！</span>
       </div>
 
-      <div class="star-rewards-grid" id="starRewardsList" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:25px;">
+      <div class="star-rewards-grid" id="starRewardsList" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:24px;">
+        <!-- 獎勵卡 1: 30 星 -->
         <div class="reward-item-card" style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--card-shadow);">
           <div>
-            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;">🍿 自選宵夜點心 / 手搖飲一杯</div>
+            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;" id="starRewardTitle30">💵 換 <strong>200</strong> 元零用錢</div>
             <div style="font-size:0.8rem; color:#d97706; font-weight:700; margin-top:2px;">所需星星：30 ⭐</div>
           </div>
-          <button type="button" class="btn-redeem" onclick="redeemStarReward('自選宵夜點心/手搖飲', 30)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem;">兌換 ↗</button>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward(document.getElementById('starRewardTitle30').innerText, 30)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem; white-space:nowrap;">兌換 ↗</button>
         </div>
 
+        <!-- 獎勵卡 2: 50 星 -->
         <div class="reward-item-card" style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--card-shadow);">
           <div>
-            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;">🎮 週末 Switch / 手機遊戲 2 小時暢玩</div>
+            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;" id="starRewardTitle50">💰 換 <strong>500</strong> 元零用錢</div>
             <div style="font-size:0.8rem; color:#d97706; font-weight:700; margin-top:2px;">所需星星：50 ⭐</div>
           </div>
-          <button type="button" class="btn-redeem" onclick="redeemStarReward('週末Switch/手遊2小時暢玩', 50)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem;">兌換 ↗</button>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward(document.getElementById('starRewardTitle50').innerText, 50)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem; white-space:nowrap;">兌換 ↗</button>
         </div>
 
+        <!-- 獎勵卡 3: 100 星 -->
         <div class="reward-item-card" style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--card-shadow);">
           <div>
-            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;">🎬 週末家庭電影之夜 / 逛街自由日</div>
-            <div style="font-size:0.8rem; color:#d97706; font-weight:700; margin-top:2px;">所需星星：60 ⭐</div>
-          </div>
-          <button type="button" class="btn-redeem" onclick="redeemStarReward('家庭電影之夜/逛街自由日', 60)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem;">兌換 ↗</button>
-        </div>
-
-        <div class="reward-item-card" style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--card-shadow);">
-          <div>
-            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;">🏖️ 段考後任選一日完全放空無作業日</div>
+            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;" id="starRewardTitle100">🍱 換豪華自助大餐</div>
             <div style="font-size:0.8rem; color:#d97706; font-weight:700; margin-top:2px;">所需星星：100 ⭐</div>
           </div>
-          <button type="button" class="btn-redeem" onclick="redeemStarReward('任選一日完全放空無作業日', 100)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem;">兌換 ↗</button>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward(document.getElementById('starRewardTitle100').innerText, 100)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem; white-space:nowrap;">兌換 ↗</button>
         </div>
 
-        <!-- 終極大獎 -->
-        <div class="reward-item-card" style="background:#fffbeb; border:2px solid #f59e0b; border-radius:12px; padding:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--card-shadow); grid-column:1 / -1;">
+        <!-- 獎勵卡 4: 150 星 -->
+        <div class="reward-item-card" style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--card-shadow);">
           <div>
-            <div style="font-weight:800; color:#b45309; font-size:1.1rem;">🏆 第二次段考單科突破 85 分 / 總分逆襲大獎！</div>
-            <div style="font-size:0.85rem; color:#78350f; margin-top:2px;" id="customBigPrizeText">獎勵：自選心願禮物一份（可點擊上方自訂！）</div>
+            <div style="font-weight:800; color:var(--navy); font-size:1.02rem;" id="starRewardTitle150">👟 換喜歡的衣服/球鞋</div>
+            <div style="font-size:0.8rem; color:#d97706; font-weight:700; margin-top:2px;">所需星星：150 ⭐</div>
           </div>
-          <button type="button" class="btn-redeem" onclick="redeemStarReward('第二次段考心願大獎', 150)" style="background:#d97706; color:#fff; border:none; padding:10px 18px; border-radius:8px; font-weight:800; cursor:pointer; font-size:0.9rem;">兌換終極大獎 🎉</button>
+          <button type="button" class="btn-redeem" onclick="redeemStarReward(document.getElementById('starRewardTitle150').innerText, 150)" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.85rem; white-space:nowrap;">兌換 ↗</button>
         </div>
       </div>
 
-      <!-- 兌換紀錄 -->
-      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:16px 20px; margin-bottom:24px;">
-        <h4 style="font-size:0.95rem; font-weight:800; color:var(--navy); margin-bottom:8px;">📜 星星兌換歷史存根</h4>
-        <div id="redeemHistoryList" style="font-size:0.82rem; color:var(--slate-600); line-height:1.6;">
-          尚未兌換任何獎勵，持續打卡累積星星吧！
-        </div>
+      <!-- 終極目標卡片 Banner -->
+      <div class="ultimate-goal-banner" style="background:#fffdf0; border:2px solid #f59e0b; border-radius:12px; padding:16px 20px; text-align:center; font-weight:800; font-size:1.15rem; color:#b45309; margin-bottom:25px; box-shadow:var(--card-shadow);">
+        🏆 終極目標：國二第二次段考平均 <strong style="font-size:1.3rem; color:#d97706; font-weight:900;">85</strong> 分以上，自選心願禮物一份
       </div>
 
-      <!-- 佳蓁專屬暖心金句 -->
+      <!-- 佳蓁專屬正向激勵語錄 -->
       <div class="quotes-grid">
         <div class="quote-card">
-          <div class="quote-title">🌟 扎實累積的力量</div>
-          <div class="quote-body">「讀書不是比誰一天熬夜最久，而是比誰能把每天 60 分鐘的基本分穩穩拿牢。把小事做好，大考自然會有奇蹟！」</div>
+          <div class="quote-title">💡 算得出帳的信心</div>
+          <div class="quote-body">「國中段考從來不是比誰把整本課本背完，而是比誰先拿穩 80% 的基本分。每天把時間花在基本例題與母題，投報率最高！」</div>
         </div>
         <div class="quote-card">
-          <div class="quote-title">🎯 克服錯題的勇氣</div>
-          <div class="quote-body">「考卷上的紅字不是失敗，而是老天給妳提早修正的禮物。段考前弄懂 1 題不會的，考場上就多賺 5 分！」</div>
+          <div class="quote-title">⏱️ 講得出秒的原則</div>
+          <div class="quote-body">「考場上任何題目只要卡關超過 90 秒，立刻畫圈猜 C 往後跳！把省下的 10 分鐘拿來檢查算錯的加減乘除與正負號，直接多拿 15 分！」</div>
         </div>
         <div class="quote-card">
-          <div class="quote-title">💖 相信自己的專注</div>
-          <div class="quote-body">「當妳坐到書桌前打開講義的這一刻，妳就已經超越了昨天的自己。加油佳蓁，老爸老媽永遠全力支持妳！」</div>
+          <div class="quote-title">🌱 每天 1 小時的複利威力</div>
+          <div class="quote-body">「每天自習 1 小時剛剛好，不要暴飲暴食讀 5 小時。每天持續背 10 個英文單字、看 25 分鐘核心觀念、寫 2 道衝刺題，段考自然考出好成績！」</div>
+        </div>
+        <div class="quote-card" style="border-left: 4px solid #f59e0b;">
+          <div class="quote-title" style="color:#b45309;">👑 掌握考點高效率心法</div>
+          <div class="quote-body">「不要死讀講義！先看『一句話重點』與『最容易錯在哪』，對照實戰題庫解析，秒解盲點才是真高手！」</div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ================= 彈窗 MODALS ================= -->
+  <!-- ================= 彈窗 MODALS (100% 對標 CJC) ================= -->
 
-  <!-- Modal 1: 設定段考 -->
-  <div class="modal" id="examModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>📅 設定段考目標與日期</h3>
-        <button class="modal-close" id="btnCancelModal">&times;</button>
+  <!-- 自訂獎勵彈窗 Modal -->
+  <div class="modal-backdrop" id="starRewardModal">
+    <div class="modal-dialog" style="max-width:500px;">
+      <div class="modal-title" style="font-size:1.25rem; font-weight:800;">✏️ 家長自訂星星兌換獎勵方式</div>
+      <p style="font-size:0.84rem; color:var(--slate-600); margin-top:-6px; margin-bottom:16px;">
+        在手機或電腦直接自訂，儲存後即時生效並永久記憶！
+      </p>
+      <div class="form-group" style="margin-bottom:12px;">
+        <label for="inputReward30" style="font-weight:700; display:block; margin-bottom:6px;">💵 30 星獎勵內容：</label>
+        <input type="text" id="inputReward30" value="換 200 元零用錢" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid var(--slate-300); font-size:0.95rem; box-sizing:border-box;">
       </div>
-      <div class="modal-body">
-        <label>段考開始日期：</label>
-        <input type="date" id="inputExamDate" class="input-field" value="2026-11-27">
-        <label style="margin-top:12px; display:block;">目標平均分數：</label>
-        <input type="number" id="inputTargetScore" class="input-field" value="85" min="60" max="100">
+      <div class="form-group" style="margin-bottom:12px;">
+        <label for="inputReward50" style="font-weight:700; display:block; margin-bottom:6px;">💰 50 星獎勵內容：</label>
+        <input type="text" id="inputReward50" value="換 500 元零用錢" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid var(--slate-300); font-size:0.95rem; box-sizing:border-box;">
       </div>
-      <div class="modal-footer">
-        <button type="button" class="timer-btn" id="btnQuickExam2">設為 11/27 段考</button>
-        <button type="button" class="timer-btn primary" id="btnSaveModal">儲存設定</button>
+      <div class="form-group" style="margin-bottom:12px;">
+        <label for="inputReward100" style="font-weight:700; display:block; margin-bottom:6px;">🍱 100 星獎勵內容：</label>
+        <input type="text" id="inputReward100" value="換豪華自助大餐" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid var(--slate-300); font-size:0.95rem; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom:18px;">
+        <label for="inputReward150" style="font-weight:700; display:block; margin-bottom:6px;">👟 150 星獎勵內容：</label>
+        <input type="text" id="inputReward150" value="換喜歡的衣服/球鞋" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid var(--slate-300); font-size:0.95rem; box-sizing:border-box;">
+      </div>
+      <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="btn-secondary" id="btnCancelStarModal">取消</button>
+        <button type="button" class="btn-primary" id="btnSaveStarModal">儲存獎勵約定</button>
       </div>
     </div>
   </div>
 
-  <!-- Modal 2: 自訂週末放鬆獎勵 -->
-  <div class="modal" id="rewardModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>🎁 自訂週末放鬆獎勵 (達成 80% 解鎖)</h3>
-        <button class="modal-close" id="btnCancelRewardModal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <label>週末獎勵內容：</label>
-        <input type="text" id="inputRewardText" class="input-field" value="自選火鍋或宵夜 ＋ 追劇放鬆 2 小時">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="timer-btn primary" id="btnSaveRewardModal">儲存獎勵</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 3: 家長自訂大獎 -->
-  <div class="modal" id="starRewardModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>🏆 家長自訂期末/段考大獎</h3>
-        <button class="modal-close" id="btnCancelStarModal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <label>終極大獎內容（150 ⭐ 兌換）：</label>
-        <input type="text" id="inputBigPrizeText" class="input-field" value="自選心願禮物一份（新球鞋 / 主題樂園一日遊）">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="timer-btn primary" id="btnSaveStarModal">儲存設定</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 4: 雲端同步設定 -->
-  <div class="modal" id="syncModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>☁️ Google 試算表雲端雙向同步設定</h3>
-        <button class="modal-close" id="btnCancelSyncModal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size:0.84rem; color:var(--slate-600); margin-bottom:12px;">
-          設定 Google Apps Script Web App 網址後，手機與電腦打卡即可雙向即時連動，資料永不遺失！
-        </p>
-        <label>GAS Web App URL：</label>
-        <input type="url" class="input-field" id="inputGasUrl" placeholder="https://script.google.com/macros/s/.../exec">
-        <div style="font-size:0.75rem; color:var(--slate-400); margin-top:8px;">
-          💡 設定步驟請參閱專案目錄中的 <code>Google試算表同步教學_手機電腦雙向同步.md</code>。
+  <!-- 自訂目標彈窗 Modal -->
+  <div class="modal-backdrop" id="examModal">
+    <div class="modal-dialog">
+      <div class="modal-title">⚙️ 自訂段考目標與日期</div>
+      <div class="form-group">
+        <label>⚡ 快速選擇段考日程：</label>
+        <div style="display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+          <button type="button" class="btn-secondary" id="btnQuickExam2" style="font-size:0.8rem; padding:6px 12px; background:#dbeafe; color:#1e40af; border:1px solid #bfdbfe; font-weight:700;">🎯 第二次段考 (11/27)</button>
+          <button type="button" class="btn-secondary" id="btnQuickExam3" style="font-size:0.8rem; padding:6px 12px; background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; font-weight:700;">🏁 第三次期末考 (1/15)</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="timer-btn" id="btnClearSyncUrl">清除綁定</button>
-        <button type="button" class="timer-btn" id="btnManualSync">立即手動下載</button>
-        <button type="button" class="timer-btn primary" id="btnSaveSyncModal">💾 儲存並立即上傳</button>
+      <div class="form-group">
+        <label for="inputExamTitle">段考名稱</label>
+        <input type="text" id="inputExamTitle" value="國二上第二次段考">
+      </div>
+      <div class="form-group">
+        <label for="inputExamDate">目標段考日期</label>
+        <input type="date" id="inputExamDate" value="2026-11-27">
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btnCancelModal">取消</button>
+        <button class="btn-primary" id="btnSaveModal">儲存並更新</button>
       </div>
     </div>
   </div>
 
-  <!-- 頁尾 -->
-  <footer>
-    <div class="footer-container">
-      <p>© 2026 蔡佳蓁(國中)專屬升學計畫學習網 ｜ 依據三師爸 AI 工作流與 Level 2 雲端雙向同步架構打造</p>
+  <!-- 自訂週末放鬆獎勵彈窗 Modal -->
+  <div class="modal-backdrop" id="rewardModal">
+    <div class="modal-dialog">
+      <div class="modal-title">🎁 自訂週末放鬆獎勵</div>
+      <div class="form-group">
+        <label for="inputRewardTitle">獎勵標題（例：週末放鬆大解放兌換券）</label>
+        <input type="text" id="inputRewardTitle" value="🎮 週末放鬆大解放兌換券">
+      </div>
+      <div class="form-group">
+        <label for="inputRewardDesc">獎勵具體承諾內容（孩子只要自習打卡達標 80% 即可兌換）</label>
+        <textarea id="inputRewardDesc" rows="4" style="width:100%; padding:10px 12px; border:1px solid var(--slate-200); border-radius:8px; font-size:0.9rem; outline:none; font-family:inherit; resize:vertical;"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btnCancelRewardModal">取消</button>
+        <button class="btn-primary" id="btnSaveRewardModal">儲存並更新</button>
+      </div>
     </div>
-  </footer>
+  </div>
 
-  <!-- ================= 系統邏輯腳本 ================= -->
+  <!-- Google 試算表雲端雙向同步設定彈窗 (Level 2: Google Apps Script) -->
+  <div class="modal-backdrop" id="syncModal">
+    <div class="modal-dialog" style="max-width:540px;">
+      <div class="modal-title">☁️ Google 試算表雲端雙向同步設定</div>
+      <div style="font-size:0.84rem; color:var(--slate-600); line-height:1.6; margin-bottom:14px; background:#eff6ff; padding:12px; border-radius:8px; border:1px solid #bfdbfe;">
+        <strong>💡 手機與電腦同步原理</strong>：<br>
+        將已部署好的 <strong>Google Apps Script 網頁應用程式網址</strong> 貼在下方，手機與電腦在打勾時會自動寫入同一份 Google 試算表，實現雙向同步！<br>
+        <small style="color:#2563eb;">（詳細 1 分鐘免費設定步驟請參閱專案目錄 <code>Google試算表同步教學_手機電腦雙向同步.md</code>）</small>
+      </div>
+      <div class="form-group" style="margin-bottom:12px;">
+        <label for="inputGasUrl" style="font-weight:700;">Google Apps Script Web App 網址：</label>
+        <input type="url" id="inputGasUrl" placeholder="https://script.google.com/macros/s/.../exec" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--slate-300); font-size:0.85rem; box-sizing:border-box;">
+      </div>
+      <div id="syncTestResult" style="display:none; font-size:0.82rem; padding:8px 12px; border-radius:6px; margin-bottom:12px;"></div>
+      <div class="modal-actions" style="display:flex; justify-content:space-between; align-items:center;">
+        <button type="button" class="btn-secondary" id="btnClearSyncUrl" style="background:#fee2e2; color:#b91c1c; border-color:#fca5a5;">清除網址</button>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn-secondary" id="btnCancelSyncModal">取消</button>
+          <button type="button" class="btn-primary" id="btnSaveSyncModal">儲存並測試連線</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* ================= STORAGE KEYS ================= */
     const STORAGE_KEY_CHECKS = 'cjz_study_checks_v1';
@@ -4610,10 +4621,10 @@
     }
 
     document.getElementById('btnEditExam').addEventListener('click', () => {
-      document.getElementById('examModal').classList.add('show');
+      document.getElementById('examModal').classList.add('open');
     });
     document.getElementById('btnCancelModal').addEventListener('click', () => {
-      document.getElementById('examModal').classList.remove('show');
+      document.getElementById('examModal').classList.remove('open');
     });
     document.getElementById('btnQuickExam2').addEventListener('click', () => {
       document.getElementById('inputExamDate').value = '2026-11-27';
@@ -4625,7 +4636,7 @@
       };
       localStorage.setItem(STORAGE_KEY_EXAM, JSON.stringify(examData));
       loadExamData();
-      document.getElementById('examModal').classList.remove('show');
+      document.getElementById('examModal').classList.remove('open');
       debouncedSyncToCloud();
     });
 
@@ -4637,16 +4648,16 @@
     }
 
     document.getElementById('btnEditReward').addEventListener('click', () => {
-      document.getElementById('rewardModal').classList.add('show');
+      document.getElementById('rewardModal').classList.add('open');
     });
     document.getElementById('btnCancelRewardModal').addEventListener('click', () => {
-      document.getElementById('rewardModal').classList.remove('show');
+      document.getElementById('rewardModal').classList.remove('open');
     });
     document.getElementById('btnSaveRewardModal').addEventListener('click', () => {
       const val = document.getElementById('inputRewardText').value;
       localStorage.setItem(STORAGE_KEY_REWARD, val);
       loadRewardData();
-      document.getElementById('rewardModal').classList.remove('show');
+      document.getElementById('rewardModal').classList.remove('open');
       debouncedSyncToCloud();
     });
 
@@ -4659,16 +4670,16 @@
     }
 
     document.getElementById('btnEditStarRewards').addEventListener('click', () => {
-      document.getElementById('starRewardModal').classList.add('show');
+      document.getElementById('starRewardModal').classList.add('open');
     });
     document.getElementById('btnCancelStarModal').addEventListener('click', () => {
-      document.getElementById('starRewardModal').classList.remove('show');
+      document.getElementById('starRewardModal').classList.remove('open');
     });
     document.getElementById('btnSaveStarModal').addEventListener('click', () => {
       const val = document.getElementById('inputBigPrizeText').value;
       localStorage.setItem(STORAGE_KEY_STAR_CUSTOM, JSON.stringify({ bigPrize: val }));
       loadBigPrizeText();
-      document.getElementById('starRewardModal').classList.remove('show');
+      document.getElementById('starRewardModal').classList.remove('open');
       debouncedSyncToCloud();
     });
 
@@ -4778,12 +4789,12 @@
 
     function openSyncModal() {
       inputGasUrl.value = localStorage.getItem(STORAGE_KEY_GAS_URL) || '';
-      syncModal.classList.add('show');
+      syncModal.classList.add('open');
     }
 
     if (cloudSyncBadge) cloudSyncBadge.addEventListener('click', openSyncModal);
     if (btnConfigSync) btnConfigSync.addEventListener('click', openSyncModal);
-    if (btnCancelSyncModal) btnCancelSyncModal.addEventListener('click', () => syncModal.classList.remove('show'));
+    if (btnCancelSyncModal) btnCancelSyncModal.addEventListener('click', () => syncModal.classList.remove('open'));
 
     function updateSyncUIStatus(status, text) {
       if (status === 'synced') {
@@ -4918,7 +4929,7 @@
           localStorage.setItem(STORAGE_KEY_GAS_URL, url);
           await pushToCloud();
         }
-        syncModal.classList.remove('show');
+        syncModal.classList.remove('open');
       });
     }
 
@@ -4927,7 +4938,7 @@
         localStorage.removeItem(STORAGE_KEY_GAS_URL);
         inputGasUrl.value = '';
         updateSyncUIStatus('offline');
-        syncModal.classList.remove('show');
+        syncModal.classList.remove('open');
       });
     }
 
